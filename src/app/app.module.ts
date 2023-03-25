@@ -16,11 +16,15 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AllEstatesComponent } from './estates/all-estates/all-estates.component';
 import { AuthenticationService } from './shared/services/authentication.service';
+import { FooterComponent } from './core/footer/footer.component';
+import { HeaderComponent } from './core/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AllEstatesComponent
+    AllEstatesComponent,
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
