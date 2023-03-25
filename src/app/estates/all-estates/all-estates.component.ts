@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { CrudService } from 'src/app/shared/crud.service';
 import { Estate } from 'src/app/shared/estate';
 
@@ -12,15 +12,14 @@ import { Estate } from 'src/app/shared/estate';
 export class AllEstatesComponent implements OnInit {
   estates$ = this.estateService.getEstateList();
   estates!: any;
-  oneEstate$ = this.estateService.getEstate();
+  oneEstate$!: Observable<any>;
 
   constructor(private estateService: CrudService) { }
 
   ngOnInit(): void {
     this.getEstates();
-    // this.estates$.subscribe(c => c.forEach(e => console.log(e.payload.doc.data())));
-
-
+    this.oneEstate$ = this.estateService.getEstate('NX36G4DosTXWStP9QB9c');
+    this.oneEstate$.subscribe(data => console.log(data));
   }
 
 
