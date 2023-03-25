@@ -15,6 +15,7 @@ import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AllEstatesComponent } from './estates/all-estates/all-estates.component';
+import { AuthenticationService } from './shared/services/authentication.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { AllEstatesComponent } from './estates/all-estates/all-estates.component
     AngularFirestoreModule
   ],
   providers: [
-    ScreenTrackingService, UserTrackingService,
+    ScreenTrackingService, UserTrackingService, AuthenticationService,
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase }
   ],
   bootstrap: [AppComponent]

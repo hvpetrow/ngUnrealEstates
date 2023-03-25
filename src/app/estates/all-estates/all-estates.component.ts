@@ -20,6 +20,27 @@ export class AllEstatesComponent implements OnInit {
     this.getEstates();
     this.oneEstate$ = this.estateService.getEstate('NX36G4DosTXWStP9QB9c');
     this.oneEstate$.subscribe(data => console.log(data));
+    // this.update();
+    // this.delete();
+    // this.create();
+  }
+
+  create(): void {
+    const estate = {
+      firstName: 'Pesho2',
+      lastName: 'Peshev',
+      email: 'pesho@abv.123'
+    }
+
+    this.estateService.addEstate(estate);
+  }
+
+  update(): any {
+    const updatedEstate = this.estateService.updateEstate('NX36G4DosTXWStP9QB9c', { firstName: 'Pesho' });
+  }
+
+  delete(): any {
+    this.estateService.deleteEstate('NX36G4DosTXWStP9QB9c');
   }
 
 

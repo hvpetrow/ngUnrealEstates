@@ -1,23 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Estate } from './estate';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CrudService {
+  estatesCollectionRef = this.db.collection('estates');
   estatesRef!: Observable<any[]>;
   estateRef!: AngularFirestoreDocument<any>;
 
   constructor(private db: AngularFirestore) { }
 
+  //Add Estate Object
   addEstate(estate: Estate) {
-    // this.estatesRef.push({
-    //   firstName: estate.firstName,
-    //   lastName: estate.lastName,
-    //   email: estate.email,
-    // });
+    return from(this.estatesCollectionRef.add(estate));
   }
 
   // Fetch Single estate Object
@@ -25,26 +23,21 @@ export class CrudService {
     this.estateRef = this.db.doc('estates/' + id);
     return this.estateRef.valueChanges();
   }
+
   // Fetch estates List
   getEstateList() {
-    // this.estatesRef = this.db.list('estates');
-    // console.log(this.estatesRef.valueChanges().subscribe(data => console.log(data)
-    // ));
+    return this.estatesCollectionRef.snapshotChanges();
+  }
 
-    // return this.estatesRef;
-    return this.estatesRef = this.db.collection('estates').snapshotChanges();
-  }
   // Update estate Object
-  updateEstate(estate: Estate) {
-    this.estateRef.update({
-      firstName: estate.firstName,
-      lastName: estate.lastName,
-      email: estate.email,
-    });
+  updateEstate(estateId: string, updatedFields: Object) {
+    const docRef = this.db.doc('estates/' + estateId);
+    return from(docRef.update(updatedFields));
   }
+
   // Delete estate Object
-  deleteEstate(id: string) {
-    // this.estateRef = this.db.object('estates/' + id);
-    // this.estateRef.remove();
+  deleteEstate(estateId: string) {
+    const docRef = this.db.doc('estates/' + estateId);
+    return from(docRef.delete());
   }
 }

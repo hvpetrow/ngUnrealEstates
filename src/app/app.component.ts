@@ -9,8 +9,6 @@ import { Estate } from './shared/estate';
 })
 export class AppComponent {
 
-  constructor(private store: AngularFirestore) { }
-  title = 'ngEstates';
-
-
+  constructor() { }
+  title = 'ngUnrealEstates';
 }
