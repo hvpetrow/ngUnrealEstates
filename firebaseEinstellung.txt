@@ -1,0 +1,2 @@
+1.changed types to generic in firebase file.
+2.added providers in module

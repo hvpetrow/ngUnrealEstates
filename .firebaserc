@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ngestates-77dc7": {
+      "hosting": {
+        "ngEstates": [
+          "ngestates-77dc7"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ngestates-77dc7"
+  }
+}

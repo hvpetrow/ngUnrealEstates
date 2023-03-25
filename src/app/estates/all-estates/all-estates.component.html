@@ -1,0 +1,8 @@
+<p>all-estates works!</p>
+<!-- <div *ngIf="estates; else elseBlock"> -->
+<div *ngFor="let estate of estates">
+  {{ estate.id }}
+</div>
+<!-- </div> -->
+
+<ng-template #elseBlock> Observable is loading. Please wait </ng-template>
