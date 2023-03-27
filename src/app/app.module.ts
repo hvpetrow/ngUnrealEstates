@@ -18,13 +18,15 @@ import { AllEstatesComponent } from './estates/all-estates/all-estates.component
 import { AuthenticationService } from './shared/services/authentication.service';
 import { FooterComponent } from './core/footer/footer.component';
 import { HeaderComponent } from './core/header/header.component';
+import { HomeComponent } from './home/home.component';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     AllEstatesComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { HeaderComponent } from './core/header/header.component';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    HomeModule
   ],
   providers: [
     ScreenTrackingService, UserTrackingService, AuthenticationService,
