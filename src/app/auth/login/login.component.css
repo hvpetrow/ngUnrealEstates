@@ -74,7 +74,7 @@ input {
 }
 
 .name,
-.username,
+.email,
 .password,
 .re-password {
   color: #8597a3;
@@ -101,7 +101,7 @@ input {
 }
 
 .name,
-.username,
+.email,
 .password,
 .re-password {
   color: #6658d3;
@@ -121,6 +121,7 @@ input {
   background-color: #6658d3;
   border-radius: 6px;
   color: #fff;
+  cursor: pointer;
   border: 0;
 }
 
@@ -133,12 +134,12 @@ input {
 }
 
 .card-info {
-  padding: 1rem 1rem;
+  padding: 1.5rem 1.5rem;
   text-align: center;
   font-size: 0.875rem;
 }
 
-.card-info > small {
-  font-size: 1.2em;
+.card-info > p {
+  font-size: 1.4em;
   color: #6658d3;
 }
