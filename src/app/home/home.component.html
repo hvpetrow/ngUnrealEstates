@@ -7,12 +7,12 @@
   </div>
 </section>
 
-<section
-  *ngIf="latestEstates$ | async as latestEstates; else loader"
-  id="top-houses"
->
+<section id="top-houses">
   <h1>Top Houses</h1>
-  <div class="houses">
+  <div
+    *ngIf="latestEstates$ | async as latestEstates; else loader"
+    class="houses"
+  >
     <app-estate-card
       *ngFor="let estate of latestEstates"
       class="estate-card"

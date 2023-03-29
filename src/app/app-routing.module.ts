@@ -7,11 +7,20 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
+    redirectTo: 'home'
+  },
+  {
+    path: 'home',
+    pathMatch: 'full',
     component: HomeComponent
   },
   {
     path: 'catalog',
     component: AllEstatesComponent
+  },
+  {
+    path: 'user',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
 ];
 

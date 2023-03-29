@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../shared/services/authentication.service';
 import { CrudService } from '../shared/crud.service';
-import { Observable, map, tap } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { IEstate } from '../shared/estate';
 
 @Component({
@@ -10,8 +10,7 @@ import { IEstate } from '../shared/estate';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  latestEstates$!: Observable<any>;
-  estates!: IEstate[];
+  latestEstates$!: Observable<IEstate[]>;
 
   constructor(public authService: AuthenticationService, private estateService: CrudService) { }
 
