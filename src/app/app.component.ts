@@ -1,6 +1,6 @@
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Component } from '@angular/core';
-import { Estate } from './shared/estate';
+import { IEstate } from './shared/estate';
 
 @Component({
   selector: 'app-root',

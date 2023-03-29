@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Estate } from './estate';
+import { IEstate } from './estate';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Observable, from } from 'rxjs';
 
@@ -14,7 +14,7 @@ export class CrudService {
   constructor(private db: AngularFirestore) { }
 
   //Add Estate Object
-  addEstate(estate: Estate) {
+  addEstate(estate: IEstate) {
     return from(this.estatesCollectionRef.add(estate));
   }
 

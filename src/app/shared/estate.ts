@@ -1,5 +1,7 @@
-export interface Estate {
-    firstName: string;
-    lastName: string;
-    email: string
+export interface IEstate {
+    name: string;
+    type: string;
+    price: Number;
+    imgUrl: string;
+    ownerId: string;
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { CrudService } from 'src/app/shared/crud.service';
-import { Estate } from 'src/app/shared/estate';
+import { IEstate } from 'src/app/shared/estate';
 
 @Component({
   selector: 'app-all-estates',
@@ -18,8 +18,8 @@ export class AllEstatesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEstates();
-    this.oneEstate$ = this.estateService.getEstate('NX36G4DosTXWStP9QB9c');
-    this.oneEstate$.subscribe(data => console.log(data));
+    // this.oneEstate$ = this.estateService.getEstate('NX36G4DosTXWStP9QB9c');
+    this.estates$.subscribe(data => console.log(data));
     // this.update();
     // this.delete();
     // this.create();
@@ -32,7 +32,7 @@ export class AllEstatesComponent implements OnInit {
       email: 'pesho@abv.123'
     }
 
-    this.estateService.addEstate(estate);
+    // this.estateService.addEstate(estate);
   }
 
   update(): any {

@@ -7,42 +7,28 @@
   </div>
 </section>
 
-<section id="top-houses">
+<section
+  *ngIf="latestEstates$ | async as latestEstates; else loader"
+  id="top-houses"
+>
   <h1>Top Houses</h1>
   <div class="houses">
-    <div class="card-home">
-      <h2>Real House Luxury Villa</h2>
-      <div class="cta-container">
-        <a routerLink="#" class="details-link">Details</a>
-      </div>
-      <div class="card_image">
-        <img src="../../assets/5.jpg" />
-      </div>
-    </div>
-
-    <div class="card-home">
-      <h2>House Take Away</h2>
-      <div class="cta-container">
-        <a routerLink="#" class="details-link">Details</a>
-      </div>
-      <div class="card_image">
-        <img src="../../assets/house2.jpg" />
-      </div>
-    </div>
-
-    <div class="card-home">
-      <h2>Sunhouse C21</h2>
-      <div class="cta-container">
-        <a routerLink="#" class="details-link">Details</a>
-      </div>
-      <div class="card_image">
-        <img src="../../assets/apartments.jpg" />
-      </div>
-    </div>
+    <app-estate-card
+      *ngFor="let estate of latestEstates"
+      class="estate-card"
+      [estate]="estate"
+    ></app-estate-card>
 
     <!-- If there are still no offers for housing in the database display: -->
-    <!--<div class="no-data-container">
-            <p class="no-data">There are no housing offers found...</p>
-        </div>-->
+    <div *ngIf="latestEstates.length === 0" class="no-data-container">
+      <p class="no-data">There are no housing offers found...</p>
+    </div>
   </div>
 </section>
+
+<ng-template #loader>
+  <div class="ring">
+    Loading
+    <span class="ring_span"></span>
+  </div>
+</ng-template>

@@ -1,0 +1,140 @@
+.card-home {
+  background-color: #fff;
+  bottom: 0;
+  box-shadow: 0px 0px 40px 4px rgba(77, 77, 240, 0.315);
+  height: 400px;
+  margin-top: 20px;
+  left: 0;
+  overflow: hidden;
+  position: relative;
+  right: 0;
+  top: 0;
+  width: 500px;
+  margin-left: -1em;
+  text-align: center;
+  transition: all 0.6s ease-in-out;
+}
+
+.card-name {
+  color: #0c0c41;
+  font-family: "Raleway", sans-serif;
+  font-size: 22px;
+  font-weight: 200;
+  margin-top: 330px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  z-index: 9999;
+  transition: all 0.6s ease-in-out;
+}
+
+.card-home:hover .card-name {
+  background: #3487f7;
+  color: #fff;
+  margin-top: 150px;
+  padding: 5px;
+}
+
+.card-home:hover .card_image {
+  background-size: cover;
+  border-radius: 0;
+  margin-top: -120px;
+}
+
+.card_image {
+  background-color: #eef2f7;
+  background-size: cover;
+  height: 470px;
+  margin-left: -55px;
+  margin-top: -170px;
+  position: absolute;
+  width: 560px;
+  transition: all 0.6s ease-in-out;
+}
+
+.card:hover {
+  height: 430px;
+  width: 500px;
+}
+
+.card:hover .cta-container {
+  display: inline;
+  opacity: 1;
+  margin-top: 390px;
+}
+
+.card:hover .card_circle {
+  background-size: cover;
+  border-radius: 0;
+  margin-top: -130px;
+}
+
+.card_image > img {
+  width: 100%;
+  height: 100%;
+}
+
+.card-home:hover {
+  height: 430px;
+  width: 500px;
+}
+
+.card-home:hover .cta-container {
+  display: inline;
+  margin-top: 380px;
+  opacity: 1;
+}
+
+.card-home:hover .card_circle {
+  background-size: cover;
+  border-radius: 0;
+  margin-top: -130px;
+}
+
+.details-link {
+  -webkit-transition: 0.2s ease-out;
+  border: 2px solid #3487f7;
+  border-radius: 2px;
+  color: #3487f7;
+  display: inline-block;
+  font-family: "Raleway", sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  height: 36px;
+  letter-spacing: 0.5px;
+  line-height: 36px;
+  padding: 0 2rem;
+  text-align: center;
+  margin-left: -1em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.2s ease-out;
+  transition: all 0.6s ease-in-out;
+}
+
+.details-link:hover {
+  background-color: #3487f7;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: #fff;
+}
+
+.details-con {
+  display: none;
+  margin-top: 320px;
+  position: absolute;
+  text-align: right;
+  width: 100%;
+  z-index: 9999;
+}
+
+.cta-container {
+  /* display: none; */
+  display: inline;
+  opacity: 0;
+  margin-top: 334px;
+  position: absolute;
+  text-align: center;
+  z-index: 9999;
+  margin-left: -10%;
+  transition: all 0.6s ease-in-out;
+}
