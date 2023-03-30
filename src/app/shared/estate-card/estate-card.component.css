@@ -110,6 +110,7 @@
   text-transform: uppercase;
   transition: 0.2s ease-out;
   transition: all 0.6s ease-in-out;
+  cursor: pointer;
 }
 
 .details-link:hover {
