@@ -3,27 +3,74 @@
     <div class="card-image">
       <h2 class="card-heading">Login</h2>
     </div>
-    <form class="card-form" action="" method="">
+    <form class="card-form" (ngSubmit)="onLogin()" [formGroup]="loginGroup">
       <div class="input">
         <input
           type="text"
           class="input-field"
           placeholder="john.doe@gmail.com"
           id="email"
-          name=""
-          value=""
+          formControlName="email"
+          [ngClass]="{
+            'input-error':
+              loginGroup.controls['email'].invalid &&
+              loginGroup.controls['email'].dirty
+          }"
         />
         <label class="email">Email</label>
+      </div>
+      <div
+        *ngIf="
+        loginGroup.controls['email'].invalid &&
+        loginGroup.controls['email'].touched &&
+        !loginGroup.controls['email'].errors?.['required']
+      "
+        class="alert-error"
+      >
+        Email should be valid!
+      </div>
+      <div
+        *ngIf="
+      loginGroup.controls['email'].errors?.['required'] &&
+      loginGroup.controls['email'].touched
+"
+        class="alert-error"
+      >
+        Email is required!
       </div>
       <div class="input">
         <input
           type="password"
           class="input-field"
           id="password"
-          name=""
           placeholder="******"
+          formControlName="password"
+          [ngClass]="{
+            'input-error':
+              loginGroup.controls['password'].invalid &&
+              loginGroup.controls['password'].dirty
+          }"
         />
         <label class="password">Password</label>
+      </div>
+      <div
+        *ngIf="
+      loginGroup.controls['password'].invalid &&
+      loginGroup.controls['password'].touched &&
+      !loginGroup.controls['password'].errors?.['required']
+    "
+        class="alert-error"
+      >
+        Password should be valid!
+      </div>
+      <div
+        *ngIf="
+    loginGroup.controls['password'].errors?.['required'] &&
+    loginGroup.controls['password'].touched
+"
+        class="alert-error"
+      >
+        Password is required!
       </div>
       <div class="action">
         <button class="action-button">Login</button>

@@ -21,6 +21,8 @@ import { HeaderComponent } from './core/header/header.component';
 import { HomeModule } from './home/home.module';
 import { AuthModule } from './auth/auth.module';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { HotToastModule } from '@ngneat/hot-toast';
+
 
 @NgModule({
   declarations: [
@@ -39,8 +41,10 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
     AngularFirestoreModule,
+    AngularFireAuthModule,
     HomeModule,
-    AuthModule
+    AuthModule,
+    HotToastModule.forRoot(),
   ],
   providers: [
     ScreenTrackingService, UserTrackingService, AuthenticationService,
