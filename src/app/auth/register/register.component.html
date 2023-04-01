@@ -3,36 +3,58 @@
     <div class="card-image">
       <h2 class="card-heading">Create your account</h2>
     </div>
-    <form class="card-form" action="" method="">
+    <form
+      class="card-form"
+      (ngSubmit)="handleRegister()"
+      [formGroup]="registerGroup"
+    >
       <div class="input">
         <input
           type="text"
           class="input-field"
-          placeholder="Alexander Parkinson"
-          id="name"
-          name=""
-          value=""
+          placeholder="john.doe@gmail.com"
+          id="email"
+          formControlName="email"
         />
-        <label class="name">Full Name</label>
+        <label class="name">Email:</label>
       </div>
       <div class="input">
         <input
           type="text"
           class="input-field"
-          placeholder="alexander"
-          id="username"
-          name=""
-          value=""
+          placeholder="John"
+          id="firstName"
+          formControlName="firstName"
         />
-        <label class="username">Username</label>
+        <label class="username">First Name:</label>
+      </div>
+      <div class="input">
+        <input
+          type="text"
+          class="input-field"
+          placeholder="Doe"
+          id="lastName"
+          formControlName="lastName"
+        />
+        <label class="username">Last Name:</label>
+      </div>
+      <div class="input">
+        <input
+          type="text"
+          class="input-field"
+          placeholder="01762543843"
+          id="phoneNumber"
+          formControlName="phoneNumber"
+        />
+        <label class="username">Phone Number:</label>
       </div>
       <div class="input">
         <input
           type="password"
           class="input-field"
-          id="password"
-          name=""
           placeholder="******"
+          id="password"
+          formControlName="password"
         />
         <label class="password">Password</label>
       </div>
@@ -40,19 +62,19 @@
         <input
           type="password"
           class="input-field"
-          id="re-password"
-          name=""
           placeholder="******"
+          id="re-password"
+          formControlName="repass"
         />
         <label class="re-password">Repeat Password</label>
       </div>
       <div class="action">
-        <button class="action-button">Get started</button>
+        <button class="action-button">Sign Up</button>
       </div>
     </form>
 
     <div class="card-info">
-      <p>Already have an account?<a href="#"> Sign in</a></p>
+      <p>Already have an account?<a href="/user/login"> Sign in</a></p>
     </div>
   </div>
 </section>

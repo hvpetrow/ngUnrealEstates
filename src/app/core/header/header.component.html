@@ -4,11 +4,15 @@
     <!-- Guest users and Logged users -->
     <li><a routerLink="#">Housing for rent</a></li>
     <!-- Guest users -->
-    <li><a routerLink="user/login">Login</a></li>
-    <li><a routerLink="user/register">Register</a></li>
+    <ng-container *ngIf="!(isLoggedIn$ | async)">
+      <li><a routerLink="user/login">Login</a></li>
+      <li><a routerLink="user/register">Register</a></li>
+    </ng-container>
     <!-- Logged users -->
-    <li><a routerLink="#">Create offer</a></li>
-    <li><a routerLink="#">Search</a></li>
-    <li><a routerLink="#">Logout</a></li>
+    <ng-container *ngIf="isLoggedIn$ | async">
+      <li><a routerLink="#">Create offer</a></li>
+      <li><a routerLink="#">Search</a></li>
+      <li><a (click)="onLogout()" href="javascript:void(0)">Logout</a></li>
+    </ng-container>
   </ul>
 </nav>

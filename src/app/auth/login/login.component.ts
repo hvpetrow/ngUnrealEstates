@@ -23,20 +23,22 @@ export class LoginComponent {
 
   onLogin(): void {
     console.log(this.loginGroup.value);
-    const { email, password } = this.loginGroup.value;
-    this.authService.login(email, password).subscribe({
-      next: (user) => {
-        this.router.navigate(['/home']);
-      },
-      error: (err) => {
-        const errorMessage = err.message;
-        if (errorMessage == 'Firebase: Error (auth/wrong-password).' || errorMessage == 'Firebase: Error (auth/user-not-found).') {
-          this.toast.error(`Incorrect email or password`);
+
+    if (this.loginGroup.valid) {
+      const { email, password } = this.loginGroup.value;
+      this.authService.login(email, password).subscribe({
+        next: (user) => {
+          this.router.navigate(['/home']);
+        },
+        error: (err) => {
+          const errorMessage = err.message;
+          if (errorMessage == 'Firebase: Error (auth/wrong-password).' || errorMessage == 'Firebase: Error (auth/user-not-found).') {
+            this.toast.error(`Incorrect email or password`);
+          }
+
+          this.loginGroup.controls['password'].setValue('');
         }
-
-        this.loginGroup.controls['password'].setValue('');
-      }
-    })
-
+      });
+    }
   }
 }
