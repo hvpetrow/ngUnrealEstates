@@ -11,6 +11,8 @@ import { isMatchPassword } from 'src/app/shared/validators/validators';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  isLoading: Boolean = false;
+
   registerGroup: FormGroup = this.formBuilder.group({
     email: new FormControl('', [Validators.required, Validators.email]),
     firstName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(23)]),
@@ -25,7 +27,7 @@ export class RegisterComponent {
   handleRegister() {
     console.log(this.registerGroup.value);
     const { email, password } = this.registerGroup.value;
-
+    this.isLoading = true;
     if (this.registerGroup.valid) {
       this.authService.register(email, password).subscribe({
         next: () => {
@@ -38,7 +40,8 @@ export class RegisterComponent {
           if (errorMessage == 'Firebase: Error (auth/email-already-in-use).') {
             this.toast.error(`Email: ${email} is already taken!`)
           }
-        }
+        },
+        complete: () => this.isLoading = false
       });
 
       this.registerGroup.reset();

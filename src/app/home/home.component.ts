@@ -3,6 +3,7 @@ import { AuthenticationService } from '../shared/services/authentication.service
 import { CrudService } from '../shared/crud.service';
 import { Observable, map } from 'rxjs';
 import { IEstate } from '../shared/estate';
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +13,11 @@ import { IEstate } from '../shared/estate';
 export class HomeComponent implements OnInit {
   latestEstates$!: Observable<IEstate[]>;
 
-  constructor(public authService: AuthenticationService, private estateService: CrudService) { }
+  constructor(public authService: AuthenticationService, private estateService: CrudService, public toast: HotToastService) { }
 
   ngOnInit(): void {
     this.getEstates();
+    this.toast.info('It Works !')
   }
 
   getEstates(): void {

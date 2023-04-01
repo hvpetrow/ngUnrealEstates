@@ -69,7 +69,12 @@
         <label class="re-password">Repeat Password</label>
       </div>
       <div class="action">
-        <button class="action-button">Sign Up</button>
+        <button
+          class="action-button"
+          [disabled]="isLoading || !registerGroup.valid"
+        >
+          Sign Up
+        </button>
       </div>
     </form>
 

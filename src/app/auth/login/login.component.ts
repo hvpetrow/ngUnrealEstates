@@ -10,13 +10,14 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  isLoading: Boolean = false;
 
   loginGroup: FormGroup = this.formBuilder.group({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
 
-  constructor(private authService: AuthenticationService, private router: Router, public toast: HotToastService, private formBuilder: FormBuilder) { }
+  constructor(private authService: AuthenticationService, private router: Router, private toast: HotToastService, private formBuilder: FormBuilder) { }
   ngOnInit(): void {
 
   }
@@ -26,18 +27,24 @@ export class LoginComponent {
 
     if (this.loginGroup.valid) {
       const { email, password } = this.loginGroup.value;
+      this.isLoading = true;
       this.authService.login(email, password).subscribe({
         next: (user) => {
           this.router.navigate(['/home']);
         },
         error: (err) => {
           const errorMessage = err.message;
+
           if (errorMessage == 'Firebase: Error (auth/wrong-password).' || errorMessage == 'Firebase: Error (auth/user-not-found).') {
             this.toast.error(`Incorrect email or password`);
+            console.log('DAAAAAAAAAA');
+
           }
 
           this.loginGroup.controls['password'].setValue('');
-        }
+        },
+        complete: () => this.isLoading = false
+
       });
     }
   }

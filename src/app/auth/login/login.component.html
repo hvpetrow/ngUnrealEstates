@@ -73,7 +73,12 @@
         Password is required!
       </div>
       <div class="action">
-        <button class="action-button">Login</button>
+        <button
+          class="action-button"
+          [disabled]="isLoading || !loginGroup.valid"
+        >
+          Login
+        </button>
       </div>
     </form>
     <div class="card-info">
