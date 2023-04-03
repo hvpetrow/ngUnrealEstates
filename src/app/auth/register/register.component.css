@@ -74,7 +74,7 @@ input {
   flex-direction: column-reverse;
   position: relative;
   padding-top: 2.5rem;
-  padding-bottom: 2em;
+  padding-bottom: 1.5em;
 }
 
 .name,
@@ -96,12 +96,11 @@ input {
   font: inherit;
   font-size: 1.5rem;
   padding: 0.25rem 0;
+  border-bottom-color: #6658d3;
 }
 
-.input-field:focus,
-.input-field:valid {
+.input-field:focus {
   outline: 0;
-  border-bottom-color: #6658d3;
 }
 
 .name,
@@ -151,4 +150,13 @@ input {
 .card-info > p {
   font-size: 1.2em;
   color: #6658d3;
+}
+
+.input-error {
+  border-bottom-color: #cd1136;
+}
+
+.alert-error {
+  color: #cd1136;
+  margin-bottom: 1.5rem;
 }
