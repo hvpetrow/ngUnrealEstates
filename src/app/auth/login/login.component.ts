@@ -37,8 +37,8 @@ export class LoginComponent {
 
           if (errorMessage == 'Firebase: Error (auth/wrong-password).' || errorMessage == 'Firebase: Error (auth/user-not-found).') {
             this.toast.error(`Incorrect email or password`);
-            console.log('DAAAAAAAAAA');
 
+            //TODO: toaster does not work!
           }
 
           this.loginGroup.controls['password'].setValue('');

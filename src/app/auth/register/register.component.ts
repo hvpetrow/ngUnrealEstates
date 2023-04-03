@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
-import { isMatchPassword } from 'src/app/shared/validators/validators';
+import { equivalentValidator } from 'src/app/shared/validators/validators';
 
 @Component({
   selector: 'app-register',
@@ -19,8 +19,9 @@ export class RegisterComponent {
     lastName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(23)]),
     phoneNumber: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
     password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
-    repass: new FormControl('', [Validators.required, isMatchPassword]),
-  });
+    repass: new FormControl('', [Validators.required]),
+  },
+    { validators: equivalentValidator('password', 'repass') });
 
   constructor(private formBuilder: FormBuilder, private authService: AuthenticationService, public toast: HotToastService, private router: Router) { }
 
@@ -30,6 +31,8 @@ export class RegisterComponent {
     this.isLoading = true;
     console.log(this.registerGroup.valid);
     console.log(this.registerGroup.value.repass);
+    console.log(this.registerGroup);
+
 
 
     if (this.registerGroup.valid) {
