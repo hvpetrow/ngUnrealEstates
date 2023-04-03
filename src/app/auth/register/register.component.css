@@ -125,6 +125,7 @@ input {
   background-color: #6658d3;
   border-radius: 6px;
   color: #fff;
+  cursor: pointer;
   border: 0;
 }
 
@@ -134,6 +135,11 @@ input {
 
 .action-button:hover {
   background-color: #5e52bd;
+}
+
+.action-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
 .card-info {

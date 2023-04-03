@@ -28,6 +28,10 @@ export class RegisterComponent {
     console.log(this.registerGroup.value);
     const { email, password } = this.registerGroup.value;
     this.isLoading = true;
+    console.log(this.registerGroup.valid);
+    console.log(this.registerGroup.value.repass);
+
+
     if (this.registerGroup.valid) {
       this.authService.register(email, password).subscribe({
         next: () => {

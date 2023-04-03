@@ -15,8 +15,32 @@
           placeholder="john.doe@gmail.com"
           id="email"
           formControlName="email"
+          [ngClass]="{
+            'input-error':
+              registerGroup.controls['email'].invalid &&
+              registerGroup.controls['email'].dirty
+          }"
         />
         <label class="name">Email:</label>
+      </div>
+      <div
+        *ngIf="
+        registerGroup.controls['email'].invalid &&
+        registerGroup.controls['email'].touched &&
+        !registerGroup.controls['email'].errors?.['required']
+      "
+        class="alert-error"
+      >
+        Email should be valid!
+      </div>
+      <div
+        *ngIf="
+      registerGroup.controls['email'].errors?.['required'] &&
+      registerGroup.controls['email'].touched
+"
+        class="alert-error"
+      >
+        Email is required!
       </div>
       <div class="input">
         <input
@@ -25,8 +49,32 @@
           placeholder="John"
           id="firstName"
           formControlName="firstName"
+          [ngClass]="{
+            'input-error':
+              registerGroup.controls['firstName'].invalid &&
+              registerGroup.controls['firstName'].dirty
+          }"
         />
         <label class="username">First Name:</label>
+      </div>
+      <div
+        *ngIf="
+      registerGroup.controls['firstName'].invalid &&
+      registerGroup.controls['firstName'].touched &&
+      !registerGroup.controls['firstName'].errors?.['required']
+    "
+        class="alert-error"
+      >
+        First name should be between 2 and 23 characters!
+      </div>
+      <div
+        *ngIf="
+    registerGroup.controls['firstName'].errors?.['required'] &&
+    registerGroup.controls['firstName'].touched
+"
+        class="alert-error"
+      >
+        First name is required!
       </div>
       <div class="input">
         <input
@@ -35,8 +83,32 @@
           placeholder="Doe"
           id="lastName"
           formControlName="lastName"
+          [ngClass]="{
+            'input-error':
+              registerGroup.controls['lastName'].invalid &&
+              registerGroup.controls['lastName'].dirty
+          }"
         />
         <label class="username">Last Name:</label>
+      </div>
+      <div
+        *ngIf="
+      registerGroup.controls['lastName'].invalid &&
+      registerGroup.controls['lastName'].touched &&
+      !registerGroup.controls['lastName'].errors?.['required']
+    "
+        class="alert-error"
+      >
+        Last name should be between 2 and 23 characters!
+      </div>
+      <div
+        *ngIf="
+    registerGroup.controls['lastName'].errors?.['required'] &&
+    registerGroup.controls['lastName'].touched
+"
+        class="alert-error"
+      >
+        Last name is required!
       </div>
       <div class="input">
         <input
@@ -45,8 +117,32 @@
           placeholder="01762543843"
           id="phoneNumber"
           formControlName="phoneNumber"
+          [ngClass]="{
+            'input-error':
+              registerGroup.controls['phoneNumber'].invalid &&
+              registerGroup.controls['phoneNumber'].dirty
+          }"
         />
         <label class="username">Phone Number:</label>
+      </div>
+      <div
+        *ngIf="
+      registerGroup.controls['phoneNumber'].invalid &&
+      registerGroup.controls['phoneNumber'].touched &&
+      !registerGroup.controls['phoneNumber'].errors?.['required']
+    "
+        class="alert-error"
+      >
+        Phone number should be valid!
+      </div>
+      <div
+        *ngIf="
+    registerGroup.controls['phoneNumber'].errors?.['required'] &&
+    registerGroup.controls['phoneNumber'].touched
+"
+        class="alert-error"
+      >
+        Phone number is required!
       </div>
       <div class="input">
         <input
@@ -55,8 +151,32 @@
           placeholder="******"
           id="password"
           formControlName="password"
+          [ngClass]="{
+            'input-error':
+              registerGroup.controls['password'].invalid &&
+              registerGroup.controls['password'].dirty
+          }"
         />
         <label class="password">Password</label>
+      </div>
+      <div
+        *ngIf="
+    registerGroup.controls['password'].invalid &&
+    registerGroup.controls['password'].touched &&
+    !registerGroup.controls['password'].errors?.['required']
+  "
+        class="alert-error"
+      >
+        Password should be between 8 and 16 characters!
+      </div>
+      <div
+        *ngIf="
+  registerGroup.controls['password'].errors?.['required'] &&
+  registerGroup.controls['password'].touched
+"
+        class="alert-error"
+      >
+        Password is required!
       </div>
       <div class="input">
         <input
@@ -65,8 +185,32 @@
           placeholder="******"
           id="re-password"
           formControlName="repass"
+          [ngClass]="{
+            'input-error':
+              registerGroup.controls['repass'].invalid &&
+              registerGroup.controls['repass'].dirty
+          }"
         />
         <label class="re-password">Repeat Password</label>
+      </div>
+      <div
+        *ngIf="
+    registerGroup.controls['repass'].invalid &&
+    registerGroup.controls['repass'].touched &&
+    !registerGroup.controls['repass'].errors?.['required']
+  "
+        class="alert-error"
+      >
+        Password and repass should be same!
+      </div>
+      <div
+        *ngIf="
+  registerGroup.controls['repass'].errors?.['required'] &&
+  registerGroup.controls['repass'].touched
+"
+        class="alert-error"
+      >
+        Repass is required!
       </div>
       <div class="action">
         <button

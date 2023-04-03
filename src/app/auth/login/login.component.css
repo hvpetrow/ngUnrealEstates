@@ -124,12 +124,12 @@ input {
 }
 
 .action-button:focus {
-  outline: 0;
-}
-
-.action-button:hover {
-  background-color: #5e52bd;
-}
+    outline: 0;
+  }
+  
+  .action-button:hover {
+    background-color: #5e52bd;
+  }
 
 .action-button:disabled {
   opacity: 0.7;
