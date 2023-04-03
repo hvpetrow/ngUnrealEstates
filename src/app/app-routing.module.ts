@@ -24,6 +24,10 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
+    path: 'estates',
+    loadChildren: () => import('./estates/estates.module').then(m => m.EstatesModule)
+  },
+  {
     path: '**',
     component: PageNotFoundComponent
   }
