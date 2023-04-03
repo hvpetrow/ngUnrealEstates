@@ -1,19 +1,19 @@
 <section id="deatils-page">
-  <div class="wrapper">
+  <div *ngIf="!!estate; else loader" class="wrapper">
     <div class="product-img">
-      <img src="./static/images/apartments.jpg" />
+      <img src="{{ estate.imgUrl }}" />
     </div>
     <div class="product-info">
       <div class="product-text">
         <div class="product-text">
-          <h1>Name: Sunhouse C21</h1>
-          <h2>Type: Apartment</h2>
-          <h4>Year: 2021</h4>
-          <h4>City: Sofia</h4>
-          <p>
+          <h1>Name: {{ estate.name }}</h1>
+          <h2>Type: {{ estate.type }}</h2>
+          <!-- <h4>Year: 2021</h4>
+          <h4>City: Sofia</h4> -->
+          <!-- <p>
             Description: Spacious dining room, remodel kitchen and wonderful
             deeded walk-out deck.
-          </p>
+          </p> -->
 
           <!-- if there are already tenants of the housing, separate their names with a comma and a space ", "  -->
           <p>People rented this housing: Alex Petkov, Ivan Dobrev</p>
@@ -39,3 +39,7 @@
     </div>
   </div>
 </section>
+
+<ng-template #loader>
+  <app-spinner></app-spinner>
+</ng-template>
