@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEstates();
-    this.toast.info('It Works !')
+    // this.toast.info('It Works !')
   }
 
   getEstates(): void {

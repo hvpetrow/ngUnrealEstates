@@ -1,4 +1,5 @@
 export interface IEstate {
+    id: string;
     name: string;
     type: string;
     price: Number;
