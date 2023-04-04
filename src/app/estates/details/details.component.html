@@ -1,4 +1,4 @@
-<section id="deatils-page">
+<section id="details-page">
   <div *ngIf="!!estate; else loader" class="wrapper">
     <div class="product-img">
       <img src="{{ estate.imgUrl }}" />
@@ -8,18 +8,15 @@
         <div class="product-text">
           <h1>Name: {{ estate.name }}</h1>
           <h2>Type: {{ estate.type }}</h2>
-          <!-- <h4>Year: 2021</h4>
-          <h4>City: Sofia</h4> -->
-          <!-- <p>
-            Description: Spacious dining room, remodel kitchen and wonderful
-            deeded walk-out deck.
-          </p> -->
+          <h4>Year: {{ estate.constructionYear }}</h4>
+          <h4>City: {{ estate.location }}</h4>
+          <p>Description: {{ estate.description }}</p>
 
           <!-- if there are already tenants of the housing, separate their names with a comma and a space ", "  -->
-          <p>People rented this housing: Alex Petkov, Ivan Dobrev</p>
+          <!-- <p>People rented this housing: Alex Petkov, Ivan Dobrev</p>
 
-          <!-- If not display: -->
-          <p>People rented this housing: There are no tenants yet.</p>
+           If not display: -->
+          <!-- <p>People rented this housing: There are no tenants yet.</p> -->
         </div>
       </div>
 

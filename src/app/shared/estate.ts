@@ -4,5 +4,8 @@ export interface IEstate {
     type: string;
     price: Number;
     imgUrl: string;
+    constructionYear: string;
+    location: string;
+    description: string;
     ownerId: string;
 }
