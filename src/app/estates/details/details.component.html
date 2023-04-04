@@ -23,11 +23,15 @@
       <!-- if there is no registered user, do not display buttons-->
       <div class="product-btn">
         <!-- Only for registered user and creator of the housing offer-->
-        <a href="#" class="edit">Edit</a>
-        <a href="#" class="remove">Delete</a>
+        <a routerLink="/estates/{{ estate.id }}/edit" class="edit">Edit</a>
+        <a (click)="(deleteHandler)" class="remove">Delete</a>
 
         <!-- logged in user with available pieces-->
-        <a href="#" class="rentHome">Rent a home, available 2 housing</a>
+        <a
+          routerLink="/users/{{ estate.ownerId }}/contact-form"
+          class="rentHome"
+          >Contact the owner</a
+        >
         <p class="alRentHome">You have already rent this home</p>
 
         <!-- logged in user with no available pieces-->

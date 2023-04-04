@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
 import { CrudService } from 'src/app/shared/crud.service';
 import { IEstate } from 'src/app/shared/estate';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
@@ -10,15 +11,15 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-  estateId!: string;
-
   estate!: IEstate;
+
+  estateId!: string;
 
   user$ = this.authService.currentUser$;
   userId: string | undefined;
   currentUserEmail: string | null | undefined;
 
-  constructor(private activatedRoute: ActivatedRoute, private authService: AuthenticationService, private estateService: CrudService) { }
+  constructor(private activatedRoute: ActivatedRoute, private authService: AuthenticationService, private estateService: CrudService, private router: Router, public toast: HotToastService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -38,6 +39,22 @@ export class DetailsComponent implements OnInit {
       }, error: err => {
         console.error(err.message);
       }
-    })
+    });
+  }
+
+
+
+  deleteHandler(): void {
+    const answer = confirm('Are you sure you want to delete it?');
+
+    if (answer) {
+      this.estateService.deleteEstate(this.estateId).subscribe({
+        error: (err) => console.error(err),
+        complete: () => {
+          this.router.navigate(['/home']);
+          this.toast.success('Successfully deleted estate!');
+        }
+      });
+    }
   }
 }
