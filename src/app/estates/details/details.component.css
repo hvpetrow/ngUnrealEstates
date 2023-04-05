@@ -148,6 +148,7 @@ span {
 
 .remove {
   background-color: rgb(199, 136, 109);
+  cursor: pointer;
 }
 
 .remove:hover {

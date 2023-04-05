@@ -5,6 +5,7 @@ import { EstatesRoutingModule } from './estates-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { EditEstateComponent } from './edit-estate/edit-estate.component';
 import { CreateEstateComponent } from './create-estate/create-estate.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,7 +18,8 @@ import { CreateEstateComponent } from './create-estate/create-estate.component';
   imports: [
     CommonModule,
     SharedModule,
-    EstatesRoutingModule
+    EstatesRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class EstatesModule { }

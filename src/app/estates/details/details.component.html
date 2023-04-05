@@ -23,7 +23,7 @@
       <!-- if there is no registered user, do not display buttons-->
       <div class="product-btn">
         <!-- Only for registered user and creator of the housing offer-->
-        <a routerLink="/estates/{{ estate.id }}/edit" class="edit">Edit</a>
+        <a routerLink="/estates/{{ estateId }}/edit" class="edit">Edit</a>
         <a (click)="(deleteHandler)" class="remove">Delete</a>
 
         <!-- logged in user with available pieces-->

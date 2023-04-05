@@ -5,7 +5,7 @@ import { CreateEstateComponent } from "./create-estate/create-estate.component";
 
 const routes: Routes = [
     {
-        path: '/estates/create',
+        path: 'create',
         component: CreateEstateComponent
     },
     {
@@ -13,7 +13,7 @@ const routes: Routes = [
         component: DetailsComponent
     },
     {
-        path: '/estates/:estateId/edit',
+        path: ':estateId/edit',
         component: EditEstateComponent
     },
 ];
