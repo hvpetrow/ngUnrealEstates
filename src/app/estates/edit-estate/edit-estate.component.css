@@ -52,6 +52,7 @@ main {
   font-size: 1.7em;
   top: 1.4rem;
   transition: 0.25s ease;
+  cursor: pointer;
 }
 
 .home-name,
@@ -101,7 +102,7 @@ main {
 } */
 
 .create-action {
-  margin-top: 0.1rem;
+  margin: 1.5rem 0 1.5rem 0;
 }
 
 .create-button {

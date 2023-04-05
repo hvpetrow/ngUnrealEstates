@@ -23,6 +23,8 @@ export class EditEstateComponent implements OnInit {
     ownerId: '',
   };
 
+  estateTypes: string[] = ['Apartment', 'House', 'Villa'];
+
   isLoading: boolean = false;
 
   editEstateGroup: FormGroup = this.formBuilder.group({
@@ -60,10 +62,15 @@ export class EditEstateComponent implements OnInit {
       }, error: err => {
         console.error(err.message);
         this.isLoading = false;
-
       }
     });
 
+  }
+
+  changeEstateType(e: Event) {
+    this.editEstateGroup.controls['type'].setValue((e.target as HTMLTextAreaElement).value, {
+      onlySelf: true,
+    });
   }
 
   editHandler(): void {
@@ -92,7 +99,6 @@ export class EditEstateComponent implements OnInit {
         error: (err) => {
           console.error(err);
           this.isLoading = false;
-
         }
       });
     }

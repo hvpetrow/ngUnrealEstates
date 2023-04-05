@@ -14,34 +14,71 @@
           formControlName="name"
           type="text"
           class="input-field"
-          id="home-name"
-          name=""
+          id="name"
+          name="name"
           [value]="oldEstate.name"
         />
-        <label class="home-name">Name:</label>
+        <label for="" class="home-name">Name:</label>
       </div>
       <div class="input">
-        <input type="text" class="input-field" id="type" name="" value="" />
-        <label class="type">Property Type:</label>
+        <select
+          name="type"
+          id="type"
+          class="input-field"
+          (change)="changeEstateType($event)"
+          formControlName="type"
+        >
+          <option *ngFor="let estateType of estateTypes" [ngValue]="estateType">
+            {{ estateType }}
+          </option>
+        </select>
+        <label for="type" class="type">Property Type:</label>
       </div>
       <div class="input">
-        <input type="number" class="input-field" id="year" name="" value="" />
-        <label class="year">Year Built:</label>
+        <input
+          type="number"
+          class="input-field"
+          id="year"
+          name="year"
+          formControlName="year"
+          [value]="oldEstate.constructionYear"
+        />
+        <label for="year" class="year">Year Built:</label>
       </div>
       <div class="input">
-        <input type="text" class="input-field" id="city" name="" value="" />
-        <label class="city">City</label>
+        <input
+          type="text"
+          class="input-field"
+          id="location"
+          name="location"
+          [value]="oldEstate.location"
+          formControlName="location"
+        />
+        <label for="location" class="city">Location:</label>
       </div>
 
       <div class="input">
         <input
           type="text"
           class="input-field"
-          id="homeImage"
-          name=""
-          value=""
+          id="imgUrl"
+          name="imgUrl"
+          [value]="oldEstate.imgUrl"
+          formControlName="imgUrl"
         />
-        <label class="homeImage">Home Image:</label>
+        <label for="imgUrl" class="homeImage">Image Url:</label>
+      </div>
+
+      <div class="input">
+        <input
+          type="number"
+          class="input-field"
+          id="price"
+          name="price"
+          [value]="oldEstate.price"
+          formControlName="price"
+        />
+        <label for="price" class="availablePieces">Price:</label>
       </div>
 
       <div class="input">
@@ -49,25 +86,14 @@
           type="text"
           class="input-field"
           id="description"
-          name=""
-          value=""
+          name="description"
+          [value]="oldEstate.description"
         />
         <label class="description">Property Description:</label>
       </div>
 
-      <div class="input">
-        <input
-          type="number"
-          class="input-field"
-          id="availablePieces"
-          name=""
-          value=""
-        />
-        <label class="availablePieces">Available pieces:</label>
-      </div>
-
       <div class="create-action">
-        <button class="create-button">Edit</button>
+        <button [disabled]="isLoading" class="create-button">Edit</button>
       </div>
     </form>
   </div>
