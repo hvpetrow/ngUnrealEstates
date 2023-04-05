@@ -16,10 +16,31 @@
           class="input-field"
           id="name"
           name="name"
+          [ngClass]="{
+            'input-error': showErrorInControl('name', editEstateGroup)
+          }"
           [value]="oldEstate.name"
         />
         <label for="" class="home-name">Name:</label>
       </div>
+      <ng-container
+        *ngIf="showErrorInControl('name', editEstateGroup)"
+        class="alert-error"
+      >
+        <p
+          *ngIf="editEstateGroup.controls['name'].errors?.['required']"
+          class="alert-error"
+        >
+          Name is required!
+        </p>
+        <p
+          *ngIf="editEstateGroup.controls['name'].errors?.['minlength']"
+          class="alert-error"
+        >
+          Name must be at least 2 characters long!
+        </p>
+      </ng-container>
+
       <div class="input">
         <select
           name="type"
@@ -27,6 +48,9 @@
           class="input-field"
           (change)="changeEstateType($event)"
           formControlName="type"
+          [ngClass]="{
+            'input-error': showErrorInControl('type', editEstateGroup)
+          }"
         >
           <option *ngFor="let estateType of estateTypes" [ngValue]="estateType">
             {{ estateType }}
@@ -34,6 +58,17 @@
         </select>
         <label for="type" class="type">Property Type:</label>
       </div>
+      <ng-container
+        *ngIf="showErrorInControl('name', editEstateGroup)"
+        class="alert-error"
+      >
+        <p
+          *ngIf="editEstateGroup.controls['type'].errors?.['required']"
+          class="alert-error"
+        >
+          Name is required!
+        </p>
+      </ng-container>
       <div class="input">
         <input
           type="number"
@@ -41,10 +76,37 @@
           id="year"
           name="year"
           formControlName="year"
+          [ngClass]="{
+            'input-error': showErrorInControl('year', editEstateGroup)
+          }"
           [value]="oldEstate.constructionYear"
         />
         <label for="year" class="year">Year Built:</label>
       </div>
+      <ng-container
+        *ngIf="showErrorInControl('year', editEstateGroup)"
+        class="alert-error"
+      >
+        <p
+          *ngIf="editEstateGroup.controls['year'].errors?.['required']"
+          class="alert-error"
+        >
+          Year is required!
+        </p>
+        <p
+          *ngIf="editEstateGroup.controls['year'].errors?.['max']"
+          class="alert-error"
+        >
+          year must be max {{ currentYear }}
+        </p>
+        <p
+          *ngIf="editEstateGroup.controls['year'].errors?.['min']"
+          class="alert-error"
+        >
+          year must be min 1900
+        </p>
+      </ng-container>
+
       <div class="input">
         <input
           type="text"
@@ -52,10 +114,30 @@
           id="location"
           name="location"
           [value]="oldEstate.location"
+          [ngClass]="{
+            'input-error': showErrorInControl('location', editEstateGroup)
+          }"
           formControlName="location"
         />
         <label for="location" class="city">Location:</label>
       </div>
+      <ng-container
+        *ngIf="showErrorInControl('location', editEstateGroup)"
+        class="alert-error"
+      >
+        <p
+          *ngIf="editEstateGroup.controls['location'].errors?.['required']"
+          class="alert-error"
+        >
+          Location is required!
+        </p>
+        <p
+          *ngIf="editEstateGroup.controls['location'].errors?.['minlength']"
+          class="alert-error"
+        >
+          Location must be at least 2 characters long!
+        </p>
+      </ng-container>
 
       <div class="input">
         <input
@@ -64,10 +146,24 @@
           id="imgUrl"
           name="imgUrl"
           [value]="oldEstate.imgUrl"
+          [ngClass]="{
+            'input-error': showErrorInControl('imgUrl', editEstateGroup)
+          }"
           formControlName="imgUrl"
         />
         <label for="imgUrl" class="homeImage">Image Url:</label>
       </div>
+      <ng-container
+        *ngIf="showErrorInControl('imgUrl', editEstateGroup)"
+        class="alert-error"
+      >
+        <p
+          *ngIf="editEstateGroup.controls['imgUrl'].errors?.['required']"
+          class="alert-error"
+        >
+          Image Url is required!
+        </p>
+      </ng-container>
 
       <div class="input">
         <input
@@ -76,10 +172,24 @@
           id="price"
           name="price"
           [value]="oldEstate.price"
+          [ngClass]="{
+            'input-error': showErrorInControl('price', editEstateGroup)
+          }"
           formControlName="price"
         />
         <label for="price" class="availablePieces">Price:</label>
       </div>
+      <ng-container
+        *ngIf="showErrorInControl('price', editEstateGroup)"
+        class="alert-error"
+      >
+        <p
+          *ngIf="editEstateGroup.controls['price'].errors?.['required']"
+          class="alert-error"
+        >
+          Price is required!
+        </p>
+      </ng-container>
 
       <div class="input">
         <input
@@ -87,13 +197,39 @@
           class="input-field"
           id="description"
           name="description"
+          [ngClass]="{
+            'input-error': showErrorInControl('description', editEstateGroup)
+          }"
           [value]="oldEstate.description"
+          formControlName="description"
         />
         <label class="description">Property Description:</label>
       </div>
+      <ng-container
+        *ngIf="showErrorInControl('description', editEstateGroup)"
+        class="alert-error"
+      >
+        <p
+          *ngIf="editEstateGroup.controls['description'].errors?.['required']"
+          class="alert-error"
+        >
+          Description is required!
+        </p>
+        <p
+          *ngIf="editEstateGroup.controls['description'].errors?.['minlength']"
+          class="alert-error"
+        >
+          Description must be at least 2 characters long!
+        </p>
+      </ng-container>
 
       <div class="create-action">
-        <button [disabled]="isLoading" class="create-button">Edit</button>
+        <button
+          [disabled]="isLoading || !editEstateGroup.valid"
+          class="create-button"
+        >
+          Edit
+        </button>
       </div>
     </form>
   </div>

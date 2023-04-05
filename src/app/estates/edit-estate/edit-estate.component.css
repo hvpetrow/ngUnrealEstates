@@ -85,12 +85,11 @@ main {
   font: inherit;
   font-size: 1.5rem;
   padding: 0.25rem 0;
+  border-bottom-color: #6658d3;
 }
 
-.input-field:focus,
-.input-field:valid {
+.input-field:focus {
   outline: 0;
-  border-bottom-color: #6658d3;
 }
 
 /* .full-name,
@@ -124,4 +123,13 @@ main {
 
 .create-button:hover {
   background-color: #5246a8;
+}
+
+.input-error {
+  border-bottom-color: #cd1136;
+}
+
+.alert-error {
+  color: #cd1136;
+  margin-bottom: 1.5rem;
 }

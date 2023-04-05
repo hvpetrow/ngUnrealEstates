@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { CrudService } from 'src/app/shared/crud.service';
 import { IEstate } from 'src/app/shared/estate';
+import { UtilsService } from 'src/app/shared/services/utils.service';
 
 @Component({
   selector: 'app-edit-estate',
@@ -22,7 +23,8 @@ export class EditEstateComponent implements OnInit {
     description: '',
     ownerId: '',
   };
-
+  showErrorInControl: any = this.utils.showErrorInControl;
+  currentYear: number = new Date().getFullYear();
   estateTypes: string[] = ['Apartment', 'House', 'Villa'];
 
   isLoading: boolean = false;
@@ -30,14 +32,14 @@ export class EditEstateComponent implements OnInit {
   editEstateGroup: FormGroup = this.formBuilder.group({
     'name': new FormControl('', [Validators.required, Validators.minLength(2)]),
     'type': new FormControl('', [Validators.required]),
-    'year': new FormControl('', [Validators.required, Validators.max(new Date().getFullYear()), Validators.min(1900)]),
+    'year': new FormControl('', [Validators.required, Validators.max(this.currentYear), Validators.min(1900)]),
     'location': new FormControl('', [Validators.required, Validators.minLength(2)]),
     'price': new FormControl('', [Validators.required]),
     'imgUrl': new FormControl('', [Validators.required]),
     'description': new FormControl('', [Validators.required, Validators.minLength(2)]),
   });
 
-  constructor(private formBuilder: FormBuilder, private estateService: CrudService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private estateService: CrudService, private activatedRoute: ActivatedRoute, private router: Router, private utils: UtilsService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {

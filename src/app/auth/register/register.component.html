@@ -27,7 +27,7 @@
         *ngIf="
         registerGroup.controls['email'].invalid &&
         registerGroup.controls['email'].touched &&
-        !registerGroup.controls['email'].errors?.['required']
+        !registerGroup.controls['email'].errors?.['email']
       "
         class="alert-error"
       >
