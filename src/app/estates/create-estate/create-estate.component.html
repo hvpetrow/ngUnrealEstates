@@ -1,1 +1,235 @@
-<p>create-estate works!</p>
+<section id="edit-page">
+  <div class="edit-container">
+    <div class="box-image"></div>
+    <h2 class="box-heading">Create Offer</h2>
+
+    <form
+      *ngIf="!isLoading"
+      class="form"
+      (ngSubmit)="createHandler()"
+      [formGroup]="createEstateGroup"
+    >
+      <div class="input">
+        <input
+          formControlName="name"
+          type="text"
+          class="input-field"
+          id="name"
+          name="name"
+          [ngClass]="{
+            'input-error': showErrorInControl('name', createEstateGroup)
+          }"
+        />
+        <label for="" class="home-name">Name:</label>
+      </div>
+      <ng-container
+        *ngIf="showErrorInControl('name', createEstateGroup)"
+        class="alert-error"
+      >
+        <p
+          *ngIf="createEstateGroup.controls['name'].errors?.['required']"
+          class="alert-error"
+        >
+          Name is required!
+        </p>
+        <p
+          *ngIf="createEstateGroup.controls['name'].errors?.['minlength']"
+          class="alert-error"
+        >
+          Name must be at least 2 characters long!
+        </p>
+      </ng-container>
+
+      <div class="input">
+        <select
+          name="type"
+          id="type"
+          class="input-field"
+          (change)="changeEstateType($event)"
+          formControlName="type"
+          [ngClass]="{
+            'input-error': showErrorInControl('type', createEstateGroup)
+          }"
+        >
+          <option *ngFor="let estateType of estateTypes" [value]="estateType">
+            {{ estateType }}
+          </option>
+        </select>
+        <label for="type" class="type">Property Type:</label>
+      </div>
+      <ng-container
+        *ngIf="showErrorInControl('name', createEstateGroup)"
+        class="alert-error"
+      >
+        <p
+          *ngIf="createEstateGroup.controls['type'].errors?.['required']"
+          class="alert-error"
+        >
+          Name is required!
+        </p>
+      </ng-container>
+      <div class="input">
+        <input
+          type="number"
+          class="input-field"
+          id="constructionYear"
+          name="constructionYear"
+          formControlName="constructionYear"
+          [ngClass]="{
+            'input-error': showErrorInControl(
+              'constructionYear',
+              createEstateGroup
+            )
+          }"
+        />
+        <label for="constructionYear" class="constructionYear"
+          >Year Built:</label
+        >
+      </div>
+      <ng-container
+        *ngIf="showErrorInControl('constructionYear', createEstateGroup)"
+        class="alert-error"
+      >
+        <p
+          *ngIf="createEstateGroup.controls['constructionYear'].errors?.['required']"
+          class="alert-error"
+        >
+          Year is required!
+        </p>
+        <p
+          *ngIf="createEstateGroup.controls['constructionYear'].errors?.['max']"
+          class="alert-error"
+        >
+          year must be max {{ currentYear }}
+        </p>
+        <p
+          *ngIf="createEstateGroup.controls['constructionYear'].errors?.['min']"
+          class="alert-error"
+        >
+          year must be min 1900
+        </p>
+      </ng-container>
+
+      <div class="input">
+        <input
+          type="text"
+          class="input-field"
+          id="location"
+          name="location"
+          [ngClass]="{
+            'input-error': showErrorInControl('location', createEstateGroup)
+          }"
+          formControlName="location"
+        />
+        <label for="location" class="city">Location:</label>
+      </div>
+      <ng-container
+        *ngIf="showErrorInControl('location', createEstateGroup)"
+        class="alert-error"
+      >
+        <p
+          *ngIf="createEstateGroup.controls['location'].errors?.['required']"
+          class="alert-error"
+        >
+          Location is required!
+        </p>
+        <p
+          *ngIf="createEstateGroup.controls['location'].errors?.['minlength']"
+          class="alert-error"
+        >
+          Location must be at least 2 characters long!
+        </p>
+      </ng-container>
+
+      <div class="input">
+        <input
+          type="text"
+          class="input-field"
+          id="imgUrl"
+          name="imgUrl"
+          [ngClass]="{
+            'input-error': showErrorInControl('imgUrl', createEstateGroup)
+          }"
+          formControlName="imgUrl"
+        />
+        <label for="imgUrl" class="homeImage">Image Url:</label>
+      </div>
+      <ng-container
+        *ngIf="showErrorInControl('imgUrl', createEstateGroup)"
+        class="alert-error"
+      >
+        <p
+          *ngIf="createEstateGroup.controls['imgUrl'].errors?.['required']"
+          class="alert-error"
+        >
+          Image Url is required!
+        </p>
+      </ng-container>
+
+      <div class="input">
+        <input
+          type="number"
+          class="input-field"
+          id="price"
+          name="price"
+          [ngClass]="{
+            'input-error': showErrorInControl('price', createEstateGroup)
+          }"
+          formControlName="price"
+        />
+        <label for="price" class="availablePieces">Price:</label>
+      </div>
+      <ng-container
+        *ngIf="showErrorInControl('price', createEstateGroup)"
+        class="alert-error"
+      >
+        <p
+          *ngIf="createEstateGroup.controls['price'].errors?.['required']"
+          class="alert-error"
+        >
+          Price is required!
+        </p>
+      </ng-container>
+
+      <div class="input">
+        <input
+          type="text"
+          class="input-field"
+          id="description"
+          name="description"
+          [ngClass]="{
+            'input-error': showErrorInControl('description', createEstateGroup)
+          }"
+          formControlName="description"
+        />
+        <label class="description">Property Description:</label>
+      </div>
+      <ng-container
+        *ngIf="showErrorInControl('description', createEstateGroup)"
+        class="alert-error"
+      >
+        <p
+          *ngIf="createEstateGroup.controls['description'].errors?.['required']"
+          class="alert-error"
+        >
+          Description is required!
+        </p>
+        <p
+          *ngIf="createEstateGroup.controls['description'].errors?.['minlength']"
+          class="alert-error"
+        >
+          Description must be at least 2 characters long!
+        </p>
+      </ng-container>
+
+      <div class="create-action">
+        <button
+          [disabled]="isLoading || !createEstateGroup.valid"
+          class="create-button"
+        >
+          Create
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

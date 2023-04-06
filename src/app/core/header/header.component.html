@@ -10,7 +10,7 @@
     </ng-container>
     <!-- Logged users -->
     <ng-container *ngIf="isLoggedIn$ | async">
-      <li><a routerLink="#">Create offer</a></li>
+      <li><a routerLink="estates/create">Create offer</a></li>
       <li><a routerLink="#">Search</a></li>
       <li><a (click)="onLogout()" href="javascript:void(0)">Logout</a></li>
       <!-- <li *ngIf="user$ | async as user">

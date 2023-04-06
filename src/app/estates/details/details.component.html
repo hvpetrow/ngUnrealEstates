@@ -1,43 +1,48 @@
 <section id="details-page">
   <div *ngIf="!!estate; else loader" class="wrapper">
-    <div class="product-img">
-      <img src="{{ estate.imgUrl }}" />
+    <div class="product-controller">
+      <div class="product-img">
+        <img src="{{ estate.imgUrl }}" />
+      </div>
+      <div class="product-control">
+        <!-- if there is no registered user, do not display buttons-->
+        <div class="product-btn">
+          <!-- Only for registered user and creator of the housing offer-->
+          <a routerLink="/estates/{{ estateId }}/edit" class="edit">Edit</a>
+          <a (click)="(deleteHandler)" class="remove">Delete</a>
+
+          <!-- logged in user with available pieces-->
+          <a
+            routerLink="/users/{{ estate.ownerId }}/contact-form"
+            class="rentHome"
+            >Contact the owner</a
+          >
+          <p class="alRentHome">You have already rent this home</p>
+
+          <!-- logged in user with no available pieces-->
+          <p class="no-housing">No Housing Available!</p>
+        </div>
+      </div>
     </div>
     <div class="product-info">
       <div class="product-text">
-        <div class="product-text">
-          <h1>Name: {{ estate.name }}</h1>
-          <h2>Type: {{ estate.type }}</h2>
-          <h4>Year: {{ estate.constructionYear }}</h4>
-          <h4>City: {{ estate.location }}</h4>
-          <p>Description: {{ estate.description }}</p>
+        <h1>{{ estate.type }} {{ estate.name }}</h1>
+        <h4>Year: {{ estate.constructionYear }}</h4>
+        <h4>Location: {{ estate.location }}</h4>
+        <p>
+          <span class="heading-span">Description:</span>
+          {{ estate.description }}
+        </p>
 
-          <!-- if there are already tenants of the housing, separate their names with a comma and a space ", "  -->
-          <!-- <p>People rented this housing: Alex Petkov, Ivan Dobrev</p>
-
+        <!-- if there are already tenants of the housing, separate their names with a comma and a space ", "  -->
+        <!-- <p>People rented this housing: Alex Petkov, Ivan Dobrev</p>
+  
            If not display: -->
-          <!-- <p>People rented this housing: There are no tenants yet.</p> -->
-        </div>
-      </div>
-
-      <!-- if there is no registered user, do not display buttons-->
-      <div class="product-btn">
-        <!-- Only for registered user and creator of the housing offer-->
-        <a routerLink="/estates/{{ estateId }}/edit" class="edit">Edit</a>
-        <a (click)="(deleteHandler)" class="remove">Delete</a>
-
-        <!-- logged in user with available pieces-->
-        <a
-          routerLink="/users/{{ estate.ownerId }}/contact-form"
-          class="rentHome"
-          >Contact the owner</a
-        >
-        <p class="alRentHome">You have already rent this home</p>
-
-        <!-- logged in user with no available pieces-->
-        <p class="no-housing">No Housing Available!</p>
+        <!-- <p>People rented this housing: There are no tenants yet.</p> -->
       </div>
     </div>
+
+    <!-- if there is no registered user, do not display buttons-->
   </div>
 </section>
 
