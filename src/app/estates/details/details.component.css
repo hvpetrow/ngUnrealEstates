@@ -91,13 +91,12 @@
   font-family: "Bentham", serif;
 }
 
-.product-text > p {
+.product-text p {
   height: auto;
-  margin: 40px 0 0 58px;
   width: 100%;
   font-family: "Playfair Display", serif;
   color: #5f5a5a;
-  line-height: 1.6em;
+  line-height: 1.2em;
   margin-bottom: auto;
   font-size: 21px;
   font-weight: lighter;

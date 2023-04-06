@@ -29,10 +29,17 @@
         <h1>{{ estate.type }} {{ estate.name }}</h1>
         <h4>Year: {{ estate.constructionYear }}</h4>
         <h4>Location: {{ estate.location }}</h4>
-        <p>
-          <span class="heading-span">Description:</span>
-          {{ estate.description }}
-        </p>
+        <div>
+          <p *ngIf="!isShow">
+            <span class="heading-span">Description:</span>
+            {{ estate.description | shorten }}
+          </p>
+          <p *ngIf="isShow">
+            <span class="heading-span">Description:</span>
+            {{ estate.description }}
+          </p>
+          <button (click)="showHandler($event)">Show More</button>
+        </div>
 
         <!-- if there are already tenants of the housing, separate their names with a comma and a space ", "  -->
         <!-- <p>People rented this housing: Alex Petkov, Ivan Dobrev</p>

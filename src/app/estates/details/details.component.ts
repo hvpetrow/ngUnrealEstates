@@ -18,6 +18,7 @@ export class DetailsComponent implements OnInit {
   user$ = this.authService.currentUser$;
   userId: string | undefined;
   currentUserEmail: string | null | undefined;
+  isShow: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute, private authService: AuthenticationService, private estateService: CrudService, private router: Router, public toast: HotToastService) { }
 
@@ -40,6 +41,17 @@ export class DetailsComponent implements OnInit {
         console.error(err.message);
       }
     });
+  }
+
+  showHandler(event: Event): void {
+    if (this.isShow == true) {
+      (event.target as HTMLTextAreaElement).value = 'Hide';
+    } else {
+      (event.target as HTMLTextAreaElement).value = 'Show More';
+
+    }
+
+    this.isShow = !this.isShow;
   }
 
 
