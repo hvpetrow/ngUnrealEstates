@@ -11,11 +11,11 @@ export class CommentsService {
 
   constructor(private db: AngularFirestore) { }
 
-  addEstate(comment: any) {
+  addComment(comment: any) {
     return from(this.commentsCollectionRef.add(comment));
   }
 
-  getEstateList() {
+  getCommentsList() {
     return this.commentsCollectionRef.snapshotChanges();
   }
 }

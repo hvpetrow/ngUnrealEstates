@@ -123,9 +123,10 @@ span {
 }
 
 .product-btn a,
-.product-btn p {
+.product-btn p,
+.product-btn button {
   height: auto;
-  width: auto;
+  width: 80%;
   align-items: center;
   padding: 10px;
   border-radius: 60px;
@@ -138,9 +139,7 @@ span {
   letter-spacing: 0.2em;
   color: white;
   display: block;
-  margin-left: 30px;
-  margin-right: 20px;
-  margin-bottom: 10px;
+  margin: 10px auto;
 }
 
 .edit {
@@ -162,6 +161,7 @@ span {
 .remove {
   background-color: rgb(199, 136, 109);
   cursor: pointer;
+  border: none;
 }
 
 .remove:hover {

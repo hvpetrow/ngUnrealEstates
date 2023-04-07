@@ -19,6 +19,8 @@ export class DetailsComponent implements OnInit {
   currentUserEmail: string | null | undefined;
   isShow: boolean = false;
 
+
+
   constructor(private activatedRoute: ActivatedRoute, private authService: AuthenticationService, private estateService: CrudService, private router: Router, public toast: HotToastService) { }
 
   ngOnInit(): void {

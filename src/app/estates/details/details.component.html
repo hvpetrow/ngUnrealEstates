@@ -9,7 +9,7 @@
         <div class="product-btn">
           <!-- Only for registered user and creator of the housing offer-->
           <a routerLink="/estates/{{ estateId }}/edit" class="edit">Edit</a>
-          <a (click)="deleteHandler()" class="remove">Delete</a>
+          <button (click)="deleteHandler()" class="remove">Delete</button>
 
           <!-- logged in user with available pieces-->
           <a
@@ -38,7 +38,12 @@
             <span class="heading-span">Description:</span>
             {{ estate.description }}
           </p>
-          <button (click)="showHandler($event)" mat-button color="primary">
+          <button
+            *ngIf="estate.description.length > 250"
+            (click)="showHandler($event)"
+            mat-button
+            color="primary"
+          >
             Show More
           </button>
         </div>
@@ -53,6 +58,8 @@
 
     <!-- if there is no registered user, do not display buttons-->
   </div>
+
+  <app-comment-form></app-comment-form>
 </section>
 
 <ng-template #loader>
