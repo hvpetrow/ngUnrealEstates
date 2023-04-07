@@ -22,6 +22,8 @@ import { HomeModule } from './home/home.module';
 import { AuthModule } from './auth/auth.module';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { HotToastModule } from '@ngneat/hot-toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -45,6 +47,8 @@ import { HotToastModule } from '@ngneat/hot-toast';
     HomeModule,
     AuthModule,
     HotToastModule.forRoot(),
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [
     ScreenTrackingService, UserTrackingService, AuthenticationService,

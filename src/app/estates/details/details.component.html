@@ -17,10 +17,10 @@
             class="rentHome"
             >Contact the owner</a
           >
-          <p class="alRentHome">You have already rent this home</p>
+          <!-- <p class="alRentHome">You have already rent this home</p> -->
 
           <!-- logged in user with no available pieces-->
-          <p class="no-housing">No Housing Available!</p>
+          <!-- <p class="no-housing">No Housing Available!</p> -->
         </div>
       </div>
     </div>
@@ -38,7 +38,9 @@
             <span class="heading-span">Description:</span>
             {{ estate.description }}
           </p>
-          <button (click)="showHandler($event)">Show More</button>
+          <button (click)="showHandler($event)" mat-button color="primary">
+            Show More
+          </button>
         </div>
 
         <!-- if there are already tenants of the housing, separate their names with a comma and a space ", "  -->

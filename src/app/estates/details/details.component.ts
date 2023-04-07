@@ -44,14 +44,15 @@ export class DetailsComponent implements OnInit {
   }
 
   showHandler(event: Event): void {
+    this.isShow = !this.isShow;
+
     if (this.isShow == true) {
-      (event.target as HTMLTextAreaElement).value = 'Hide';
+      (event.target as HTMLTextAreaElement).textContent = 'Hide';
     } else {
-      (event.target as HTMLTextAreaElement).value = 'Show More';
+      (event.target as HTMLTextAreaElement).textContent = 'Show More';
 
     }
 
-    this.isShow = !this.isShow;
   }
 
 

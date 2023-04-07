@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { EditEstateComponent } from './edit-estate/edit-estate.component';
 import { CreateEstateComponent } from './create-estate/create-estate.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -13,13 +14,15 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     DetailsComponent,
     EditEstateComponent,
-    CreateEstateComponent
+    CreateEstateComponent,
+
   ],
   imports: [
     CommonModule,
     SharedModule,
     EstatesRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule,
   ]
 })
 export class EstatesModule { }
