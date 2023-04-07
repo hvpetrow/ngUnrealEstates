@@ -1,0 +1,42 @@
+<article id="comments">
+    <div class="comments-info">
+      <ul class="noBullet">
+        <ng-container *ngIf="isShowedComments">
+          <!-- <app-comments
+            *ngFor="let commentId of objectKeys(comments)"
+            [user]="user$ | async"
+            [comments]="comments"
+            [commentId]="commentId"
+            (deleteComment)="deleteComment($event)"
+          ></app-comments> -->
+        </ng-container>
+
+        <ng-container *ngIf="user$ | async">
+          <li>
+            <textarea
+              id="content"
+              class="inputFields"
+              name="content"
+              placeholder="..."
+              #comment="ngModel"
+              type="text"
+              name="comment"
+              ngModel
+              required
+              minlength="2"
+            ></textarea>
+          </li>
+
+          <li id="center-btn">
+            <button
+              [disabled]="comment.invalid"
+              (click)="postComment(comment)"
+              id="post-btn"
+            >
+              Post Comment
+            </button>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+</article>

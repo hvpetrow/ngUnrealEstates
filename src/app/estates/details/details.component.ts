@@ -12,7 +12,6 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
 })
 export class DetailsComponent implements OnInit {
   estate!: IEstate;
-
   estateId!: string;
 
   user$ = this.authService.currentUser$;

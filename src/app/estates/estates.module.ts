@@ -5,8 +5,9 @@ import { EstatesRoutingModule } from './estates-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { EditEstateComponent } from './edit-estate/edit-estate.component';
 import { CreateEstateComponent } from './create-estate/create-estate.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { CommentFormComponent } from './comment-form/comment-form.component';
 
 
 
@@ -15,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
     DetailsComponent,
     EditEstateComponent,
     CreateEstateComponent,
+    CommentFormComponent,
 
   ],
   imports: [
@@ -22,6 +24,7 @@ import { MatButtonModule } from '@angular/material/button';
     SharedModule,
     EstatesRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     MatButtonModule,
   ]
 })
