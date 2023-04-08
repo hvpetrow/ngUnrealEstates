@@ -1,9 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { arrayRemove, arrayUnion, collection, doc, serverTimestamp, updateDoc } from 'firebase/firestore';
 import { CommentsService } from 'src/app/shared/services/comments.service';
 import { HotToastService } from '@ngneat/hot-toast';
-import { Observable, map, tap } from 'rxjs';
+import { Observable, from, map, tap } from 'rxjs';
 
 @Component({
   selector: 'app-comment-form',
@@ -25,13 +25,14 @@ export class CommentFormComponent implements OnInit {
 
   @Input() estateId!: string;
 
-  constructor(private authService: AuthenticationService, private commentsService: CommentsService, public toast: HotToastService) { }
+  constructor(private cdr: ChangeDetectorRef, private authService: AuthenticationService, private commentsService: CommentsService, public toast: HotToastService) { }
 
   ngOnInit(): void {
     this.user$.subscribe((user) => {
       this.userId = user?.uid;
       this.currentUserEmail = user?.email;
     });
+
     this.getComments();
   }
 
@@ -49,7 +50,7 @@ export class CommentFormComponent implements OnInit {
     this.commentsService.addComment(newComment).subscribe({
       next: (res) => {
         this.isLoading = false;
-        this.toast.success('Success to post a comment');
+        this.toast.success('Successfully posted comment');
         console.log('Success');
 
 
@@ -68,14 +69,17 @@ export class CommentFormComponent implements OnInit {
   getComments() {
     this.isLoading = true;
 
-    this.comments$ = this.commentsService.getCommentsByEstateId(this.estateId).pipe(map((item: any) => {
-      return item.docs.map((dataItem: any) => Object.assign({ id: dataItem.id }, dataItem.data()));
-    }));
+    this.comments$ = this.commentsService.getCommentsByEstateId(this.estateId).pipe(
+      map(changes =>
+        changes.map((c: any) => {
+          return c;
+        })));
 
     this.comments$.subscribe({
       next: (res) => {
+        console.log(res);
         this.comments = res;
-        console.log(this.comments);
+        this.cdr.detectChanges();
         this.isLoading = false;
       },
       error: (err) => {

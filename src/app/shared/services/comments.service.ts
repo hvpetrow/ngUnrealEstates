@@ -9,6 +9,8 @@ import { Observable, from } from 'rxjs';
 })
 export class CommentsService {
   commentsCollectionRef = this.db.collection('comments');
+  estateRef!: AngularFirestoreDocument<any>;
+
 
 
   constructor(private db: AngularFirestore) { }
@@ -18,6 +20,6 @@ export class CommentsService {
   }
 
   getCommentsByEstateId(estateId: string) {
-    return from(this.commentsCollectionRef.ref.where('estateId', '==', estateId).orderBy('createdAt', 'desc').get());
+    return this.db.collection('comments', ref => ref.where('estateId', '==', estateId).orderBy('createdAt', 'desc')).valueChanges();
   }
 }

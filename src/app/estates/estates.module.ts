@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommentFormComponent } from './comment-form/comment-form.component';
 import { CommentsComponent } from './comments/comments.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { CommentsService } from '../shared/services/comments.service';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     FormsModule,
     MatButtonModule,
     MatSlideToggleModule
-  ]
+  ],
+  providers: [CommentsService]
 })
 export class EstatesModule { }

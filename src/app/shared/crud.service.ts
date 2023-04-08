@@ -8,7 +8,6 @@ import { Observable, from } from 'rxjs';
 })
 export class CrudService {
   estatesCollectionRef = this.db.collection('estates');
-  estatesRef!: Observable<any[]>;
   estateRef!: AngularFirestoreDocument<any>;
 
   constructor(private db: AngularFirestore) { }
