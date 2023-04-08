@@ -61,20 +61,31 @@ export class CommentFormComponent implements OnInit {
     });
   }
 
+  showComments() {
+    this.isShowedComments = !this.isShowedComments;
+  }
+
   getComments() {
+    this.isLoading = true;
+
     this.comments$ = this.commentsService.getCommentsByEstateId(this.estateId).pipe(map((item: any) => {
-      return item.docs.map((dataItem: any) => dataItem.data());
+      return item.docs.map((dataItem: any) => Object.assign({ id: dataItem.id }, dataItem.data()));
     }));
 
     this.comments$.subscribe({
       next: (res) => {
         this.comments = res;
         console.log(this.comments);
+        this.isLoading = false;
       },
       error: (err) => {
         console.error(err);
         this.toast.error('Failed to fetch the comments');
       }
     });
+  }
+
+  deleteComment(e: any) {
+
   }
 }

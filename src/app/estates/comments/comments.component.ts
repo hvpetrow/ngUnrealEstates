@@ -6,8 +6,8 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./comments.component.css']
 })
 export class CommentsComponent {
-  @Input() commentId: any;
-  @Input() comments: any;
+  @Input() comment: any;
+
   @Input() user: any;
 
   isOwner: boolean = false;

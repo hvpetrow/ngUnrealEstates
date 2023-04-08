@@ -9,7 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { CommentFormComponent } from './comment-form/comment-form.component';
 import { CommentsComponent } from './comments/comments.component';
-
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 @NgModule({
@@ -28,6 +28,7 @@ import { CommentsComponent } from './comments/comments.component';
     ReactiveFormsModule,
     FormsModule,
     MatButtonModule,
+    MatSlideToggleModule
   ]
 })
 export class EstatesModule { }

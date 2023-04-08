@@ -5,6 +5,27 @@
   padding-bottom: 10px;
 }
 
+.comment-controller {
+  display: inline-block;
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0px 0px 3px 10px rgba(86, 124, 194, 0.911);
+}
+
+.comment-controller label {
+  font-size: 32px;
+  vertical-align: middle;
+}
+
+#mat-mdc-slide-toggle-1 {
+  display: inline-block;
+}
+
+::ng-deep.mat-mdc-slide-toggle .mdc-switch .mdc-switch__track::before {
+  background: #9e9e9e !important;
+}
+
 .comments_h2 {
   text-align: center;
   font-size: 32px;
