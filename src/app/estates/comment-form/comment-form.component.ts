@@ -3,6 +3,7 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
 import { arrayRemove, arrayUnion, collection, doc, serverTimestamp, updateDoc } from 'firebase/firestore';
 import { CommentsService } from 'src/app/shared/services/comments.service';
 import { HotToastService } from '@ngneat/hot-toast';
+import { Observable, map, tap } from 'rxjs';
 
 @Component({
   selector: 'app-comment-form',
@@ -18,7 +19,7 @@ export class CommentFormComponent implements OnInit {
   comments!: any;
   commentCount: any;
   commentsArr = [];
-
+  comments$!: Observable<any>;
 
   isLoading: boolean = false;
 
@@ -31,8 +32,9 @@ export class CommentFormComponent implements OnInit {
       this.userId = user?.uid;
       this.currentUserEmail = user?.email;
     });
-
+    this.getComments();
   }
+
   postComment(comment: any): void {
     this.isLoading = true;
 
@@ -41,16 +43,37 @@ export class CommentFormComponent implements OnInit {
       createdAt: serverTimestamp(),
       ownerId: this.userId,
       ownerEmail: this.currentUserEmail,
-      topicId: this.estateId
+      estateId: this.estateId
     }
 
     this.commentsService.addComment(newComment).subscribe({
       next: (res) => {
         this.isLoading = false;
+        this.toast.success('Success to post a comment');
+        console.log('Success');
+
+
       },
       error: (err) => {
         console.error(err);
         this.toast.error('Failed to post a comment');
+      }
+    });
+  }
+
+  getComments() {
+    this.comments$ = this.commentsService.getCommentsByEstateId(this.estateId).pipe(map((item: any) => {
+      return item.docs.map((dataItem: any) => dataItem.data());
+    }));
+
+    this.comments$.subscribe({
+      next: (res) => {
+        this.comments = res;
+        console.log(this.comments);
+      },
+      error: (err) => {
+        console.error(err);
+        this.toast.error('Failed to fetch the comments');
       }
     });
   }

@@ -8,6 +8,7 @@ import { CreateEstateComponent } from './create-estate/create-estate.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { CommentFormComponent } from './comment-form/comment-form.component';
+import { CommentsComponent } from './comments/comments.component';
 
 
 
@@ -17,6 +18,7 @@ import { CommentFormComponent } from './comment-form/comment-form.component';
     EditEstateComponent,
     CreateEstateComponent,
     CommentFormComponent,
+    CommentsComponent,
 
   ],
   imports: [
