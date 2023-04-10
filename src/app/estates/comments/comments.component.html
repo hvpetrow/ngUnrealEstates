@@ -4,12 +4,31 @@
   </div>
   <div class="comment-content">
     <div class="comment">
-      <p>
+      <p *ngIf="!isEdited">
         {{ comment.content }}
       </p>
+      <ng-container *ngIf="isOwner && isEdited">
+        <form [formGroup]="commentGroup">
+          <textarea
+            type="text"
+            name="comment"
+            id="comment"
+            placeholder="Comment...."
+            required
+            formControlName="newComment"
+          ></textarea>
+        </form>
+      </ng-container>
       <div class="right-side">
-        <ng-container *ngIf="currentUserId && isOwner">
+        <ng-container *ngIf="currentUserId && isOwner && !isEdited">
           <button (click)="deleteHandler()" class="delete-btn">Delete</button>
+          <button (click)="setEditingMode()" class="edit-btn">Edit</button>
+        </ng-container>
+        <ng-container *ngIf="currentUserId && isOwner && isEdited">
+          <button (click)="cancelEditingMode()" class="delete-btn">
+            Cancel
+          </button>
+          <button (click)="editHandler()" class="edit-btn">Post</button>
         </ng-container>
         <span class="timestamp">{{
           comment.createdAt | dateTransform | date : "medium"

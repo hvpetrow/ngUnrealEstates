@@ -46,7 +46,8 @@
   color: #e66045;
 }
 
-.delete-btn {
+.delete-btn,
+.edit-btn {
   float: right;
   font-size: 12px;
   margin-right: 10px;
@@ -63,9 +64,18 @@
   border-radius: 8px;
 }
 
-.delete-btn:hover {
+.delete-btn:hover,
+.edit-btn:hover {
   background: #ac1020;
   font-size: 13px;
+}
+
+.edit-btn {
+  background-color: blue;
+}
+
+.edit-btn:hover {
+  background-color: blueviolet;
 }
 
 .likes-no {

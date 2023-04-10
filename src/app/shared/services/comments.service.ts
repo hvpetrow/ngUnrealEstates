@@ -23,8 +23,9 @@ export class CommentsService {
     return this.db.collection('comments', ref => ref.where('estateId', '==', estateId).orderBy('createdAt', 'desc')).snapshotChanges();
   }
 
-  editEstateComment() {
-
+  editEstateComment(commentId: string, updatedComment: Object) {
+    const docRef = this.db.doc('comments/' + commentId);
+    return from(docRef.update(updatedComment));
   }
 
   deleteEstateComment(commentId: string) {
