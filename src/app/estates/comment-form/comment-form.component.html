@@ -8,7 +8,7 @@
       <ng-container *ngIf="isShowedComments">
         <app-comments
           *ngFor="let comment of comments"
-          [user]="user$ | async"
+          [currentUserId]="userId"
           [comment]="comment"
           (deleteComment)="deleteComment($event)"
         ></app-comments>

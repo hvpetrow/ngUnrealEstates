@@ -19,6 +19,8 @@ export class DetailsComponent implements OnInit {
   currentUserEmail: string | null | undefined;
   isShow: boolean = false;
 
+  isOfferOwner: boolean = false;
+
 
 
   constructor(private activatedRoute: ActivatedRoute, private authService: AuthenticationService, private estateService: CrudService, private router: Router, public toast: HotToastService) { }
@@ -37,7 +39,7 @@ export class DetailsComponent implements OnInit {
       next: (res) => {
         this.estate = res;
         console.log(this.estate);
-
+        this.isOfferOwner = this.estateId == this.userId
       }, error: err => {
         console.error(err.message);
       }

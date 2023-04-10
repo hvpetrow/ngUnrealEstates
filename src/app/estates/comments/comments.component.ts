@@ -1,18 +1,28 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { HotToastService } from '@ngneat/hot-toast';
+import { CommentsService } from 'src/app/shared/services/comments.service';
 
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.css']
 })
-export class CommentsComponent {
+export class CommentsComponent implements OnInit {
   @Input() comment: any;
-
-  @Input() user: any;
+  @Input() currentUserId: any;
 
   isOwner: boolean = false;
 
-  deleteHandler() {
+  constructor(private commentsService: CommentsService, public toaster: HotToastService) { }
 
+  ngOnInit(): void {
+    this.isOwner = this.comment.ownerId == this.currentUserId;
+  }
+
+  deleteHandler() {
+    this.commentsService.deleteEstateComment(this.comment.id).subscribe({
+      next: () => this.toaster.success('Successfully deleted comment'),
+      error: (err) => console.error(err)
+    });
   }
 }

@@ -22,4 +22,13 @@ export class CommentsService {
   getCommentsByEstateId(estateId: string) {
     return this.db.collection('comments', ref => ref.where('estateId', '==', estateId).orderBy('createdAt', 'desc')).valueChanges();
   }
+
+  editEstateComment() {
+
+  }
+
+  deleteEstateComment(commentId: string) {
+    const docRef = this.db.doc('comments/' + commentId);
+    return from(docRef.delete());
+  }
 }

@@ -8,7 +8,7 @@
         {{ comment.content }}
       </p>
       <div class="right-side">
-        <ng-container *ngIf="user && isOwner">
+        <ng-container *ngIf="currentUserId && isOwner">
           <button (click)="deleteHandler()" class="delete-btn">Delete</button>
         </ng-container>
         <span class="timestamp">{{
