@@ -25,7 +25,7 @@ export class CommentFormComponent implements OnInit {
 
   @Input() estateId!: string;
 
-  constructor(private cdr: ChangeDetectorRef, private authService: AuthenticationService, private commentsService: CommentsService, public toast: HotToastService) { }
+  constructor(private authService: AuthenticationService, private commentsService: CommentsService, public toast: HotToastService) { }
 
   ngOnInit(): void {
     this.user$.subscribe((user) => {
@@ -71,15 +71,15 @@ export class CommentFormComponent implements OnInit {
 
     this.comments$ = this.commentsService.getCommentsByEstateId(this.estateId).pipe(
       map(changes =>
-        changes.map((c: any) => {
-          return c;
+        changes.map(c => {
+          const fields: any = c.payload.doc.data();
+          return ({ ...fields, id: c.payload.doc.id })
         })));
 
     this.comments$.subscribe({
       next: (res) => {
         console.log(res);
         this.comments = res;
-        this.cdr.detectChanges();
         this.isLoading = false;
       },
       error: (err) => {
@@ -89,7 +89,4 @@ export class CommentFormComponent implements OnInit {
     });
   }
 
-  deleteComment(e: any) {
-
-  }
 }

@@ -10,7 +10,6 @@
           *ngFor="let comment of comments"
           [currentUserId]="userId"
           [comment]="comment"
-          (deleteComment)="deleteComment($event)"
         ></app-comments>
       </ng-container>
 

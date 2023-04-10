@@ -20,9 +20,13 @@ export class CommentsComponent implements OnInit {
   }
 
   deleteHandler() {
-    this.commentsService.deleteEstateComment(this.comment.id).subscribe({
-      next: () => this.toaster.success('Successfully deleted comment'),
-      error: (err) => console.error(err)
-    });
+    const confirmation = confirm('Are you sure you want to delete your comment?');
+
+    if (confirmation) {
+      this.commentsService.deleteEstateComment(this.comment.id).subscribe({
+        next: () => this.toaster.success('Successfully deleted comment'),
+        error: (err) => console.error(err)
+      });
+    }
   }
 }

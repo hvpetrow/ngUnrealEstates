@@ -20,7 +20,7 @@ export class CommentsService {
   }
 
   getCommentsByEstateId(estateId: string) {
-    return this.db.collection('comments', ref => ref.where('estateId', '==', estateId).orderBy('createdAt', 'desc')).valueChanges();
+    return this.db.collection('comments', ref => ref.where('estateId', '==', estateId).orderBy('createdAt', 'desc')).snapshotChanges();
   }
 
   editEstateComment() {
