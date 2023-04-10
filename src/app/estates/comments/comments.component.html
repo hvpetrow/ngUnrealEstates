@@ -16,6 +16,8 @@
             placeholder="Comment...."
             required
             formControlName="newComment"
+            [cdkTrapFocusAutoCapture]="isEdited"
+            [cdkTrapFocus]="isEdited"
           ></textarea>
         </form>
       </ng-container>

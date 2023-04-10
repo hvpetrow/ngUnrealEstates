@@ -11,6 +11,7 @@ import { CommentFormComponent } from './comment-form/comment-form.component';
 import { CommentsComponent } from './comments/comments.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CommentsService } from '../shared/services/comments.service';
+import { A11yModule } from '@angular/cdk/a11y';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { CommentsService } from '../shared/services/comments.service';
     ReactiveFormsModule,
     FormsModule,
     MatButtonModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    A11yModule
   ],
   providers: [CommentsService]
 })
