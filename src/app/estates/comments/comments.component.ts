@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
 import { CommentsService } from 'src/app/shared/services/comments.service';
+import { UtilsService } from 'src/app/shared/services/utils.service';
 
 @Component({
   selector: 'app-comments',
@@ -19,15 +20,20 @@ export class CommentsComponent implements OnInit {
 
   isOwner: boolean = false;
   isEdited: boolean = false;
+  timeAgo!: any;
 
   isLoading: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private commentsService: CommentsService, public toaster: HotToastService) { }
+  constructor(private formBuilder: FormBuilder, private commentsService: CommentsService, public toaster: HotToastService, private utilsService: UtilsService) { }
 
   ngOnInit(): void {
     this.isOwner = this.comment.ownerId == this.currentUserId;
 
     this.commentGroup.controls['newComment'].setValue(this.comment.content);
+
+    this.timeAgo = this.utilsService.timeAgoHandler(this.comment.createdAt.toDate());
+    console.log(this.timeAgo);
+
   }
 
   setEditingMode() {

@@ -32,9 +32,7 @@
           </button>
           <button (click)="editHandler()" class="edit-btn">Post</button>
         </ng-container>
-        <span class="timestamp">{{
-          comment.createdAt | dateTransform | date : "medium"
-        }}</span>
+        <span class="timestamp">{{ timeAgo }}</span>
       </div>
     </div>
   </div>
