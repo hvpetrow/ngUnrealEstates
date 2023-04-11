@@ -23,8 +23,12 @@
       </ng-container>
       <div class="right-side">
         <ng-container *ngIf="currentUserId && isOwner && !isEdited">
-          <button (click)="deleteHandler()" class="delete-btn">Delete</button>
-          <button (click)="setEditingMode()" class="edit-btn">Edit</button>
+          <button (click)="deleteHandler()" class="delete-btn">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button (click)="setEditingMode()" class="edit-btn">
+            <mat-icon>edit</mat-icon>
+          </button>
         </ng-container>
         <ng-container *ngIf="currentUserId && isOwner && isEdited">
           <button (click)="cancelEditingMode()" class="delete-btn">

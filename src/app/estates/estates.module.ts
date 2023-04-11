@@ -12,6 +12,7 @@ import { CommentsComponent } from './comments/comments.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CommentsService } from '../shared/services/comments.service';
 import { A11yModule } from '@angular/cdk/a11y';
+import { MatIconModule } from '@angular/material/icon'
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { A11yModule } from '@angular/cdk/a11y';
     FormsModule,
     MatButtonModule,
     MatSlideToggleModule,
-    A11yModule
+    A11yModule,
+    MatIconModule
   ],
   providers: [CommentsService]
 })

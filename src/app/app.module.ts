@@ -24,6 +24,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { HotToastModule } from '@ngneat/hot-toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { MatButtonModule } from '@angular/material/button';
     AuthModule,
     HotToastModule.forRoot(),
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    FontAwesomeModule,
   ],
   providers: [
     ScreenTrackingService, UserTrackingService, AuthenticationService,

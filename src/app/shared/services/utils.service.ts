@@ -27,9 +27,9 @@ export class UtilsService {
 
     if (timePassed < minute) {
       if (timePassed / second < 2) {
-        return `a few seconds ago`;
+        return `now`;
       } else {
-        return `${Math.floor(timePassed / second)} seconds ago`;
+        return `a few seconds ago`;
       }
     }
 
