@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import { query } from '@angular/fire/firestore';
-import { Observable, from } from 'rxjs';
+import { from } from 'rxjs';
 
 
 @Injectable({
@@ -20,7 +19,7 @@ export class CommentsService {
   }
 
   getCommentsByEstateId(estateId: string) {
-    return this.db.collection('comments', ref => ref.where('estateId', '==', estateId).orderBy('createdAt', 'desc')).snapshotChanges();
+    return this.db.collection('comments', ref => ref.where('estateId', '==', estateId).orderBy('createdAt')).snapshotChanges();
   }
 
   editEstateComment(commentId: string, updatedComment: Object) {
