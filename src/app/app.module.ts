@@ -51,6 +51,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserAnimationsModule,
     MatButtonModule,
     FontAwesomeModule,
+
   ],
   providers: [
     ScreenTrackingService, UserTrackingService, AuthenticationService,
