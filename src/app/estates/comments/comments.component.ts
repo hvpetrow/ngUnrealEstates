@@ -48,13 +48,7 @@ export class CommentsComponent implements OnInit {
   }
 
   openDeleteModal() {
-    console.log('otvarqm');
-
     this.deleteModal = true;
-  }
-
-  closeDeleteModal() {
-    this.deleteModal = false;
   }
 
   setEditingMode() {
@@ -91,13 +85,6 @@ export class CommentsComponent implements OnInit {
         console.error(err);
       }
     });
-
-    // if (reaction === 'like') {
-    //   this.hasLiked = true;
-    // } else {
-    //   this.hasDisliked = true;
-    // }
-
   }
 
   removeReaction(reaction: string) {
@@ -109,26 +96,5 @@ export class CommentsComponent implements OnInit {
         console.error(err);
       }
     });
-
-    // if (reaction === 'like') {
-    //   this.hasLiked = false;
-    // } else {
-    //   this.hasDisliked = false;
-    // }
-  }
-
-  deleteHandler() {
-    const confirmation = confirm('Are you sure you want to delete your comment?');
-
-    if (confirmation) {
-      this.isLoading = true;
-      this.commentsService.deleteEstateComment(this.comment.id).subscribe({
-        next: () => {
-          this.toaster.success('Successfully deleted comment')
-          this.isLoading = false;
-        },
-        error: (err) => console.error(err)
-      });
-    }
   }
 }

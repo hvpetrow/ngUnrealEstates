@@ -1,7 +1,6 @@
 <app-delete-modal
-  [closeDeleteModal]="closeDeleteModal"
-  [deleteModal]="deleteModal"
-  [deleteCommentHandler]="deleteHandler"
+  [(deleteModal)]="deleteModal"
+  [commentId]="comment.id"
 ></app-delete-modal>
 <li>
   <div class="owner-info">

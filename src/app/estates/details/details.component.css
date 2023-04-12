@@ -152,6 +152,8 @@ span {
 
 .rentHome {
   background-color: rgba(86, 124, 194, 0.911);
+  cursor: pointer;
+  border: none;
 }
 
 .rentHome:hover {

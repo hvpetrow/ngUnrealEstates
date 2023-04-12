@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CommentsService } from '../../services/comments.service';
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Component({
   selector: 'app-delete-modal',
@@ -6,11 +8,14 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./delete-modal.component.css']
 })
 export class DeleteModalComponent {
-  @Input() closeDeleteModal!: any;
-  @Input() deleteModal!: any;
-  @Input() deleteCommentHandler!: any;
+  @Input() commentId!: string;
 
-  constructor() { }
+  @Input() deleteModal!: boolean;
+  @Output() deleteModalChange = new EventEmitter<boolean>();
+
+  isLoading: boolean = false;
+
+  constructor(private commentService: CommentsService, public toaster: HotToastService) { }
 
 
   outsideClickHandler(e: Event) {
@@ -19,5 +24,18 @@ export class DeleteModalComponent {
     }
   }
 
+  closeDeleteModal() {
+    this.deleteModalChange.emit(false);
+  }
 
+  deleteCommentHandler() {
+    this.isLoading = true;
+    this.commentService.deleteEstateComment(this.commentId).subscribe({
+      next: () => {
+        this.toaster.success('Successfully deleted comment')
+        this.isLoading = false;
+      },
+      error: (err) => console.error(err)
+    });
+  }
 }

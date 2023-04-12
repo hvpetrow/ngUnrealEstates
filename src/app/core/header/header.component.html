@@ -2,7 +2,7 @@
   <a routerLink="/home">Home</a>
   <ul>
     <!-- Guest users and Logged users -->
-    <li><a routerLink="#">Housing for rent</a></li>
+    <li><a routerLink="/estates/catalog-for-sell">Catalog for sell</a></li>
     <!-- Guest users -->
     <ng-container *ngIf="!(isLoggedIn$ | async)">
       <li><a routerLink="user/login">Login</a></li>
@@ -11,7 +11,6 @@
     <!-- Logged users -->
     <ng-container *ngIf="isLoggedIn$ | async">
       <li><a routerLink="estates/create">Create offer</a></li>
-      <li><a routerLink="#">Search</a></li>
       <li><a (click)="onLogout()" href="javascript:void(0)">Logout</a></li>
       <!-- <li *ngIf="user$ | async as user">
         <a routerLink="#">Hi, {{ user.email }}</a>
