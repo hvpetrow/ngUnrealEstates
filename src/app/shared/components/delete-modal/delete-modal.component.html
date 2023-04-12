@@ -1,0 +1,18 @@
+<section
+  (click)="outsideClickHandler($event)"
+  [ngClass]="{
+    active: deleteModal === true,
+    inactive: deleteModal == false
+  }"
+  class="modal"
+>
+  <div class="modal-content">
+    <span (click)="closeDeleteModal()" class="close">&times;</span>
+    <h2 class="title">Are you sure you want to delete your comment?</h2>
+
+    <div class="action-btns">
+      <button (click)="closeDeleteModal()" class="btn">Cancel</button>
+      <button (click)="deleteCommentHandler()" class="btn">Delete</button>
+    </div>
+  </div>
+</section>

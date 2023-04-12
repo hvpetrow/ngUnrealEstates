@@ -18,6 +18,7 @@ export class DetailsComponent implements OnInit {
   userId: string | undefined;
   currentUserEmail: string | null | undefined;
   isShow: boolean = false;
+  contactModal: boolean = false;
 
   isOfferOwner: boolean = false;
 
@@ -72,5 +73,15 @@ export class DetailsComponent implements OnInit {
         }
       });
     }
+  }
+
+  openContactModal() {
+    console.log('otvarqm');
+
+    this.contactModal = true;
+  }
+
+  closeContactModal() {
+    this.contactModal = false;
   }
 }

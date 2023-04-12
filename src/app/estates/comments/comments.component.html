@@ -1,3 +1,8 @@
+<app-delete-modal
+  [closeDeleteModal]="closeDeleteModal"
+  [deleteModal]="deleteModal"
+  [deleteCommentHandler]="deleteHandler"
+></app-delete-modal>
 <li>
   <div class="owner-info">
     <span class="owner">{{ comment.ownerEmail }}</span>
@@ -22,8 +27,32 @@
         </form>
       </ng-container>
       <div class="right-side">
+        <div className="header-right">
+          <span>Likes: {{ comment.likes?.length }}</span>
+          <span>Dislikes: {{ comment.dislikes?.length }}</span>
+        </div>
+        <ng-container *ngIf="currentUserId && !isOwner">
+          <ng-container *ngIf="!hasLiked && !hasDisliked">
+            <button (click)="sendReaction('like')" class="delete-btn">
+              <mat-icon>thumb_up</mat-icon>
+            </button>
+            <button (click)="sendReaction('dislike')" class="edit-btn">
+              <mat-icon>thumb_down</mat-icon>
+            </button>
+          </ng-container>
+          <ng-container *ngIf="hasLiked">
+            <button (click)="removeReaction('like')" class="delete-btn">
+              <mat-icon>thumb_up</mat-icon>
+            </button>
+          </ng-container>
+          <ng-container *ngIf="hasDisliked">
+            <button (click)="removeReaction('dislike')" class="edit-btn">
+              <mat-icon>thumb_down</mat-icon>
+            </button>
+          </ng-container>
+        </ng-container>
         <ng-container *ngIf="currentUserId && isOwner && !isEdited">
-          <button (click)="deleteHandler()" class="delete-btn">
+          <button (click)="openDeleteModal()" class="delete-btn">
             <mat-icon>delete</mat-icon>
           </button>
           <button (click)="setEditingMode()" class="edit-btn">

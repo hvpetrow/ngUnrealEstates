@@ -6,11 +6,12 @@ import { RouterModule } from '@angular/router';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { SafeHmtlPipe } from './pipes/safe-hmtl.pipe';
 import { DateTransformPipe } from './pipes/date-transform.pipe';
+import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
 
 
 
 @NgModule({
-  declarations: [EstateCardComponent, SpinnerComponent, ShortenPipe, SafeHmtlPipe, DateTransformPipe],
+  declarations: [EstateCardComponent, SpinnerComponent, ShortenPipe, SafeHmtlPipe, DateTransformPipe, DeleteModalComponent],
   imports: [
     CommonModule, RouterModule
   ],
@@ -19,7 +20,8 @@ import { DateTransformPipe } from './pipes/date-transform.pipe';
     SpinnerComponent,
     ShortenPipe,
     SafeHmtlPipe,
-    DateTransformPipe
+    DateTransformPipe,
+    DeleteModalComponent
   ]
 })
 export class SharedModule { }

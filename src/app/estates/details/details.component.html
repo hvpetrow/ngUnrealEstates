@@ -12,11 +12,9 @@
           <button (click)="deleteHandler()" class="remove">Delete</button>
 
           <!-- logged in user with available pieces-->
-          <a
-            routerLink="/users/{{ estate.ownerId }}/contact-form"
-            class="rentHome"
-            >Contact the owner</a
-          >
+          <button class="rentHome" (click)="openContactModal()">
+            Contact the owner
+          </button>
           <!-- <p class="alRentHome">You have already rent this home</p> -->
 
           <!-- logged in user with no available pieces-->
@@ -61,6 +59,11 @@
 
   <app-comment-form [estateId]="estateId"></app-comment-form>
 </section>
+<app-contact-modal
+  [(closeContactModal)]="closeContactModal"
+  [contactModal]="contactModal"
+>
+</app-contact-modal>
 
 <ng-template #loader>
   <app-spinner></app-spinner>

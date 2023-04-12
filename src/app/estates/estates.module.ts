@@ -12,7 +12,8 @@ import { CommentsComponent } from './comments/comments.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CommentsService } from '../shared/services/comments.service';
 import { A11yModule } from '@angular/cdk/a11y';
-import { MatIconModule } from '@angular/material/icon'
+import { MatIconModule } from '@angular/material/icon';
+import { ContactModalComponent } from './details/contact-modal/contact-modal.component'
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { MatIconModule } from '@angular/material/icon'
     CreateEstateComponent,
     CommentFormComponent,
     CommentsComponent,
+    ContactModalComponent,
 
   ],
   imports: [
@@ -33,7 +35,8 @@ import { MatIconModule } from '@angular/material/icon'
     MatButtonModule,
     MatSlideToggleModule,
     A11yModule,
-    MatIconModule
+    MatIconModule,
+
   ],
   providers: [CommentsService]
 })

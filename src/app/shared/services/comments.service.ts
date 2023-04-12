@@ -36,13 +36,13 @@ export class CommentsService {
     const commentRef = this.db.doc('comments/' + commentId);
 
     if (reaction === 'like') {
-      return commentRef.update({
+      return from(commentRef.update({
         likes: arrayUnion(userId)
-      });
+      }));
     } else {
-      return commentRef.update({
+      return from(commentRef.update({
         dislikes: arrayUnion(userId)
-      });
+      }));
     }
   }
 
@@ -50,13 +50,13 @@ export class CommentsService {
     const commentRef = this.db.doc('comments/' + commentId);
 
     if (reaction === 'like') {
-      return commentRef.update({
+      return from(commentRef.update({
         likes: arrayRemove(userId)
-      });
+      }));
     } else {
-      return commentRef.update({
+      return from(commentRef.update({
         dislikes: arrayRemove(userId)
-      });
+      }));
     }
   }
 }

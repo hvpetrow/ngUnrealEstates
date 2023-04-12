@@ -1,0 +1,113 @@
+.modal {
+  visibility: hidden;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.5s ease-in-out scale 0.6 ease-in-out;
+}
+
+.active {
+  visibility: visible;
+}
+
+.inactive {
+  visibility: hidden;
+}
+
+.modal-content {
+  background-color: grey;
+  padding: 2rem;
+  border: 1px solid grey;
+  border-radius: 0.6rem;
+  width: 37.5rem;
+  scale: 0;
+  transition: all 0.8s ease-in-out;
+  margin: 15% auto;
+  text-align: center;
+}
+
+.modal.inactive .modal-content {
+  scale: 0;
+  opacity: 0;
+}
+
+.modal.active .modal-content {
+  scale: 1;
+  opacity: 1;
+}
+
+.modal-content .title {
+  margin-bottom: 1.5rem;
+}
+
+.close {
+  font-size: 2rem;
+  font-weight: bold;
+  color: lightgrey;
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  right: 0.6rem;
+  transition: all 0.5s ease-in-out;
+}
+
+.close:hover,
+.close:focus {
+  scale: 1.2;
+  color: red;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.action-btns {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.action-btns button:nth-child(1) {
+  background-color: lightgray;
+  border-color: lightgray;
+}
+
+.title {
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 750px) {
+  .modal-content {
+    width: 34rem;
+    padding: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .modal-content {
+    width: 32rem;
+    padding: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .modal-content {
+    width: 29rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .modal-content {
+    width: 25rem;
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 410px) {
+  .modal-content {
+    width: 22rem;
+  }
+}
