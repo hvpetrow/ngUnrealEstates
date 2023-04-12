@@ -59,11 +59,7 @@
 
   <app-comment-form [estateId]="estateId"></app-comment-form>
 </section>
-<app-contact-modal
-  [(closeContactModal)]="closeContactModal"
-  [contactModal]="contactModal"
->
-</app-contact-modal>
+<app-contact-modal [(contactModal)]="contactModal"> </app-contact-modal>
 
 <ng-template #loader>
   <app-spinner></app-spinner>

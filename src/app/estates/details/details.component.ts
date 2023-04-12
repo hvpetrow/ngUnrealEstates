@@ -45,6 +45,9 @@ export class DetailsComponent implements OnInit {
         console.error(err.message);
       }
     });
+
+    console.log("contact modal in details onInit " + this.contactModal);
+
   }
 
   showHandler(event: Event): void {
@@ -54,12 +57,8 @@ export class DetailsComponent implements OnInit {
       (event.target as HTMLTextAreaElement).textContent = 'Hide';
     } else {
       (event.target as HTMLTextAreaElement).textContent = 'Show More';
-
     }
-
   }
-
-
 
   deleteHandler(): void {
     const answer = confirm('Are you sure you want to delete it?');
@@ -76,12 +75,6 @@ export class DetailsComponent implements OnInit {
   }
 
   openContactModal() {
-    console.log('otvarqm');
-
     this.contactModal = true;
-  }
-
-  closeContactModal() {
-    this.contactModal = false;
   }
 }
