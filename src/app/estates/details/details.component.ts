@@ -17,6 +17,7 @@ export class DetailsComponent implements OnInit {
   user$ = this.authService.currentUser$;
   userId: string | undefined;
   currentUserEmail: string | null | undefined;
+  estateComments!: any;
   isShow: boolean = false;
   contactModal: boolean = false;
   deleteModal: boolean = false;
@@ -58,6 +59,10 @@ export class DetailsComponent implements OnInit {
     } else {
       (event.target as HTMLTextAreaElement).textContent = 'Show More';
     }
+  }
+
+  setEstateComments(comments: any) {
+    this.estateComments = comments;
   }
 
   deleteHandler(): void {

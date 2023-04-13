@@ -57,10 +57,17 @@
     <!-- if there is no registered user, do not display buttons-->
   </div>
 
-  <app-comment-form [estateId]="estateId"></app-comment-form>
+  <app-comment-form
+    [estateId]="estateId"
+    (estateComments)="setEstateComments($event)"
+  ></app-comment-form>
 </section>
 <app-contact-modal [(contactModal)]="contactModal"> </app-contact-modal>
-<app-delete-modal [(deleteModal)]="deleteModal"></app-delete-modal>
+<app-delete-modal
+  [(deleteModal)]="deleteModal"
+  [estateId]="estateId"
+  [estateComments]="estateComments"
+></app-delete-modal>
 
 <ng-template #loader>
   <app-spinner></app-spinner>

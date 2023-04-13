@@ -1,9 +1,9 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
-import { arrayRemove, arrayUnion, collection, doc, serverTimestamp, updateDoc } from 'firebase/firestore';
+import { serverTimestamp } from 'firebase/firestore';
 import { CommentsService } from 'src/app/shared/services/comments.service';
 import { HotToastService } from '@ngneat/hot-toast';
-import { Observable, from, map, tap } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-comment-form',
@@ -24,6 +24,7 @@ export class CommentFormComponent implements OnInit {
   isLoading: boolean = false;
 
   @Input() estateId!: string;
+  @Output() estateComments = new EventEmitter<any>();
 
   constructor(private authService: AuthenticationService, private commentsService: CommentsService, public toast: HotToastService) { }
 
@@ -80,6 +81,8 @@ export class CommentFormComponent implements OnInit {
       next: (res) => {
         console.log(res);
         this.comments = res;
+        this.estateComments.emit(res);
+
         this.isLoading = false;
       },
       error: (err) => {
