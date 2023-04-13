@@ -14,7 +14,6 @@ export class DeleteModalComponent {
   @Input() estateId!: string;
   @Input() estateComments!: any;
 
-
   @Input() deleteModal!: boolean;
   @Output() deleteModalChange = new EventEmitter<boolean>();
 
@@ -33,10 +32,10 @@ export class DeleteModalComponent {
     this.deleteModalChange.emit(false);
   }
 
-  deleteHandler() {
+  deleteHandler() { //delete the offer with its comments
     this.isLoading = true;
-    if (!this.commentId && this.estateId) { //delete the offer with its comments
-      this.estateService.deleteEstate(this.estateId).subscribe({
+    if (!this.commentId && this.estateId) {
+      this.estateService.deleteEstate(this.estateId).subscribe({ //delete estate
         error: (err) => console.error(err),
         complete: () => {
           this.router.navigate(['/home']);
@@ -48,14 +47,11 @@ export class DeleteModalComponent {
         const { id } = c;
         this.commentService.deleteEstateComment(id).subscribe({ //delete current comment
           next: () => {
-            this.toaster.success('Successfully deleted comment')
             this.isLoading = false;
           },
           error: (err) => console.error(err)
         });
       });
-
-
     } else {
       this.commentService.deleteEstateComment(this.commentId).subscribe({ //delete current comment
         next: () => {
