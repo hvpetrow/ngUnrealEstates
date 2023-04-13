@@ -20,15 +20,16 @@
 }
 
 .modal-content {
-  background-color: grey;
+  background-color: rgb(105, 105, 105);
   padding: 2rem;
-  border: 1px solid grey;
+  border: 1px solid rgb(105, 105, 105);
   border-radius: 0.6rem;
   width: 37.5rem;
   scale: 0;
   transition: all 0.8s ease-in-out;
   margin: 15% auto;
   text-align: center;
+  color: #fff;
 }
 
 .modal.inactive .modal-content {
@@ -43,6 +44,7 @@
 
 .modal-content .title {
   margin-bottom: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .close {
@@ -51,7 +53,7 @@
   color: lightgrey;
   border-radius: 10px;
   position: absolute;
-  top: 0;
+  top: 0.5rem;
   right: 0.6rem;
   transition: all 0.5s ease-in-out;
 }
@@ -59,7 +61,7 @@
 .close:hover,
 .close:focus {
   scale: 1.2;
-  color: red;
+  color: rgb(199, 136, 109);
   text-decoration: none;
   cursor: pointer;
 }
@@ -70,13 +72,14 @@
   justify-content: center;
 }
 
-.action-btns button:nth-child(1) {
-  background-color: lightgray;
-  border-color: lightgray;
+.red-btn {
+  background-color: rgb(199, 136, 109);
+  border-color: rgb(199, 136, 109);
 }
 
-.title {
-  font-size: 1.5rem;
+.grey-btn {
+  background-color: rgb(105, 105, 105);
+  border-color: rgb(105, 105, 105);
 }
 
 @media screen and (max-width: 750px) {

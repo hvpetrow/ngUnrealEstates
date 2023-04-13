@@ -165,6 +165,22 @@ footer {
   padding: 0.7em 1em;
 }
 
+.btn {
+  border: 2px solid #3487f7;
+  padding: 4px 16px;
+  font-size: 1.2rem;
+  border-radius: 0.7rem;
+  font-weight: 500;
+  transition: all 0.6s ease-in-out;
+  color: #fff;
+}
+
+.btn:hover {
+  scale: 1.05;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
 a {
   text-decoration: none;
 }

@@ -27,8 +27,8 @@
       </ng-container>
       <div class="right-side">
         <div className="header-right">
-          <span>Likes: {{ comment.likes?.length }}</span>
-          <span>Dislikes: {{ comment.dislikes?.length }}</span>
+          <span>Likes: {{ comment.likes?.length || 0 }} </span>
+          <span>Dislikes: {{ comment.dislikes?.length || 0 }}</span>
         </div>
         <ng-container *ngIf="currentUserId && !isOwner">
           <ng-container *ngIf="!hasLiked && !hasDisliked">

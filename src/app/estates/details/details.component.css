@@ -144,6 +144,7 @@ span {
 
 .edit {
   background-color: rgba(86, 124, 194, 0.911);
+  transition: all 0.4s ease-in-out;
 }
 
 .edit:hover {
@@ -154,6 +155,7 @@ span {
   background-color: rgba(86, 124, 194, 0.911);
   cursor: pointer;
   border: none;
+  transition: all 0.4s ease-in-out;
 }
 
 .rentHome:hover {
@@ -164,6 +166,7 @@ span {
   background-color: rgb(199, 136, 109);
   cursor: pointer;
   border: none;
+  transition: all 0.4s ease-in-out;
 }
 
 .remove:hover {
