@@ -28,7 +28,7 @@ export class DeleteModalComponent {
     this.deleteModalChange.emit(false);
   }
 
-  deleteCommentHandler() {
+  deleteHandler() {
     this.isLoading = true;
     this.commentService.deleteEstateComment(this.commentId).subscribe({
       next: () => {

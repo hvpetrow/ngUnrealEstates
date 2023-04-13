@@ -9,12 +9,13 @@ import { DateTransformPipe } from './pipes/date-transform.pipe';
 import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
 import { ScrollToTopBtnComponent } from './components/scroll-to-top-btn/scroll-to-top-btn.component';
 import { MatIconModule } from '@angular/material/icon';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 
 
 
 @NgModule({
-  declarations: [EstateCardComponent, SpinnerComponent, ShortenPipe, SafeHmtlPipe, DateTransformPipe, DeleteModalComponent, ScrollToTopBtnComponent],
+  declarations: [EstateCardComponent, SpinnerComponent, ShortenPipe, SafeHmtlPipe, DateTransformPipe, DeleteModalComponent, ScrollToTopBtnComponent, CarouselComponent],
   imports: [
     CommonModule, RouterModule, MatIconModule
   ],

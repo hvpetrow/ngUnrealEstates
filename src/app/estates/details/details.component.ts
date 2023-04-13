@@ -19,7 +19,7 @@ export class DetailsComponent implements OnInit {
   currentUserEmail: string | null | undefined;
   isShow: boolean = false;
   contactModal: boolean = false;
-
+  deleteModal: boolean = false;
   isOfferOwner: boolean = false;
 
 
@@ -76,5 +76,9 @@ export class DetailsComponent implements OnInit {
 
   openContactModal() {
     this.contactModal = true;
+  }
+
+  openDeleteModal() {
+    this.deleteModal = true;
   }
 }

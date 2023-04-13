@@ -9,7 +9,7 @@
         <div class="product-btn">
           <!-- Only for registered user and creator of the housing offer-->
           <a routerLink="/estates/{{ estateId }}/edit" class="edit">Edit</a>
-          <button (click)="deleteHandler()" class="remove">Delete</button>
+          <button (click)="openDeleteModal()" class="remove">Delete</button>
 
           <!-- logged in user with available pieces-->
           <button class="rentHome" (click)="openContactModal()">
@@ -60,6 +60,7 @@
   <app-comment-form [estateId]="estateId"></app-comment-form>
 </section>
 <app-contact-modal [(contactModal)]="contactModal"> </app-contact-modal>
+<app-delete-modal [(deleteModal)]="deleteModal"></app-delete-modal>
 
 <ng-template #loader>
   <app-spinner></app-spinner>
