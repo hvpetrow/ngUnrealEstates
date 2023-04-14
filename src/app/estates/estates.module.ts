@@ -13,7 +13,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CommentsService } from '../shared/services/comments.service';
 import { A11yModule } from '@angular/cdk/a11y';
 import { MatIconModule } from '@angular/material/icon';
-import { ContactModalComponent } from './details/contact-modal/contact-modal.component'
+import { ContactModalComponent } from './details/contact-modal/contact-modal.component';
+import { CatalogForSellComponent } from './catalog-for-sell/catalog-for-sell.component'
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { ContactModalComponent } from './details/contact-modal/contact-modal.com
     CommentFormComponent,
     CommentsComponent,
     ContactModalComponent,
+    CatalogForSellComponent,
 
   ],
   imports: [
