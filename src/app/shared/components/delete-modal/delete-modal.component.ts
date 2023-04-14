@@ -10,28 +10,18 @@ import { AuthenticationService } from '../../services/authentication.service';
   templateUrl: './delete-modal.component.html',
   styleUrls: ['./delete-modal.component.css']
 })
-export class DeleteModalComponent implements OnInit {
+export class DeleteModalComponent {
   @Input() commentId!: string;
   @Input() estateId!: string;
   @Input() estateComments!: any;
-  @Input() estateOwnerId!: string
 
   @Input() deleteModal!: boolean;
   @Output() deleteModalChange = new EventEmitter<boolean>();
 
-  user$ = this.authService.currentUser$;
-  currComment!: any;
-  isCommentOwner!: boolean;
-  currentUserId!: string | undefined;
-
   isLoading: boolean = false;
 
-  constructor(private authService: AuthenticationService, private commentService: CommentsService, private estateService: CrudService, private router: Router, public toaster: HotToastService) { }
-  ngOnInit(): void {
-    this.user$.subscribe((user) => {
-      this.currentUserId = user?.uid;
-    });
-  }
+  constructor(private commentService: CommentsService, private estateService: CrudService, private router: Router, public toaster: HotToastService) { }
+
 
   outsideClickHandler(e: Event) {
     if ((e.target as HTMLTextAreaElement).tagName === 'SECTION') {
