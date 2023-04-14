@@ -5,7 +5,9 @@
       >Details</a
     >
   </div>
-  <div class="card_image">
-    <img src="{{ estate.imgUrl }}" />
-  </div>
+  <a routerLink="/estates/{{ estate.id }}/details">
+    <div class="card_image">
+      <img src="{{ estate.imgUrl }}" />
+    </div>
+  </a>
 </div>
