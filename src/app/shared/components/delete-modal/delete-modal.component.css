@@ -75,11 +75,13 @@
 .red-btn {
   background-color: rgb(199, 136, 109);
   border-color: rgb(199, 136, 109);
+  cursor: pointer;
 }
 
 .grey-btn {
   background-color: rgb(105, 105, 105);
   border-color: rgb(105, 105, 105);
+  cursor: pointer;
 }
 
 @media screen and (max-width: 750px) {

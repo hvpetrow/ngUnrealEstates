@@ -73,6 +73,7 @@
 .action-btns button:nth-child(1) {
   background-color: lightgray;
   border-color: lightgray;
+  cursor: pointer;
 }
 
 .title {
