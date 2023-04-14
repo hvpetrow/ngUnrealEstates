@@ -27,8 +27,6 @@ export class OwnerGuard implements CanActivate {
     });
 
     return this.estateService.getEstate(this.estateId).pipe(map(res => {
-      console.log(res);
-
       if (res.ownerId == this.userId) {
         return true;
       }

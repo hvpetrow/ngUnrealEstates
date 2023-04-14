@@ -70,9 +70,11 @@
 </section>
 <app-contact-modal [(contactModal)]="contactModal"> </app-contact-modal>
 <app-delete-modal
+  *ngIf="!!estate"
   [(deleteModal)]="deleteModal"
   [estateId]="estateId"
   [estateComments]="estateComments"
+  [estateOwnerId]="estate.ownerId"
 ></app-delete-modal>
 
 <ng-template #loader>

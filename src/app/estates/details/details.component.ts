@@ -64,19 +64,6 @@ export class DetailsComponent implements OnInit {
     this.estateComments = comments;
   }
 
-  deleteHandler(): void {
-    const answer = confirm('Are you sure you want to delete it?');
-
-    if (answer) {
-      this.estateService.deleteEstate(this.estateId).subscribe({
-        error: (err) => console.error(err),
-        complete: () => {
-          this.router.navigate(['/home']);
-          this.toast.success('Successfully deleted estate!');
-        }
-      });
-    }
-  }
 
   openContactModal() {
     this.contactModal = true;

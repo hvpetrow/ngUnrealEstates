@@ -22,6 +22,11 @@ export class CommentsService {
     return this.db.collection('comments', ref => ref.where('estateId', '==', estateId).orderBy('createdAt')).snapshotChanges();
   }
 
+  getComment(id: string) {
+    const ref = this.db.doc('comments/' + id);
+    return ref.valueChanges();
+  }
+
   editEstateComment(commentId: string, updatedComment: Object) {
     const docRef = this.db.doc('comments/' + commentId);
     return from(docRef.update(updatedComment));
