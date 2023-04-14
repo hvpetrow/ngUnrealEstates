@@ -46,6 +46,7 @@ main {
 .city,
 .availablePieces,
 .description,
+.constructionYear,
 .homeImage {
   color: #8597a3;
   position: absolute;
@@ -61,9 +62,11 @@ main {
 .city,
 .availablePieces,
 .description,
+.constructionYear,
 .homeImage {
   color: #6658d3;
   transform: translateY(-1.5rem);
+  margin-top: 0.5rem;
 }
 
 .form {
