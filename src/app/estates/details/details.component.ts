@@ -34,14 +34,13 @@ export class DetailsComponent implements OnInit {
 
     this.user$.subscribe((user) => {
       this.userId = user?.uid;
-      this.currentUserEmail = user?.email;
     });
 
     this.estateService.getEstate(this.estateId).subscribe({
       next: (res) => {
         this.estate = res;
         console.log(this.estate);
-        this.isOfferOwner = this.estateId == this.userId
+        this.isOfferOwner = res.ownerId == this.userId
       }, error: err => {
         console.error(err.message);
       }

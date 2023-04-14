@@ -3,10 +3,13 @@ import { DetailsComponent } from "./details/details.component";
 import { EditEstateComponent } from "./edit-estate/edit-estate.component";
 import { CreateEstateComponent } from "./create-estate/create-estate.component";
 import { CatalogForSellComponent } from "./catalog-for-sell/catalog-for-sell.component";
+import { AuthenticationGuard } from "../core/guards/authentication.guard";
+import { OwnerGuard } from "../core/guards/owner.guard";
 
 const routes: Routes = [
     {
         path: 'create',
+        canActivate: [AuthenticationGuard],
         component: CreateEstateComponent
     },
     {
@@ -15,6 +18,7 @@ const routes: Routes = [
     },
     {
         path: ':estateId/edit',
+        canActivate: [OwnerGuard],
         component: EditEstateComponent
     },
     {

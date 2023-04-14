@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { CrudService } from 'src/app/shared/crud.service';
 import { IEstate } from 'src/app/shared/estate';
+import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { UtilsService } from 'src/app/shared/services/utils.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class CreateEstateComponent {
   showErrorInControl: any = this.utils.showErrorInControl;
   currentYear: number = new Date().getFullYear();
   estateTypes: string[] = ['Apartment', 'House', 'Villa'];
-
+  user$ = this.authService.currentUser$;
+  userId: string | undefined;
   isLoading: boolean = false;
 
   createEstateGroup: FormGroup = this.formBuilder.group({
@@ -27,9 +29,13 @@ export class CreateEstateComponent {
     'description': new FormControl('', [Validators.required, Validators.minLength(2)]),
   });
 
-  constructor(private formBuilder: FormBuilder, private estateService: CrudService, private activatedRoute: ActivatedRoute, private router: Router, private utils: UtilsService) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthenticationService, private estateService: CrudService, private activatedRoute: ActivatedRoute, private router: Router, private utils: UtilsService) { }
 
   ngOnInit(): void {
+    this.user$.subscribe((user) => {
+      this.userId = user?.uid;
+    });
+
   }
 
   changeEstateType(e: Event) {
@@ -43,7 +49,8 @@ export class CreateEstateComponent {
 
     if (this.createEstateGroup.valid) {
       this.isLoading = true;
-      const estate = { ...this.createEstateGroup.value };
+      const ownerId = this.userId;
+      const estate = { ...this.createEstateGroup.value, ownerId };
 
       this.estateService.addEstate(estate).subscribe({
         next: (res) => {
