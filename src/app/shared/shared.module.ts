@@ -10,12 +10,13 @@ import { DeleteModalComponent } from './components/delete-modal/delete-modal.com
 import { ScrollToTopBtnComponent } from './components/scroll-to-top-btn/scroll-to-top-btn.component';
 import { MatIconModule } from '@angular/material/icon';
 import { CarouselComponent } from './components/carousel/carousel.component';
+import { HighlightDirective } from './directives/highlight.directive';
 
 
 
 
 @NgModule({
-  declarations: [EstateCardComponent, SpinnerComponent, ShortenPipe, SafeHmtlPipe, DateTransformPipe, DeleteModalComponent, ScrollToTopBtnComponent, CarouselComponent],
+  declarations: [EstateCardComponent, SpinnerComponent, ShortenPipe, SafeHmtlPipe, DateTransformPipe, DeleteModalComponent, ScrollToTopBtnComponent, CarouselComponent, HighlightDirective],
   imports: [
     CommonModule, RouterModule, MatIconModule
   ],

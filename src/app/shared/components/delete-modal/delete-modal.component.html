@@ -7,7 +7,9 @@
   class="modal"
 >
   <div class="modal-content">
-    <span (click)="closeDeleteModal()" class="close">&times;</span>
+    <span [appHighlight]="color" (click)="closeDeleteModal()" class="close"
+      >&times;</span
+    >
     <h2 class="title">Are you sure you want to delete ?</h2>
 
     <div class="action-btns">

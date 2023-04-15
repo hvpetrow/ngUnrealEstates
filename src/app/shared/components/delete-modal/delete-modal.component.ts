@@ -18,6 +18,8 @@ export class DeleteModalComponent {
   @Input() deleteModal!: boolean;
   @Output() deleteModalChange = new EventEmitter<boolean>();
 
+  color = 'green';
+
   isLoading: boolean = false;
 
   constructor(private commentService: CommentsService, private estateService: CrudService, private router: Router, public toaster: HotToastService) { }
