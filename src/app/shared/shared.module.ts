@@ -11,12 +11,13 @@ import { ScrollToTopBtnComponent } from './components/scroll-to-top-btn/scroll-t
 import { MatIconModule } from '@angular/material/icon';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { HighlightDirective } from './directives/highlight.directive';
+import { UnlessDirective } from './directives/unless.directive';
 
 
 
 
 @NgModule({
-  declarations: [EstateCardComponent, SpinnerComponent, ShortenPipe, SafeHmtlPipe, DateTransformPipe, DeleteModalComponent, ScrollToTopBtnComponent, CarouselComponent, HighlightDirective],
+  declarations: [EstateCardComponent, SpinnerComponent, ShortenPipe, SafeHmtlPipe, DateTransformPipe, DeleteModalComponent, ScrollToTopBtnComponent, CarouselComponent, HighlightDirective, UnlessDirective],
   imports: [
     CommonModule, RouterModule, MatIconModule
   ],
