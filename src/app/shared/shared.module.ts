@@ -4,7 +4,6 @@ import { EstateCardComponent } from './estate-card/estate-card.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { RouterModule } from '@angular/router';
 import { ShortenPipe } from './pipes/shorten.pipe';
-import { SafeHmtlPipe } from './pipes/safe-hmtl.pipe';
 import { DateTransformPipe } from './pipes/date-transform.pipe';
 import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
 import { ScrollToTopBtnComponent } from './components/scroll-to-top-btn/scroll-to-top-btn.component';
@@ -17,7 +16,7 @@ import { UnlessDirective } from './directives/unless.directive';
 
 
 @NgModule({
-  declarations: [EstateCardComponent, SpinnerComponent, ShortenPipe, SafeHmtlPipe, DateTransformPipe, DeleteModalComponent, ScrollToTopBtnComponent, CarouselComponent, HighlightDirective, UnlessDirective],
+  declarations: [EstateCardComponent, SpinnerComponent, ShortenPipe, DateTransformPipe, DeleteModalComponent, ScrollToTopBtnComponent, CarouselComponent, HighlightDirective, UnlessDirective],
   imports: [
     CommonModule, RouterModule, MatIconModule
   ],
@@ -25,7 +24,6 @@ import { UnlessDirective } from './directives/unless.directive';
     EstateCardComponent,
     SpinnerComponent,
     ShortenPipe,
-    SafeHmtlPipe,
     DateTransformPipe,
     DeleteModalComponent,
     ScrollToTopBtnComponent

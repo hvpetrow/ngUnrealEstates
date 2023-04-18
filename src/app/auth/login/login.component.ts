@@ -11,6 +11,9 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
 })
 export class LoginComponent {
   isLoading: Boolean = false;
+  user: any;
+  email!: string;
+  password!: string;
 
   loginGroup: FormGroup = this.formBuilder.group({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -23,13 +26,14 @@ export class LoginComponent {
   }
 
   onLogin(): void {
-    console.log(this.loginGroup.value);
-
     if (this.loginGroup.valid) {
-      const { email, password } = this.loginGroup.value;
+      this.email = this.loginGroup.controls['email'].value;
+      this.password = this.loginGroup.controls['password'].value;
+
       this.isLoading = true;
-      this.authService.login(email, password).subscribe({
+      this.authService.login(this.email, this.password).subscribe({
         next: (user) => {
+          this.user = user.user;
           this.router.navigate(['/home']);
         },
         error: (err) => {
