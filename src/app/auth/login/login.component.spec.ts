@@ -4,16 +4,17 @@ import { LoginComponent } from './login.component';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { DebugElement } from '@angular/core';
 import { AngularFireModule } from '@angular/fire/compat';
-import { environment } from 'src/environments/environment';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { By } from '@angular/platform-browser';
+import { from } from 'rxjs';
 
 fdescribe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let de: DebugElement;
   let service: AuthenticationService;
+  let spy: jasmine.Spy;
 
   let authStub = {
     constructor: () => { console.log('constructor called') },
@@ -34,7 +35,7 @@ fdescribe('LoginComponent', () => {
     component = fixture.componentInstance;
     de = fixture.debugElement;
     service = TestBed.inject(AuthenticationService);
-
+    // spy = spyOn(service, 'login').and.returnValue(service.login('test@gmail.com', '12345678'));
     fixture.detectChanges();
   });
 
@@ -157,16 +158,15 @@ fdescribe('LoginComponent', () => {
   });
 
   it('submitting a form emits a user', () => {
+
+
     expect(component.loginGroup.valid).toBeFalse();
     component.loginGroup.controls['email'].setValue('test@gmail.com');
     component.loginGroup.controls['password'].setValue('12345678');
     expect(component.loginGroup.valid).toBeTruthy();
 
-    let user: any;
-    const { email, password } = component.loginGroup.value;
-
-
-
+    component.email = component.loginGroup.controls['email'].value;
+    component.password = component.loginGroup.controls['password'].value;
   });
 });
 
