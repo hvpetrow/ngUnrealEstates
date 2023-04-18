@@ -3,7 +3,6 @@ import { CommentsService } from '../../services/comments.service';
 import { HotToastService } from '@ngneat/hot-toast';
 import { CrudService } from '../../crud.service';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-delete-modal',
