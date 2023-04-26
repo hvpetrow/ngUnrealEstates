@@ -1,0 +1,15 @@
+<div class="search">
+  <!-- <select class="select" name="type" id="type" onChange={changeHandler}>
+        <option value="all">All</option>
+        <option value="movies">Movies</option>
+        <option value="series">Series</option>
+    </select> -->
+  <form [formGroup]="searchGroup">
+    <input type="text" formControlName="searchedEstate" />
+
+    <button class="search-btn">
+      <mat-icon>search</mat-icon>
+      <!-- <i class={`fa-solid fa-magnifying-glass box-shadow`}></i> -->
+    </button>
+  </form>
+</div>

@@ -25,6 +25,9 @@ import { HotToastModule } from '@ngneat/hot-toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SearchComponent } from './core/header/search/search.component';
+import { MatIconModule } from '@angular/material/icon';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -34,6 +37,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FooterComponent,
     HeaderComponent,
     PageNotFoundComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserAnimationsModule,
     MatButtonModule,
     FontAwesomeModule,
-
+    MatIconModule,
+    ReactiveFormsModule,
   ],
   providers: [
     ScreenTrackingService, UserTrackingService, AuthenticationService,

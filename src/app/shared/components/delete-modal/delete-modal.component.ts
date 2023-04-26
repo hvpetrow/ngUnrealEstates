@@ -17,12 +17,11 @@ export class DeleteModalComponent {
   @Input() deleteModal!: boolean;
   @Output() deleteModalChange = new EventEmitter<boolean>();
 
-  color = 'green';
+  color = 'red';
 
   isLoading: boolean = false;
 
   constructor(private commentService: CommentsService, private estateService: CrudService, private router: Router, public toaster: HotToastService) { }
-
 
   outsideClickHandler(e: Event) {
     if ((e.target as HTMLTextAreaElement).tagName === 'SECTION') {

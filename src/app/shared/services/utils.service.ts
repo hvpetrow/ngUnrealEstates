@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { IEstate } from '../estate';
 
 @Injectable({
   providedIn: 'root'
@@ -72,4 +73,9 @@ export class UtilsService {
     }
 
   }
+
+  filterSearchResults(allEstates: IEstate[], name: string) {
+    const result = allEstates.filter(x => x.name.toLowerCase().includes(name.toLowerCase()));
+    return result;
+  };
 }

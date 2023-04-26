@@ -60,6 +60,20 @@ body {
   animation-fill-mode: forwards;
 }
 
+:root {
+  --clr-primary: #f02f2f;
+  --clr-secondary: #f7bb0e;
+  --clr-white: #f6f6f6;
+  --clr-blue: rgb(30, 117, 218);
+  --clr-dark-bgn: #19181b;
+  --clr-dark-grey: #2e2e2ef1;
+  --clr-light-black: rgb(20, 20, 20);
+  --clr-grey-bgn: #272727b7;
+  --clr-grey-bgn2: #272727a2;
+  --clr-black-bgn: #161616e5;
+  --clr-grey: #acacac;
+}
+
 @keyframes cssAnimation {
   to {
     width: 0;
