@@ -28,6 +28,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SearchComponent } from './core/header/search/search.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SearchPanelComponent } from './core/header/search-panel/search-panel.component';
+import { SearchedEstateTemplateComponent } from './core/header/searched-estate-template/searched-estate-template.component';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -38,6 +41,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     PageNotFoundComponent,
     SearchComponent,
+    SearchPanelComponent,
+    SearchedEstateTemplateComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +62,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     FontAwesomeModule,
     MatIconModule,
     ReactiveFormsModule,
+    SharedModule
   ],
   providers: [
     ScreenTrackingService, UserTrackingService, AuthenticationService,

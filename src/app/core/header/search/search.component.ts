@@ -14,8 +14,8 @@ export class SearchComponent implements OnInit {
 
   allEstatesForSell$!: Observable<IEstate[]>;
   allEstates!: IEstate[];
-  searchedEstates!: IEstate[] | undefined;
-  openSearchPanel: boolean = false;
+  searchedEstates!: IEstate[];
+  searchPanel: boolean = false;
   searchTypes: string[] = ['Name', 'Location'];
 
   searchGroup: FormGroup = this.formBuilder.group({
@@ -37,7 +37,7 @@ export class SearchComponent implements OnInit {
       let estateName = val;
       let searchType = this.searchGroup.controls['searchType'].value;
       this.searchedEstates = this.utilsService.filterSearchResults(this.allEstates, estateName, searchType);
-      this.openSearchPanel = true;
+      this.searchPanel = true;
       console.log(this.searchedEstates);
     });
   }

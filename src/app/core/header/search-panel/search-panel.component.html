@@ -1,0 +1,30 @@
+<section
+  (click)="outsideClickHandler($event)"
+  class="modal"
+  [ngClass]="{
+    active: searchPanel === true,
+    inactive: searchPanel === false
+  }"
+>
+  <div class="panel-content">
+    <div class="header">
+      <h2 class="title">Search results</h2>
+      <span (click)="closeSearchPanel()" class="close">&times;</span>
+    </div>
+    <div *ngIf="searchedEstates; else loader" class="results">
+      <ul *ngIf="searchedEstates.length > 0" class="result-list active">
+        <app-searched-estate-template
+          *ngFor="let searchedEstate of searchedEstates"
+          [searchedEstate]="searchedEstate"
+          [(searchPanel)]="searchPanel"
+        ></app-searched-estate-template>
+      </ul>
+      <p *ngIf="searchedEstates.length === 0" class="no-results">
+        No matches found...
+      </p>
+    </div>
+  </div>
+</section>
+<ng-template #loader>
+  <app-spinner></app-spinner>
+</ng-template>

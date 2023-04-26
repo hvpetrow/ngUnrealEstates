@@ -75,15 +75,11 @@ export class UtilsService {
   }
 
   filterSearchResults(allEstates: IEstate[], searchedValue: string, searchType: string) {
-    let result;
 
     if (searchType === 'Name') {
-      result = allEstates.filter(x => x.name.toLowerCase().includes(searchedValue.toLowerCase()));
-    } else if (searchType === 'Location') {
-      result = allEstates.filter(x => x.location.toLowerCase().includes(searchedValue.toLowerCase()));
+      return allEstates.filter(x => x.name.toLowerCase().includes(searchedValue.toLowerCase()));
+    } else {
+      return allEstates.filter(x => x.location.toLowerCase().includes(searchedValue.toLowerCase()));
     }
-
-
-    return result;
   };
 }
