@@ -1,12 +1,18 @@
 <div class="search">
   <form [formGroup]="searchGroup">
-    <select class="select" name="type" id="type" onChange="{changeHandler}">
-      <option value="all">All</option>
-      <option value="movies">Movies</option>
-      <option value="series">Series</option>
+    <select
+      class="select"
+      name="type"
+      id="type"
+      (change)="changeEstateType($event)"
+      formControlName="searchType"
+      required
+    >
+      <option *ngFor="let searchType of searchTypes" [value]="searchType">
+        {{ searchType }}
+      </option>
     </select>
     <input type="text" formControlName="searchedEstate" />
-
     <button class="search-btn">
       <mat-icon>search</mat-icon>
       <!-- <i class={`fa-solid fa-magnifying-glass box-shadow`}></i> -->

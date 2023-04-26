@@ -14,11 +14,13 @@ export class SearchComponent implements OnInit {
 
   allEstatesForSell$!: Observable<IEstate[]>;
   allEstates!: IEstate[];
-  searchedEstates!: IEstate[];
+  searchedEstates!: IEstate[] | undefined;
   openSearchPanel: boolean = false;
+  searchTypes: string[] = ['Name', 'Location'];
 
   searchGroup: FormGroup = this.formBuilder.group({
-    searchedEstate: new FormControl('', [])
+    searchedEstate: new FormControl('', []),
+    searchType: new FormControl('Name', [])
   });
 
 
@@ -33,9 +35,16 @@ export class SearchComponent implements OnInit {
   onSearchChanges() {
     this.searchGroup.get('searchedEstate')?.valueChanges.subscribe(val => {
       let estateName = val;
-      this.searchedEstates = this.utilsService.filterSearchResults(this.allEstates, estateName);
+      let searchType = this.searchGroup.controls['searchType'].value;
+      this.searchedEstates = this.utilsService.filterSearchResults(this.allEstates, estateName, searchType);
       this.openSearchPanel = true;
       console.log(this.searchedEstates);
+    });
+  }
+
+  changeEstateType(e: Event) {
+    this.searchGroup.controls['searchType'].setValue((e.target as HTMLTextAreaElement).value, {
+      onlySelf: true,
     });
   }
 
