@@ -13,6 +13,8 @@ import { UtilsService } from 'src/app/shared/services/utils.service';
 export class SearchComponent implements OnInit {
 
   allEstatesForSell$!: Observable<IEstate[]>;
+  allEstates!: IEstate[];
+  searchedEstates!: IEstate[];
   openSearchPanel: boolean = false;
 
   searchGroup: FormGroup = this.formBuilder.group({
@@ -31,10 +33,10 @@ export class SearchComponent implements OnInit {
   onSearchChanges() {
     this.searchGroup.get('searchedEstate')?.valueChanges.subscribe(val => {
       let estateName = val;
-
+      this.searchedEstates = this.utilsService.filterSearchResults(this.allEstates, estateName);
       this.openSearchPanel = true;
+      console.log(this.searchedEstates);
     });
-
   }
 
   getEstates(): void {
@@ -45,5 +47,10 @@ export class SearchComponent implements OnInit {
           // return Object.assign({ id: c.payload.doc.id }, c.payload.doc.data());
           return ({ ...fields, id: c.payload.doc.id })
         })));
+
+    this.allEstatesForSell$.subscribe({
+      next: (res) => this.allEstates = res,
+      error: (err) => console.error(err)
+    });
   }
 }
