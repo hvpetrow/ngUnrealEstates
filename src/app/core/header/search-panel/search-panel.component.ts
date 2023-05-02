@@ -20,16 +20,6 @@ export class SearchPanelComponent implements OnChanges {
   }
 
   outsideClickHandler(e: Event) {
-    // console.log("FROM panel outsideClickHandler ");
-
-    // console.log(e.currentTarget);
-    // console.log((e.currentTarget as HTMLTextAreaElement).tagName);
-
-
-    // console.log((e.target as HTMLTextAreaElement).tagName);
-    // this.closeSearchPanel();
-
-    //TODO SECTION ttag problem
     if ((e.target as HTMLTextAreaElement).tagName === 'SECTION') {
       this.closeSearchPanel();
       console.log("FROM panel outsideClickHandler 222222222222");
