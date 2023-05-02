@@ -4,10 +4,10 @@
     <button (click)="prev()"><mat-icon>arrow_back_ios</mat-icon></button>
     <button (click)="next()"><mat-icon>arrow_forward_ios</mat-icon></button>
   </div>
+  <app-thumbnail [arr]="imgs" [(index)]="index"></app-thumbnail>
   <!-- <*ngIf Thumbnail
             arr={imgs}
-            setImageIndexHandler={setImageIndexHandler}
-            index={index}
+            [(index)]="index"
         />
     
 </div> -->
