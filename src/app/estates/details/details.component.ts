@@ -23,31 +23,30 @@ export class DetailsComponent implements OnInit {
   deleteModal: boolean = false;
   isOfferOwner: boolean = false;
 
-
-
   constructor(private activatedRoute: ActivatedRoute, private authService: AuthenticationService, private estateService: CrudService, private router: Router, public toast: HotToastService) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params => {
-      this.estateId = params['estateId'];
+    this.activatedRoute.params.subscribe({
+      next: (params) => {
+        console.log(params);
+        this.estateId = params['estateId'];
+        this.estateService.getEstate(this.estateId).subscribe({
+          next: (res) => {
+            this.estate = res;
+            this.isOfferOwner = res.ownerId == this.userId
+          }, error: err => {
+            console.error(err.message);
+          }
+        });
+      },
+      error: (err) => {
+        console.error(err);
+      }
     });
 
     this.user$.subscribe((user) => {
       this.userId = user?.uid;
     });
-
-    this.estateService.getEstate(this.estateId).subscribe({
-      next: (res) => {
-        this.estate = res;
-        console.log(this.estate);
-        this.isOfferOwner = res.ownerId == this.userId
-      }, error: err => {
-        console.error(err.message);
-      }
-    });
-
-    console.log("contact modal in details onInit " + this.contactModal);
-
   }
 
   showHandler(event: Event): void {

@@ -3,7 +3,7 @@
   <app-search> </app-search>
   <ul>
     <!-- Guest users and Logged users -->
-    <li><a routerLink="/estates/catalog-for-sell">Catalog for sell</a></li>
+    <li><a routerLink="/estates/catalog-for-sell">For sell</a></li>
     <!-- Guest users -->
     <ng-container *ngIf="!(isLoggedIn$ | async)">
       <li><a routerLink="user/login">Login</a></li>

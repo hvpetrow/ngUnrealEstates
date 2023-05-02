@@ -13,11 +13,40 @@
     </div>
     <div *ngIf="searchedEstates; else loader" class="results">
       <ul *ngIf="searchedEstates.length > 0" class="result-list active">
-        <app-searched-estate-template
+        <a
+          *ngFor="let searchedEstate of searchedEstates"
+          routerLink="estates/{{ searchedEstate.id }}/details"
+          (click)="closeSearchPanel()"
+          class="link"
+        >
+          <li class="result-item">
+            <div class="img-container">
+              <img src="{{ searchedEstate.imgUrl }}" alt="movie" class="img" />
+            </div>
+            <div class="content">
+              <div class="show-data">
+                <p class="title">
+                  {{ searchedEstate.name }}
+                </p>
+                <p class="year">
+                  <!-- {parsers.yearParser(x.fields.year)} -->
+                </p>
+              </div>
+              <!-- <div class="rating">
+              <i class="fa-solid fa-star"></i>
+              {x.fields.rating.ratingPoints === 0 ?
+                  <p>No rating yet</p>
+                  : <p>{x.fields.rating.ratingPoints} / 10</p>
+              }
+          </div> -->
+            </div>
+          </li>
+        </a>
+        <!-- <app-searched-estate-template
           *ngFor="let searchedEstate of searchedEstates"
           [searchedEstate]="searchedEstate"
           [(searchPanel)]="searchPanel"
-        ></app-searched-estate-template>
+        ></app-searched-estate-template> -->
       </ul>
       <p *ngIf="searchedEstates.length === 0" class="no-results">
         No matches found...

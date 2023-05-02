@@ -19,4 +19,9 @@
     </button>
   </form>
 </div>
-<app-search-panel [(searchPanel)]="searchPanel" [searchedEstates]="searchedEstates"> </app-search-panel>
+<app-search-panel
+  [(searchPanel)]="searchPanel"
+  [searchedEstates]="searchedEstates"
+  (closePanelEvent)="closeSearchPanel()"
+>
+</app-search-panel>
