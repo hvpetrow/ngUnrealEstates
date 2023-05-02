@@ -15,7 +15,7 @@ export class OwnerGuard implements CanActivate {
   userId: string | undefined;
   isOfferOwner!: boolean;
 
-  constructor(private authService: AuthenticationService, private activatedRoute: ActivatedRoute, private router: Router, private estateService: CrudService) { }
+  constructor(private authService: AuthenticationService, private router: Router, private estateService: CrudService) { }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {

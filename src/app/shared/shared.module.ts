@@ -11,12 +11,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { UnlessDirective } from './directives/unless.directive';
+import { SliderComponent } from './components/slider/slider.component';
 
 
 
 
 @NgModule({
-  declarations: [EstateCardComponent, SpinnerComponent, ShortenPipe, DateTransformPipe, DeleteModalComponent, ScrollToTopBtnComponent, CarouselComponent, HighlightDirective, UnlessDirective],
+  declarations: [EstateCardComponent, SpinnerComponent, ShortenPipe, DateTransformPipe, DeleteModalComponent, ScrollToTopBtnComponent, CarouselComponent, HighlightDirective, UnlessDirective, SliderComponent],
   imports: [
     CommonModule, RouterModule, MatIconModule
   ],
