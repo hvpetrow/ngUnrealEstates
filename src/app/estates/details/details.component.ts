@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
+import { switchMap } from 'rxjs';
 import { CrudService } from 'src/app/shared/crud.service';
 import { IEstate } from 'src/app/shared/estate';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
@@ -28,27 +29,44 @@ export class DetailsComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private authService: AuthenticationService, private estateService: CrudService, private router: Router, public toast: HotToastService) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe({
-      next: (params) => {
-        console.log(params);
-        this.estateId = params['estateId'];
-        this.estateService.getEstate(this.estateId).subscribe({
-          next: (res) => {
-            this.estate = res;
-            this.isOfferOwner = res.ownerId == this.userId
-          }, error: err => {
-            console.error(err.message);
-          }
-        });
-      },
-      error: (err) => {
-        console.error(err);
-      }
-    });
-
     this.user$.subscribe((user) => {
       this.userId = user?.uid;
     });
+
+    this.activatedRoute.params.pipe(
+      switchMap((params) => {
+        this.estateId = params['estateId'];
+        return this.estateService.getEstate(this.estateId);
+      })
+    ).subscribe({
+      next: (res) => {
+        this.estate = res;
+        this.isOfferOwner = res.ownerId == this.userId;
+      },
+      error: (err) => {
+        console.error(err.message);
+      }
+    })
+
+    // this.activatedRoute.params.subscribe({
+    //   next: (params) => {
+    //     console.log(params);
+    //     this.estateId = params['estateId'];
+    //     this.estateService.getEstate(this.estateId).subscribe({
+    //       next: (res) => {
+    //         this.estate = res;
+    //         this.isOfferOwner = res.ownerId == this.userId
+    //       }, error: err => {
+    //         console.error(err.message);
+    //       }
+    //     });
+    //   },
+    //   error: (err) => {
+    //     console.error(err);
+    //   }
+    // });
+
+
   }
 
   showHandler(event: Event): void {
