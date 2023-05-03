@@ -10,8 +10,10 @@ export class ThumbnailComponent {
   @Input() index!: number;
   @Input() arr!: String[];
 
-  @Output() indexChange = new EventEmitter<string>();
+  @Output() indexChange = new EventEmitter<number>();
 
-
+  setImageIndexHandler(i: number) {
+    this.indexChange.emit(i);
+  }
 
 }

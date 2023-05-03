@@ -1,1 +1,14 @@
-<p>thumbnail works!</p>
+<div className="thumbnail">
+  <img
+    *ngFor="let img of arr; let indexOfElement = index"
+    alt="boat.png"
+    height="50"
+    width="50"
+    src="img"
+    (click)="setImageIndexHandler(indexOfElement)"
+    [ngClass]="{
+      active: index === indexOfElement,
+      inactive: index !== indexOfElement
+    }"
+  />
+</div>
