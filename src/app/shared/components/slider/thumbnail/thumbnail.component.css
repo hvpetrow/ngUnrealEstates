@@ -1,0 +1,14 @@
+.thumbnail {
+  display: flex;
+  cursor: pointer;
+  padding-left: 2px;
+}
+
+.thumbnail img {
+  object-fit: cover;
+}
+
+.active {
+  transform: scale(1.2);
+  transform: all 300ms;
+}

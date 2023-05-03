@@ -23,6 +23,8 @@ export class DetailsComponent implements OnInit {
   deleteModal: boolean = false;
   isOfferOwner: boolean = false;
 
+  imgs = ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy2LtPCUCc_t2I7JUV5AP_ron0pfoc5I9E5Q&usqp=CAU', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1EhDd9GTb-AeQD258K-b3zqjunT98_ubO1A&usqp=CAU', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0EKWW-ECKkAkww91y--KLrgUBGXlPOPWPGA&usqp=CAU'];
+
   constructor(private activatedRoute: ActivatedRoute, private authService: AuthenticationService, private estateService: CrudService, private router: Router, public toast: HotToastService) { }
 
   ngOnInit(): void {

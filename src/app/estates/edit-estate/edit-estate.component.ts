@@ -17,7 +17,7 @@ export class EditEstateComponent implements OnInit {
     name: '',
     type: '',
     price: 0,
-    imgUrl: '',
+    imgUrl: [],
     constructionYear: '',
     location: '',
     description: '',

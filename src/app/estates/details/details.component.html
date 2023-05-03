@@ -2,18 +2,20 @@
   <div *ngIf="!!estate; else loader" class="wrapper">
     <div class="product-controller">
       <div class="product-img">
-        <img src="{{ estate.imgUrl }}" />
+        <app-slider [imgs]="imgs"> </app-slider>
+        <!-- <img src="{{ estate.imgUrl }}" /> -->
       </div>
       <div class="product-control">
-        <!-- if there is no registered user, do not display buttons-->
+        <div class="product-text">
+          <h1>{{ estate.type }} {{ estate.name }}</h1>
+          <h4>Year: {{ estate.constructionYear }}</h4>
+          <h4>Location: {{ estate.location }}</h4>
+        </div>
         <div class="product-btn">
-          <!-- Only for registered user and creator of the housing offer-->
           <ng-container *ngIf="isOfferOwner">
             <a routerLink="/estates/{{ estateId }}/edit" class="edit">Edit</a>
             <button (click)="openDeleteModal()" class="remove">Delete</button>
           </ng-container>
-
-          <!-- logged in user with available pieces-->
           <button
             *ngIf="!isOfferOwner"
             class="rentHome"
@@ -21,25 +23,17 @@
           >
             Contact the owner
           </button>
-          <!-- <p class="alRentHome">You have already rent this home</p> -->
-
-          <!-- logged in user with no available pieces-->
-          <!-- <p class="no-housing">No Housing Available!</p> -->
         </div>
       </div>
     </div>
     <div class="product-info">
       <div class="product-text">
-        <h1>{{ estate.type }} {{ estate.name }}</h1>
-        <h4>Year: {{ estate.constructionYear }}</h4>
-        <h4>Location: {{ estate.location }}</h4>
+        <h1>Description</h1>
         <div>
           <p *ngIf="!isShow">
-            <span class="heading-span">Description:</span>
             {{ estate.description | shorten }}
           </p>
           <p *ngIf="isShow">
-            <span class="heading-span">Description:</span>
             {{ estate.description }}
           </p>
           <button

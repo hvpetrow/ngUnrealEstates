@@ -3,7 +3,7 @@ export interface IEstate {
     name: string;
     type: string;
     price: Number;
-    imgUrl: string;
+    imgUrl: string[];
     constructionYear: string;
     location: string;
     description: string;

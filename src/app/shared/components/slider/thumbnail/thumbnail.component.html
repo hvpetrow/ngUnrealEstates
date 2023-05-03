@@ -1,10 +1,10 @@
-<div className="thumbnail">
+<div class="thumbnail">
   <img
     *ngFor="let img of arr; let indexOfElement = index"
     alt="boat.png"
     height="50"
     width="50"
-    src="img"
+    src="{{ img }}"
     (click)="setImageIndexHandler(indexOfElement)"
     [ngClass]="{
       active: index === indexOfElement,

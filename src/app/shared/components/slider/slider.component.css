@@ -5,13 +5,12 @@
 .mainImg {
   object-fit: cover;
   object-position: center center;
-  height: 500px;
   width: 100%;
 }
 
 .actions {
   position: absolute;
-  top: 50%;
+  top: 35%;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -26,6 +25,7 @@
   padding-top: 5px;
   color: #fff;
   font-size: 4rem;
+  cursor: pointer;
 }
 
 .actions button:active {

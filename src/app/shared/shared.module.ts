@@ -18,7 +18,9 @@ import { ThumbnailComponent } from './components/slider/thumbnail/thumbnail.comp
 
 
 @NgModule({
-  declarations: [EstateCardComponent, SpinnerComponent, ShortenPipe, DateTransformPipe, DeleteModalComponent, ScrollToTopBtnComponent, CarouselComponent, HighlightDirective, UnlessDirective, SliderComponent, ThumbnailComponent],
+  declarations: [EstateCardComponent, SpinnerComponent, ShortenPipe, DateTransformPipe, DeleteModalComponent,
+    ScrollToTopBtnComponent, CarouselComponent, HighlightDirective,
+    UnlessDirective, SliderComponent, ThumbnailComponent],
   imports: [
     CommonModule, RouterModule, MatIconModule
   ],
@@ -28,7 +30,9 @@ import { ThumbnailComponent } from './components/slider/thumbnail/thumbnail.comp
     ShortenPipe,
     DateTransformPipe,
     DeleteModalComponent,
-    ScrollToTopBtnComponent
+    ScrollToTopBtnComponent,
+    SliderComponent,
+    ThumbnailComponent
   ]
 })
 export class SharedModule { }
