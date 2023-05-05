@@ -28,6 +28,12 @@ export class DetailsComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute, private authService: AuthenticationService, private estateService: CrudService, private router: Router, public toast: HotToastService) { }
 
+
+
+  //TODO: CREATE AND EDIT ARRAY OF IMAGES TO WORK CAROUSEL PROPER
+
+
+
   ngOnInit(): void {
     this.user$.subscribe((user) => {
       this.userId = user?.uid;
@@ -46,27 +52,7 @@ export class DetailsComponent implements OnInit {
       error: (err) => {
         console.error(err.message);
       }
-    })
-
-    // this.activatedRoute.params.subscribe({
-    //   next: (params) => {
-    //     console.log(params);
-    //     this.estateId = params['estateId'];
-    //     this.estateService.getEstate(this.estateId).subscribe({
-    //       next: (res) => {
-    //         this.estate = res;
-    //         this.isOfferOwner = res.ownerId == this.userId
-    //       }, error: err => {
-    //         console.error(err.message);
-    //       }
-    //     });
-    //   },
-    //   error: (err) => {
-    //     console.error(err);
-    //   }
-    // });
-
-
+    });
   }
 
   showHandler(event: Event): void {
