@@ -140,21 +140,84 @@
           Location must be at least 2 characters long!
         </p>
       </ng-container>
+      <div formArrayName="imgUrls" style="margin-top: 0.5rem">
+        <label for="imgUrl" class="homeImage">Image Urls:</label>
 
-      <div class="input">
-        <input
-          type="text"
-          class="input-field"
-          id="imgUrl"
-          name="imgUrl"
-          [ngClass]="{
-            'input-error': showErrorInControl('imgUrl', createEstateGroup)
-          }"
-          formControlName="imgUrl"
-        />
-        <label for="imgUrl" class="homeImage">Image Url:</label>
+        <div
+          *ngFor="let imgUrlInput of getImgUrl?.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <input
+            type="text"
+            class="input-field img-urls"
+            id="imgUrl"
+            name="imgUrl"
+            [ngClass]="{
+              'input-error':
+                getImgUrlsControl(i).invalid && getImgUrlsControl(i).touched
+            }"
+            formControlName="imgUrl"
+          />
+
+          <!-- Item name:
+          {{ getImgUrlsControl(i) | json }} -->
+          <button
+            *ngIf="i !== 0"
+            (click)="removeImgUrl(i)"
+            class="btn btn-danger"
+            [ngStyle]="{ color: 'red', 'border-color': 'red' }"
+            style="color: red"
+          >
+            remove
+          </button>
+        </div>
+        <button
+          (click)="addImgUrl()"
+          class="btn btn-danger"
+          [ngStyle]="{ color: 'black', 'margin-top': '1rem' }"
+        >
+          Add new imgUrl
+        </button>
       </div>
-      <ng-container
+      <!-- <div>
+        <label for="imgUrl" class="homeImage">Image Url:</label>
+
+        <div
+          class="input"
+          *ngFor="let imgUrlInput of getImgUrl?.controls; let i = index"
+          formArrayName="imgUrls"
+        >
+          <div [formGroupName]="i">
+            <input
+              type="text"
+              class="input-field"
+              id="imgUrl"
+              name="imgUrl"
+              [ngClass]="{
+                'input-error': showErrorInControl('imgUrl', createEstateGroup)
+              }"
+              formControlName="imgUrl"
+            />
+
+            <button
+              (click)="removeImgUrl(i)"
+              class="btn btn-danger"
+              [ngStyle]="{ color: 'red' }"
+              style="color: red"
+            >
+              Remove
+            </button>
+          </div>
+        </div>
+        <button
+          (click)="addImgUrl()"
+          class="btn btn-danger"
+          [ngStyle]="{ color: 'black' }"
+        >
+          Add new imgUrl
+        </button>
+      </div> -->
+      <!-- <ng-container
         *ngIf="showErrorInControl('imgUrl', createEstateGroup)"
         class="alert-error"
       >
@@ -164,7 +227,7 @@
         >
           Image Url is required!
         </p>
-      </ng-container>
+      </ng-container> -->
 
       <div class="input">
         <input
