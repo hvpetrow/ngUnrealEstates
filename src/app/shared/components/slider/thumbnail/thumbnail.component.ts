@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ThumbnailComponent {
   @Input() index!: number;
-  @Input() arr!: String[];
+  @Input() arr!: { imgUrl: string; }[];
 
   @Output() indexChange = new EventEmitter<number>();
 

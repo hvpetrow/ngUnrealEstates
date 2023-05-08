@@ -5,6 +5,8 @@ import { CrudService } from 'src/app/shared/crud.service';
 import { IEstate } from 'src/app/shared/estate';
 import { UtilsService } from 'src/app/shared/services/utils.service';
 
+//TODO: Show all img Url and make to be edited not one
+
 @Component({
   selector: 'app-edit-estate',
   templateUrl: './edit-estate.component.html',
@@ -17,7 +19,7 @@ export class EditEstateComponent implements OnInit {
     name: '',
     type: '',
     price: 0,
-    imgUrl: [],
+    imgUrls: [],
     constructionYear: '',
     location: '',
     description: '',
@@ -59,7 +61,7 @@ export class EditEstateComponent implements OnInit {
         this.editEstateGroup.controls['year'].setValue(this.oldEstate.constructionYear);
         this.editEstateGroup.controls['location'].setValue(this.oldEstate.location);
         this.editEstateGroup.controls['price'].setValue(this.oldEstate.price);
-        this.editEstateGroup.controls['imgUrl'].setValue(this.oldEstate.imgUrl);
+        this.editEstateGroup.controls['imgUrl'].setValue(this.oldEstate.imgUrls[0].imgUrl);
         this.editEstateGroup.controls['description'].setValue(this.oldEstate.description);
       }, error: err => {
         console.error(err.message);

@@ -84,22 +84,22 @@ export class CreateEstateComponent {
     console.log(this.createEstateGroup.value);
     console.log(this.createEstateGroup.valid);
 
-    //   if (this.createEstateGroup.valid) {
-    //     this.isLoading = true;
-    //     const ownerId = this.userId;
-    //     const estate = { ...this.createEstateGroup.value, ownerId };
+    if (this.createEstateGroup.valid) {
+      this.isLoading = true;
+      const ownerId = this.userId;
+      const estate = { ...this.createEstateGroup.value, ownerId };
 
-    //     this.estateService.addEstate(estate).subscribe({
-    //       next: (res) => {
-    //         this.router.navigate(['/home']);
-    //         this.isLoading = false;
+      this.estateService.addEstate(estate).subscribe({
+        next: (res) => {
+          this.router.navigate(['/home']);
+          this.isLoading = false;
 
-    //       },
-    //       error: (err) => {
-    //         console.error(err);
-    //         this.isLoading = false;
-    //       }
-    //     });
-    //   }
+        },
+        error: (err) => {
+          console.error(err);
+          this.isLoading = false;
+        }
+      });
+    }
   }
 }

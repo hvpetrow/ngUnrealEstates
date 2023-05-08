@@ -52,6 +52,7 @@ main {
   font-size: 1.7em;
   top: 1.4rem;
   transition: 0.25s ease;
+  margin-top: 0.5rem;
   cursor: pointer;
 }
 
