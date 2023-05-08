@@ -45,12 +45,13 @@ export class CreateEstateComponent {
 
 
   get getImgUrl(): FormArray {
+
     return this.createEstateGroup.get('imgUrls') as FormArray;
   }
 
   getImgUrlsControl(index: number) {
-    console.log(index);
-    console.log(((this.createEstateGroup.get('imgUrls') as FormGroup).controls[index] as FormGroup).controls['imgUrl'])
+    // console.log(index);
+    // console.log(((this.createEstateGroup.get('imgUrls') as FormGroup).controls[index] as FormGroup).controls['imgUrl'])
 
     return (((this.createEstateGroup.get('imgUrls') as FormGroup).controls[index] as FormGroup).controls['imgUrl']);
   }
@@ -78,8 +79,10 @@ export class CreateEstateComponent {
   }
 
   createHandler(): void {
+    console.log(this.getImgUrl);
+
     console.log(this.createEstateGroup.value);
-    console.log(this.createEstateGroup.get("imgUrls.imgUrl")?.value);
+    console.log(this.createEstateGroup.valid);
 
     // if (this.createEstateGroup.valid) {
     //   this.isLoading = true;

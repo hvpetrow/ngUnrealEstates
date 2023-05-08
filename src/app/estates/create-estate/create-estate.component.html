@@ -179,55 +179,12 @@
           Add new imgUrl
         </button>
       </div>
-      <!-- <div>
-        <label for="imgUrl" class="homeImage">Image Url:</label>
-
-        <div
-          class="input"
-          *ngFor="let imgUrlInput of getImgUrl?.controls; let i = index"
-          formArrayName="imgUrls"
-        >
-          <div [formGroupName]="i">
-            <input
-              type="text"
-              class="input-field"
-              id="imgUrl"
-              name="imgUrl"
-              [ngClass]="{
-                'input-error': showErrorInControl('imgUrl', createEstateGroup)
-              }"
-              formControlName="imgUrl"
-            />
-
-            <button
-              (click)="removeImgUrl(i)"
-              class="btn btn-danger"
-              [ngStyle]="{ color: 'red' }"
-              style="color: red"
-            >
-              Remove
-            </button>
-          </div>
-        </div>
-        <button
-          (click)="addImgUrl()"
-          class="btn btn-danger"
-          [ngStyle]="{ color: 'black' }"
-        >
-          Add new imgUrl
-        </button>
-      </div> -->
-      <!-- <ng-container
-        *ngIf="showErrorInControl('imgUrl', createEstateGroup)"
+      <ng-container
+        *ngIf="getImgUrl.touched && getImgUrl.invalid"
         class="alert-error"
       >
-        <p
-          *ngIf="createEstateGroup.controls['imgUrl'].errors?.['required']"
-          class="alert-error"
-        >
-          Image Url is required!
-        </p>
-      </ng-container> -->
+        <p class="alert-error">All Image Urls are required!</p>
+      </ng-container>
 
       <div class="input">
         <input
