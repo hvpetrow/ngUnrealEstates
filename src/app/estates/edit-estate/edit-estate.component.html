@@ -159,6 +159,12 @@
           />
 
           <span *ngIf="i === 0">(Main Img)</span>
+          <ng-container
+            *ngIf="getImgUrlsControl(i).touched && getImgUrlsControl(i).invalid"
+            class="alert-error"
+          >
+            <p class="alert-error">Img url is required!</p>
+          </ng-container>
           <div *ngIf="getImgUrlsControl(i).value" class="img-wrapper">
             <img
               class="img"
@@ -190,7 +196,7 @@
         *ngIf="getImgUrl.touched && getImgUrl.invalid"
         class="alert-error"
       >
-        <p class="alert-error">All Image Urls are required!</p>
+        <p class="alert-error">*All Image Urls are required!</p>
       </ng-container>
 
       <div class="input">
