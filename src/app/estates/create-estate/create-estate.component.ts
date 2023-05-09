@@ -29,7 +29,7 @@ export class CreateEstateComponent {
 
     this.createEstateGroup = this.formBuilder.group({
       'name': new FormControl('', [Validators.required, Validators.minLength(2)]),
-      'type': new FormControl('', [Validators.required]),
+      'type': new FormControl('Apartment', [Validators.required]),
       'constructionYear': new FormControl('', [Validators.required, Validators.max(this.currentYear), Validators.min(1900)]),
       'location': new FormControl('', [Validators.required, Validators.minLength(2)]),
       'price': new FormControl('', [Validators.required]),

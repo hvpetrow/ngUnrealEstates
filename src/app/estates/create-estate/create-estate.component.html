@@ -12,6 +12,7 @@
       <div class="input">
         <input
           formControlName="name"
+          placeholder="Barington"
           type="text"
           class="input-field"
           id="name"
@@ -43,6 +44,7 @@
       <div class="input">
         <select
           name="type"
+          placeholder="House"
           id="type"
           class="input-field"
           (change)="changeEstateType($event)"
@@ -71,6 +73,7 @@
       <div class="input">
         <input
           type="number"
+          placeholder="1998"
           class="input-field"
           id="constructionYear"
           name="constructionYear"
@@ -113,6 +116,7 @@
       <div class="input">
         <input
           type="text"
+          placeholder="Berlin,Germany"
           class="input-field"
           id="location"
           name="location"
@@ -149,6 +153,7 @@
         >
           <input
             type="text"
+            placeholder="https://i.postimg.cc/26JfCc1x/kiwi.png"
             class="input-field img-urls"
             id="imgUrl"
             name="imgUrl"
@@ -194,6 +199,10 @@
         >
           Add new imgUrl
         </button>
+        <p>
+          *For recieving Img Url of your images you can upload them in
+          https://postimages.org/ and take the Img Url
+        </p>
       </div>
       <ng-container
         *ngIf="getImgUrl.touched && getImgUrl.invalid"
@@ -205,6 +214,7 @@
       <div class="input">
         <input
           type="number"
+          placeholder="150000"
           class="input-field"
           id="price"
           name="price"
@@ -230,6 +240,7 @@
       <div class="input">
         <input
           type="text"
+          placeholder="Consists of a living room with a sofa bed...."
           class="input-field"
           id="description"
           name="description"
