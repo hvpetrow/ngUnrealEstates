@@ -48,7 +48,6 @@ main {
 .description,
 .homeImage {
   color: #8597a3;
-  position: absolute;
   font-size: 1.7em;
   top: 1.4rem;
   transition: 0.25s ease;
@@ -129,6 +128,14 @@ main {
 .create-button:disabled {
   opacity: 0.7;
   cursor: not-allowed;
+}
+
+.img {
+  width: 100%;
+}
+
+.img-wrapper {
+  width: 25%;
 }
 
 .input-error {

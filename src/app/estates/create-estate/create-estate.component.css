@@ -136,6 +136,14 @@ main {
   width: 75%;
 }
 
+.img {
+  width: 100%;
+}
+
+.img-wrapper {
+  width: 25%;
+}
+
 .input-error {
   border-bottom-color: #cd1136;
 }

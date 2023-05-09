@@ -159,8 +159,12 @@
           />
 
           <span *ngIf="i === 0">(Main Img)</span>
-          <div class="img-wrapper">
-            <img src="{{ getImgUrlsControl(i).value }}" alt="img{{ i }}" />
+          <div *ngIf="getImgUrlsControl(i).value" class="img-wrapper">
+            <img
+              class="img"
+              src="{{ getImgUrlsControl(i).value }}"
+              alt="img{{ i + 1 }}"
+            />
           </div>
           <!-- Item name:
           {{ getImgUrlsControl(i) | json }} -->
