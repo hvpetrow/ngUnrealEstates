@@ -139,30 +139,54 @@
         </p>
       </ng-container>
 
-      <div class="input">
-        <input
-          type="text"
-          class="input-field"
-          id="imgUrl"
-          name="imgUrl"
-          [value]="oldEstate.imgUrls[0].imgUrl"
-          [ngClass]="{
-            'input-error': showErrorInControl('imgUrl', editEstateGroup)
-          }"
-          formControlName="imgUrl"
-        />
-        <label for="imgUrl" class="homeImage">Image Url:</label>
+      <div formArrayName="imgUrls" style="margin-top: 0.5rem">
+        <label for="imgUrl" class="homeImage">Image Urls:</label>
+
+        <div
+          *ngFor="let imgUrlInput of getImgUrl?.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <input
+            type="text"
+            class="input-field img-urls"
+            id="imgUrl"
+            name="imgUrl"
+            [ngClass]="{
+              'input-error':
+                getImgUrlsControl(i).invalid && getImgUrlsControl(i).touched
+            }"
+            formControlName="imgUrl"
+          />
+
+          <span *ngIf="i === 0">(Main Img)</span>
+          <div class="img-wrapper">
+            <img src="{{ getImgUrlsControl(i).value }}" alt="img{{ i }}" />
+          </div>
+          <!-- Item name:
+          {{ getImgUrlsControl(i) | json }} -->
+          <button
+            (click)="removeImgUrl(i)"
+            class="btn btn-danger"
+            [ngStyle]="{ color: 'red', 'border-color': 'red' }"
+            style="color: red"
+          >
+            remove
+          </button>
+        </div>
+        <button
+          type="button"
+          (click)="addImgUrl()"
+          class="btn btn-danger"
+          [ngStyle]="{ color: 'black', 'margin-top': '1rem' }"
+        >
+          Add new imgUrl
+        </button>
       </div>
       <ng-container
-        *ngIf="showErrorInControl('imgUrl', editEstateGroup)"
+        *ngIf="getImgUrl.touched && getImgUrl.invalid"
         class="alert-error"
       >
-        <p
-          *ngIf="editEstateGroup.controls['imgUrl'].errors?.['required']"
-          class="alert-error"
-        >
-          Image Url is required!
-        </p>
+        <p class="alert-error">All Image Urls are required!</p>
       </ng-container>
 
       <div class="input">

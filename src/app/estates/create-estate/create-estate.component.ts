@@ -68,10 +68,6 @@ export class CreateEstateComponent {
     this.getImgUrl.removeAt(i);
   }
 
-
-
-
-
   changeEstateType(e: Event) {
     this.createEstateGroup.controls['type'].setValue((e.target as HTMLTextAreaElement).value, {
       onlySelf: true,
