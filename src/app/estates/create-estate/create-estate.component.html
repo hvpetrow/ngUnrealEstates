@@ -151,20 +151,31 @@
           *ngFor="let imgUrlInput of getImgUrl?.controls; let i = index"
           [formGroupName]="i"
         >
-          <input
-            type="text"
-            placeholder="https://i.postimg.cc/26JfCc1x/kiwi.png"
-            class="input-field img-urls"
-            id="imgUrl"
-            name="imgUrl"
-            [ngClass]="{
-              'input-error':
-                getImgUrlsControl(i).invalid && getImgUrlsControl(i).touched
-            }"
-            formControlName="imgUrl"
-          />
+          <div class="input-wrapper">
+            <input
+              type="text"
+              placeholder="https://i.postimg.cc/26JfCc1x/kiwi.png"
+              class="input-field img-urls"
+              id="imgUrl"
+              name="imgUrl"
+              [ngClass]="{
+                'input-error':
+                  getImgUrlsControl(i).invalid && getImgUrlsControl(i).touched
+              }"
+              formControlName="imgUrl"
+            />
+            <span class="main-img-span" *ngIf="i === 0">(Main Img)</span>
+            <button
+              *ngIf="i !== 0"
+              (click)="removeImgUrl(i)"
+              class="btn btn-danger"
+              [ngStyle]="{ color: 'red', 'border-color': 'red' }"
+              style="color: red"
+            >
+              remove
+            </button>
+          </div>
 
-          <span *ngIf="i === 0">(Main Img)</span>
           <ng-container
             *ngIf="getImgUrlsControl(i).touched && getImgUrlsControl(i).invalid"
             class="alert-error"
@@ -181,21 +192,16 @@
           </div>
           <!-- Item name:
           {{ getImgUrlsControl(i) | json }} -->
-          <button
-            *ngIf="i !== 0"
-            (click)="removeImgUrl(i)"
-            class="btn btn-danger"
-            [ngStyle]="{ color: 'red', 'border-color': 'red' }"
-            style="color: red"
-          >
-            remove
-          </button>
         </div>
         <button
           type="button"
           (click)="addImgUrl()"
           class="btn btn-danger"
-          [ngStyle]="{ color: 'black', 'margin-top': '1rem' }"
+          [ngStyle]="{
+            color: 'black',
+            'margin-top': '0.5rem',
+            'margin-bottom': '0.3rem'
+          }"
         >
           Add new imgUrl
         </button>

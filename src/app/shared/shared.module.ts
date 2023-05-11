@@ -13,6 +13,7 @@ import { HighlightDirective } from './directives/highlight.directive';
 import { UnlessDirective } from './directives/unless.directive';
 import { SliderComponent } from './components/slider/slider.component';
 import { ThumbnailComponent } from './components/slider/thumbnail/thumbnail.component';
+import { LocalizedNumericInputDirective } from './directives/localized-numeric-input.directive';
 
 
 
@@ -20,7 +21,7 @@ import { ThumbnailComponent } from './components/slider/thumbnail/thumbnail.comp
 @NgModule({
   declarations: [EstateCardComponent, SpinnerComponent, ShortenPipe, DateTransformPipe, DeleteModalComponent,
     ScrollToTopBtnComponent, CarouselComponent, HighlightDirective,
-    UnlessDirective, SliderComponent, ThumbnailComponent],
+    UnlessDirective, SliderComponent, ThumbnailComponent, LocalizedNumericInputDirective],
   imports: [
     CommonModule, RouterModule, MatIconModule
   ],

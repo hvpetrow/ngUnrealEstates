@@ -133,7 +133,12 @@ main {
 }
 
 .img-urls {
-  width: 75%;
+  width: 100%;
+}
+
+.main-img-span {
+  font-size: 1.2rem;
+  white-space: nowrap;
 }
 
 .img {
@@ -141,7 +146,15 @@ main {
 }
 
 .img-wrapper {
-  width: 25%;
+  width: 29%;
+  margin-bottom: 0.4rem;
+}
+
+.input-wrapper {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: center;
 }
 
 .input-error {

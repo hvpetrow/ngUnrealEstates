@@ -10,10 +10,10 @@
   height: 2.3rem;
   border-radius: 0.8rem;
   border: none;
-  background-color: var(--clr-grey-bgn);
+  background-color: rgba(129, 115, 115, 0.466);
   padding: 0.2rem 0.6rem;
   padding-left: 6.5rem;
-  color: var(--clr-white);
+  color: #fff;
   font-size: 1rem;
 }
 
@@ -31,7 +31,7 @@
 
 .search .select option {
   background-color: var(--clr-dark-grey);
-  border-bottom: 0.3px solid var(--clr-grey);
+  border-bottom: 0.3px solid grey;
   padding: 4px 6px;
 }
 

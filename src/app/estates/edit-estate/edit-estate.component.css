@@ -130,14 +130,30 @@ main {
   cursor: not-allowed;
 }
 
+.img-urls {
+  width: 100%;
+}
+
+.main-img-span {
+  font-size: 1.2rem;
+  white-space: nowrap;
+}
+
 .img {
   width: 100%;
 }
 
 .img-wrapper {
-  width: 25%;
+  width: 29%;
+  margin-bottom: 0.4rem;
 }
 
+.input-wrapper {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
 .input-error {
   border-bottom-color: #cd1136;
 }
