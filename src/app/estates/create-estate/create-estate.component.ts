@@ -84,19 +84,12 @@ export class CreateEstateComponent {
   }
 
   createHandler(): void {
-    console.log(this.getImgUrl);
-
-    console.log(this.createEstateGroup.value);
-    console.log(this.createEstateGroup.valid);
-
     if (this.createEstateGroup.valid) {
       this.isLoading = true;
       const ownerId = this.userId;
-      const price = Number(this.createEstateGroup.controls['price'].value);
-      // var number = Number(currency.replace(/[^0-9.-]+/g,""));
-      console.log(price);
-
+      const price = Number(this.createEstateGroup.controls['price'].value.replace(/[^0-9.-]+/g, ""));
       const estate = { ...this.createEstateGroup.value, price, ownerId };
+
       console.log(estate);
 
       this.estateService.addEstate(estate).subscribe({

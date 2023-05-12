@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs';
@@ -11,7 +12,7 @@ import { UtilsService } from 'src/app/shared/services/utils.service';
   templateUrl: './edit-estate.component.html',
   styleUrls: ['./edit-estate.component.css']
 })
-export class EditEstateComponent implements OnInit {
+export class EditEstateComponent implements OnInit, AfterViewInit {
   estateId!: string;
   oldEstate: IEstate = {
     id: '',
@@ -33,7 +34,7 @@ export class EditEstateComponent implements OnInit {
 
   editEstateGroup!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private estateService: CrudService, private activatedRoute: ActivatedRoute, private router: Router, private utils: UtilsService) { }
+  constructor(private currencyPipe: CurrencyPipe, private formBuilder: FormBuilder, private estateService: CrudService, private activatedRoute: ActivatedRoute, private router: Router, private utils: UtilsService) { }
 
   ngOnInit(): void {
     this.editEstateGroup = this.formBuilder.group({
@@ -45,6 +46,8 @@ export class EditEstateComponent implements OnInit {
       'imgUrls': this.formBuilder.array([]),
       'description': new FormControl('', [Validators.required, Validators.minLength(2)]),
     });
+
+
 
     this.activatedRoute.params.subscribe(params => {
       this.estateId = params['estateId'];
@@ -62,7 +65,7 @@ export class EditEstateComponent implements OnInit {
         this.editEstateGroup.controls['type'].setValue(this.oldEstate.type);
         this.editEstateGroup.controls['year'].setValue(this.oldEstate.constructionYear);
         this.editEstateGroup.controls['location'].setValue(this.oldEstate.location);
-        this.editEstateGroup.controls['price'].setValue(this.oldEstate.price);
+        this.editEstateGroup.controls['price'].setValue(String(this.oldEstate.price));
         this.oldEstate.imgUrls.map(
           (imgUrl: any) => {
             const imgUrlForm = this.formBuilder.group({
@@ -78,6 +81,18 @@ export class EditEstateComponent implements OnInit {
         this.isLoading = false;
       }, complete: () => {
         console.log("COMPLETED");
+      }
+    });
+  }
+
+  ngAfterViewInit(): void {
+    this.editEstateGroup.valueChanges.subscribe(form => {
+      if (form.price) {
+        console.log(form.price);
+
+        this.editEstateGroup.patchValue({
+          price: this.currencyPipe.transform(form.price.replace(/\D/g, '').replace(/^0+/, ''), 'USD', 'symbol', '1.0-0')
+        }, { emitEvent: false });
       }
     });
   }
@@ -114,15 +129,15 @@ export class EditEstateComponent implements OnInit {
     console.log(this.editEstateGroup.value);
     if (this.editEstateGroup.valid) {
       this.isLoading = true;
-
       const editGroupValue = this.editEstateGroup.value;
+      const price = Number(this.editEstateGroup.controls['price'].value.replace(/[^0-9.-]+/g, ""));
 
       const editedEstate = {
         name: editGroupValue.name,
         type: editGroupValue.type,
         constructionYear: editGroupValue.year,
         location: editGroupValue.location,
-        price: editGroupValue.price,
+        price: price,
         imgUrls: editGroupValue.imgUrls,
         description: editGroupValue.description
       }
