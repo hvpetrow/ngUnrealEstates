@@ -143,10 +143,11 @@ main {
 
 .img {
   width: 100%;
+  height: 150px;
 }
 
 .img-wrapper {
-  width: 29%;
+  width: 30%;
   margin-bottom: 0.4rem;
 }
 

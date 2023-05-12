@@ -7,7 +7,9 @@
       </div>
       <div class="product-control">
         <div class="product-text">
-          <h1>{{ estate.type }} {{ estate.name }}</h1>
+          <h1 [ngStyle]="{ 'margin-bottom': '3rem' }">
+            {{ estate.type }} {{ estate.name }}
+          </h1>
           <h4>Year: {{ estate.constructionYear }}</h4>
           <h4>Location: {{ estate.location }}</h4>
           <h4>Price: {{ estate.price | currency }}</h4>

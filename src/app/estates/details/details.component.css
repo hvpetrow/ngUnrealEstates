@@ -53,8 +53,9 @@
 
 .product-text h1 {
   padding-top: 23px;
-  font-size: 28px;
+  font-size: 30px;
   color: #474747;
+  font-family: "Bentham", serif;
 }
 
 .product-btn p {
@@ -82,10 +83,10 @@
 
 .product-text h4 {
   margin: 8px 0 10px 18px;
-  font-size: 13px;
+  font-size: 14px;
   font-family: "Raleway", sans-serif;
   text-transform: uppercase;
-  color: #aaa9a9;
+  color: #949393;
   letter-spacing: 0.2em;
 }
 
@@ -95,16 +96,26 @@
   color: #474747;
   font-family: "Bentham", serif;
 }
+
 .product-text p {
-  height: auto;
-  width: 100%;
-  font-family: "Playfair Display", serif;
-  color: #5f5a5a;
-  line-height: 1.2em;
-  margin-bottom: auto;
-  font-size: 21px;
-  font-weight: lighter;
-  overflow: hidden;
+  font-size: 16px;
+  font-family: "Raleway", sans-serif;
+}
+
+.product-text h2 {
+  margin: 8px 0 47px 18px;
+  font-size: 14px;
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  color: #aaa9a9;
+  letter-spacing: 0.2em;
+  margin-bottom: 0;
+}
+
+.product-text h4:hover,
+.product-text h2:hover {
+  transition: scale 0.7s ease-in-out;
+  scale: 1.2;
 }
 
 .product-text .heading-span {
