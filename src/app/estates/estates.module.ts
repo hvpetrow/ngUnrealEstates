@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { DetailsComponent } from './details/details.component';
 import { EstatesRoutingModule } from './estates-routing.module';
 import { SharedModule } from '../shared/shared.module';
@@ -40,6 +40,6 @@ import { CatalogForSellComponent } from './catalog-for-sell/catalog-for-sell.com
     MatIconModule,
 
   ],
-  providers: [CommentsService]
+  providers: [CommentsService, CurrencyPipe]
 })
 export class EstatesModule { }

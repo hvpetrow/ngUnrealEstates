@@ -1,11 +1,10 @@
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, Form, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CrudService } from 'src/app/shared/crud.service';
-import { IEstate } from 'src/app/shared/estate';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { UtilsService } from 'src/app/shared/services/utils.service';
-
 @Component({
   selector: 'app-create-estate',
   templateUrl: './create-estate.component.html',
@@ -19,8 +18,8 @@ export class CreateEstateComponent {
   userId: string | undefined;
   isLoading: boolean = false;
   createEstateGroup!: FormGroup;
-
-  constructor(private formBuilder: FormBuilder, private authService: AuthenticationService, private estateService: CrudService, private activatedRoute: ActivatedRoute, private router: Router, private utils: UtilsService) { }
+  formattedAmount!: any;
+  constructor(private currencyPipe: CurrencyPipe, private formBuilder: FormBuilder, private authService: AuthenticationService, private estateService: CrudService, private activatedRoute: ActivatedRoute, private router: Router, private utils: UtilsService) { }
   ngOnInit(): void {
     this.user$.subscribe((user) => {
       this.userId = user?.uid;
@@ -39,8 +38,18 @@ export class CreateEstateComponent {
       })]),
       'description': new FormControl('', [Validators.required, Validators.minLength(2)]),
     });
-  }
 
+
+    this.createEstateGroup.valueChanges.subscribe(form => {
+      if (form.price) {
+        console.log(form.price);
+
+        this.createEstateGroup.patchValue({
+          price: this.currencyPipe.transform(form.price.replace(/\D/g, '').replace(/^0+/, ''), 'USD', 'symbol', '1.0-0')
+        }, { emitEvent: false });
+      }
+    });
+  }
 
 
 
@@ -83,7 +92,12 @@ export class CreateEstateComponent {
     if (this.createEstateGroup.valid) {
       this.isLoading = true;
       const ownerId = this.userId;
-      const estate = { ...this.createEstateGroup.value, ownerId };
+      const price = Number(this.createEstateGroup.controls['price'].value);
+      // var number = Number(currency.replace(/[^0-9.-]+/g,""));
+      console.log(price);
+
+      const estate = { ...this.createEstateGroup.value, price, ownerId };
+      console.log(estate);
 
       this.estateService.addEstate(estate).subscribe({
         next: (res) => {
@@ -98,4 +112,11 @@ export class CreateEstateComponent {
       });
     }
   }
+
+  // transformAmount(element: Event) {
+  //   const value = this.currencyPipe.transform((element.target as HTMLTextAreaElement).value);
+  //   console.log((element.target as HTMLTextAreaElement).value);
+
+  //   (element.target as HTMLTextAreaElement).value = value || 'err';
+  // }
 }

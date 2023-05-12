@@ -82,4 +82,10 @@ export class UtilsService {
       return allEstates.filter(x => x.location.toLowerCase().includes(searchedValue.toLowerCase()));
     }
   };
+
+  // transformAmount(element: any, formattedAmount: any) {
+  //   formattedAmount = this.currencyPipe.transform(formattedAmount, '$');
+
+  //   element.target.value = formattedAmount;
+  // }
 }

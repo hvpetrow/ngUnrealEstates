@@ -226,7 +226,7 @@
           Price is required!
         </p>
       </ng-container>
-
+      <p>*Price is in US dollar</p>
       <div class="input">
         <input
           type="text"
@@ -239,7 +239,7 @@
           [value]="oldEstate.description"
           formControlName="description"
         />
-        <label class="description">Property Description:</label>
+        <label class="description">Description:</label>
       </div>
       <ng-container
         *ngIf="showErrorInControl('description', editEstateGroup)"
