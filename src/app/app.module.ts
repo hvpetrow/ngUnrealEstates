@@ -31,6 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SearchPanelComponent } from './core/header/search-panel/search-panel.component';
 import { SearchedEstateTemplateComponent } from './core/header/searched-estate-template/searched-estate-template.component';
 import { SharedModule } from './shared/shared.module';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { SharedModule } from './shared/shared.module';
     SearchComponent,
     SearchPanelComponent,
     SearchedEstateTemplateComponent,
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,

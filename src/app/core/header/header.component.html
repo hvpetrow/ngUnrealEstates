@@ -1,9 +1,10 @@
-<nav>
+<nav [ngClass]="{ 'header-inactive': showHeader === false }">
   <a routerLink="/home">Home</a>
   <app-search> </app-search>
   <ul>
     <!-- Guest users and Logged users -->
     <li><a routerLink="/estates/catalog-for-sell">For sell</a></li>
+    <!-- <li><a routerLink="/about-us">About us</a></li> -->
     <!-- Guest users -->
     <ng-container *ngIf="!(isLoggedIn$ | async)">
       <li><a routerLink="user/login">Login</a></li>

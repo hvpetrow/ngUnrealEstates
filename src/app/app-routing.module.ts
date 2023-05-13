@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AllEstatesComponent } from './estates/all-estates/all-estates.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'catalog',
     component: AllEstatesComponent
+  },
+  {
+    path: 'about-us',
+    component: AboutUsComponent
   },
   {
     path: 'user',
