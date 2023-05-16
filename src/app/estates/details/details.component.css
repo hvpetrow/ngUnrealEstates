@@ -26,6 +26,7 @@
   flex-direction: column;
   align-content: center;
   justify-content: space-evenly;
+  position: relative;
 }
 
 .product-img {
@@ -189,6 +190,22 @@ span {
 
 .rentHome:hover {
   background-color: rgba(65, 92, 143, 0.911);
+}
+
+.close-btn {
+  display: flex;
+  align-items: center;
+  background-color: rgba(86, 124, 194, 0.911);
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 15px;
+  position: absolute;
+  top: 0;
+  right: 0.6rem;
+  border: 10px solid white;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
 }
 
 .remove {

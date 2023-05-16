@@ -5,6 +5,7 @@ import { switchMap } from 'rxjs';
 import { CrudService } from 'src/app/shared/crud.service';
 import { IEstate } from 'src/app/shared/estate';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+import { NavigationServiceService } from 'src/app/shared/services/navigation-service.service';
 
 @Component({
   selector: 'app-details',
@@ -26,13 +27,7 @@ export class DetailsComponent implements OnInit {
 
   imgs = [{ imgUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy2LtPCUCc_t2I7JUV5AP_ron0pfoc5I9E5Q&usqp=CAU' }, { imgUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1EhDd9GTb-AeQD258K-b3zqjunT98_ubO1A&usqp=CAU' }, { imgUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0EKWW-ECKkAkww91y--KLrgUBGXlPOPWPGA&usqp=CAU' }];
 
-  constructor(private activatedRoute: ActivatedRoute, private authService: AuthenticationService, private estateService: CrudService, private router: Router, public toast: HotToastService) { }
-
-
-
-  //TODO: CREATE AND EDIT ARRAY OF IMAGES TO WORK CAROUSEL PROPER
-
-
+  constructor(private activatedRoute: ActivatedRoute, private navigation: NavigationServiceService, private authService: AuthenticationService, private estateService: CrudService, private router: Router, public toast: HotToastService) { }
 
   ngOnInit(): void {
     this.user$.subscribe((user) => {
@@ -78,5 +73,9 @@ export class DetailsComponent implements OnInit {
 
   openDeleteModal() {
     this.deleteModal = true;
+  }
+
+  navigateBack() {
+    this.navigation.back();
   }
 }

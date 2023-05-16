@@ -6,6 +6,9 @@
         <!-- <img src="{{ estate.imgUrl }}" /> -->
       </div>
       <div class="product-control">
+        <button class="close-btn" (click)="navigateBack()">
+          <mat-icon>close</mat-icon>
+        </button>
         <div class="product-text">
           <h1 [ngStyle]="{ 'margin-bottom': '3rem' }">
             {{ estate.type }} {{ estate.name }}
