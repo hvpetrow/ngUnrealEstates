@@ -21,6 +21,8 @@ export class EditEstateComponent implements OnInit, AfterViewInit {
     price: 0,
     imgUrls: [],
     constructionYear: '',
+    rooms: 0,
+    area: 0,
     location: '',
     description: '',
     ownerId: '',
@@ -43,6 +45,8 @@ export class EditEstateComponent implements OnInit, AfterViewInit {
       'year': new FormControl('', [Validators.required, Validators.max(this.currentYear), Validators.min(1900)]),
       'location': new FormControl('', [Validators.required, Validators.minLength(2)]),
       'price': new FormControl('', [Validators.required]),
+      'rooms': new FormControl('', [Validators.required, Validators.max(99), Validators.min(1)]),
+      'area': new FormControl('', [Validators.required, Validators.min(1)]),
       'imgUrls': this.formBuilder.array([]),
       'description': new FormControl('', [Validators.required, Validators.minLength(2)]),
     });
@@ -64,6 +68,8 @@ export class EditEstateComponent implements OnInit, AfterViewInit {
         this.editEstateGroup.controls['name'].setValue(this.oldEstate.name);
         this.editEstateGroup.controls['type'].setValue(this.oldEstate.type);
         this.editEstateGroup.controls['year'].setValue(this.oldEstate.constructionYear);
+        this.editEstateGroup.controls['rooms'].setValue(this.oldEstate.rooms);
+        this.editEstateGroup.controls['area'].setValue(this.oldEstate.area);
         this.editEstateGroup.controls['location'].setValue(this.oldEstate.location);
         this.editEstateGroup.controls['price'].setValue(String(this.oldEstate.price));
         this.oldEstate.imgUrls.map(
@@ -138,6 +144,8 @@ export class EditEstateComponent implements OnInit, AfterViewInit {
         constructionYear: editGroupValue.year,
         location: editGroupValue.location,
         price: price,
+        rooms: editGroupValue.rooms,
+        area: editGroupValue.area,
         imgUrls: editGroupValue.imgUrls,
         description: editGroupValue.description
       }
@@ -146,7 +154,7 @@ export class EditEstateComponent implements OnInit, AfterViewInit {
 
       this.estateService.updateEstate(this.estateId, editedEstate).subscribe({
         next: (res) => {
-          this.router.navigate(['/home']);
+          this.router.navigate([`/estates/${this.estateId}/details`]);
           this.isLoading = false;
 
         },

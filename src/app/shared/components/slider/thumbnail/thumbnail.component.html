@@ -2,8 +2,8 @@
   <img
     *ngFor="let img of arr; let indexOfElement = index"
     alt="boat.png"
-    height="50"
-    width="50"
+    height="100"
+    width="100"
     src="{{ img.imgUrl }}"
     (click)="setImageIndexHandler(indexOfElement)"
     [ngClass]="{

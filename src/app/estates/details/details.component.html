@@ -10,9 +10,24 @@
           <h1 [ngStyle]="{ 'margin-bottom': '3rem' }">
             {{ estate.type }} {{ estate.name }}
           </h1>
-          <h4>Year: {{ estate.constructionYear }}</h4>
-          <h4>Location: {{ estate.location }}</h4>
-          <h4>Price: {{ estate.price | currency }}</h4>
+          <h4>
+            Price: <span class="price">{{ estate.price | currency }}</span>
+          </h4>
+          <h4>
+            Location: <span class="location">{{ estate.location }}</span>
+          </h4>
+          <h4>
+            Rooms: <span class="year">{{ estate.rooms }}</span>
+          </h4>
+          <h4>
+            Living Area:
+            <span class="year"
+              >{{ estate.area }} <span class="area-m">m</span><sup>2</sup></span
+            >
+          </h4>
+          <h4>
+            Year: <span class="year">{{ estate.constructionYear }}</span>
+          </h4>
         </div>
         <div class="product-btn">
           <ng-container *ngIf="isOfferOwner">
@@ -29,6 +44,9 @@
         </div>
       </div>
     </div>
+    <!-- <div class="energy-pass">
+      <app-energy-pass></app-energy-pass>
+    </div> -->
     <div class="product-info">
       <div class="product-text">
         <h1>Description</h1>

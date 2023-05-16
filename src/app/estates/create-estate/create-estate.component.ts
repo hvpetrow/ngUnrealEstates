@@ -32,6 +32,8 @@ export class CreateEstateComponent {
       'constructionYear': new FormControl('', [Validators.required, Validators.max(this.currentYear), Validators.min(1900)]),
       'location': new FormControl('', [Validators.required, Validators.minLength(2)]),
       'price': new FormControl('', [Validators.required]),
+      'rooms': new FormControl('', [Validators.required, Validators.max(99), Validators.min(1)]),
+      'area': new FormControl('', [Validators.required, Validators.min(1)]),
       // 'imgUrl': new FormControl('', [Validators.required]),
       'imgUrls': this.formBuilder.array([new FormGroup({
         'imgUrl': new FormControl('', [Validators.required])

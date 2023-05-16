@@ -46,7 +46,9 @@ main {
 .city,
 .availablePieces,
 .description,
-.homeImage {
+.homeImage,
+.rooms,
+.area {
   color: #8597a3;
   font-size: 1.7em;
   top: 1.4rem;
@@ -61,7 +63,9 @@ main {
 .city,
 .availablePieces,
 .description,
-.homeImage {
+.homeImage,
+.rooms,
+.area {
   color: #6658d3;
   transform: translateY(-1.5rem);
 }

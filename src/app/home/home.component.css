@@ -131,10 +131,14 @@
 
 .houses {
   display: flex;
-  flex-wrap: wrap;
   text-align: center;
+  width: 90%;
+  margin: 0 auto;
+  align-content: center;
+  align-items: center;
   justify-content: space-evenly;
-  width: 100%;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .details-con {

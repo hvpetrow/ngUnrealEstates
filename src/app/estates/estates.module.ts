@@ -39,6 +39,7 @@ import { CatalogForSellComponent } from './catalog-for-sell/catalog-for-sell.com
     A11yModule,
     MatIconModule,
 
+
   ],
   providers: [CommentsService, CurrencyPipe]
 })

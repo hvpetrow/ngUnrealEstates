@@ -109,6 +109,77 @@
 
       <div class="input">
         <input
+          type="number"
+          class="input-field"
+          id="rooms"
+          name="rooms"
+          formControlName="rooms"
+          [ngClass]="{
+            'input-error': showErrorInControl('rooms', editEstateGroup)
+          }"
+          [value]="oldEstate.rooms"
+        />
+        <label for="rooms" class="rooms">Rooms:</label>
+      </div>
+      <ng-container
+        *ngIf="showErrorInControl('rooms', editEstateGroup)"
+        class="alert-error"
+      >
+        <p
+          *ngIf="editEstateGroup.controls['rooms'].errors?.['required']"
+          class="alert-error"
+        >
+          Rooms is required!
+        </p>
+        <p
+          *ngIf="editEstateGroup.controls['rooms'].errors?.['max']"
+          class="alert-error"
+        >
+          rooms must be max 99!
+        </p>
+        <p
+          *ngIf="editEstateGroup.controls['rooms'].errors?.['min']"
+          class="alert-error"
+        >
+          rooms must be min 1!
+        </p>
+      </ng-container>
+
+      <div class="input">
+        <input
+          type="number"
+          class="input-field"
+          id="area"
+          name="area"
+          formControlName="area"
+          [ngClass]="{
+            'input-error': showErrorInControl('area', editEstateGroup)
+          }"
+          [value]="oldEstate.area"
+        />
+        <label for="area" class="area">Living Area:</label>
+      </div>
+      <ng-container
+        *ngIf="showErrorInControl('area', editEstateGroup)"
+        class="alert-error"
+      >
+        <p
+          *ngIf="editEstateGroup.controls['area'].errors?.['required']"
+          class="alert-error"
+        >
+          Rooms is required!
+        </p>
+        <p
+          *ngIf="editEstateGroup.controls['area'].errors?.['min']"
+          class="alert-error"
+        >
+          area must be min 1!
+        </p>
+      </ng-container>
+      <p>*Living area is in m<sup>2</sup> (quadrat meters)</p>
+
+      <div class="input">
+        <input
           type="text"
           class="input-field"
           id="location"
@@ -201,6 +272,11 @@
         <p class="alert-error">*All Image Urls are required!</p>
       </ng-container>
 
+      <p>
+        *For taking Img Url of your images you can upload them in
+        https://postimages.org/ and take the Img Url
+      </p>
+
       <div class="input">
         <input
           type="text"
@@ -226,7 +302,6 @@
           Price is required!
         </p>
       </ng-container>
-      <p>*Price is in US dollar</p>
       <div class="input">
         <input
           type="text"
@@ -258,10 +333,6 @@
           Description must be at least 2 characters long!
         </p>
       </ng-container>
-      <p>
-        *For taking Img Url of your images you can upload them in
-        https://postimages.org/ and take the Img Url
-      </p>
       <div class="create-action">
         <button
           [disabled]="isLoading || !editEstateGroup.valid"

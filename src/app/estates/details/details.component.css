@@ -72,17 +72,12 @@
   margin-bottom: 0;
 }
 
-.product-text h4 {
-  margin: 8px 0 10px 18px;
-  font-size: 13px;
-  font-family: "Raleway", sans-serif;
-  text-transform: uppercase;
-  color: #aaa9a9;
-  letter-spacing: 0.2em;
-}
-
-.product-text h4 {
-  margin: 8px 0 10px 18px;
+.product-text h4,
+.price,
+.location,
+.year,
+.area-m {
+  margin: 2px;
   font-size: 14px;
   font-family: "Raleway", sans-serif;
   text-transform: uppercase;
@@ -95,6 +90,24 @@
   font-size: 15px;
   color: #474747;
   font-family: "Bentham", serif;
+}
+
+.price,
+.location,
+.year,
+.area-m {
+  color: #b22b2e;
+  font-size: 15px;
+}
+
+.location,
+.year,
+.area-m {
+  color: #585757;
+}
+
+.area-m {
+  text-transform: lowercase;
 }
 
 .product-text p {
