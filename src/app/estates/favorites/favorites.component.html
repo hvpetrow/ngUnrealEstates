@@ -1,0 +1,21 @@
+<section id="top-houses">
+  <h1>Estates For Sell</h1>
+  <div *ngIf="favorites$ | async as favorites; else loader" class="houses">
+    <app-estate-card
+      *ngFor="let estate of favorites"
+      class="estate-card"
+      [estate]="estate"
+    ></app-estate-card>
+
+    <!-- If there are still no offers for housing in the database display: -->
+    <div *ngIf="favorites.length === 0" class="no-data-container">
+      <p class="no-data">There are no offers found...</p>
+    </div>
+  </div>
+</section>
+
+<app-scroll-to-top-btn> </app-scroll-to-top-btn>
+
+<ng-template #loader>
+  <app-spinner></app-spinner>
+</ng-template>

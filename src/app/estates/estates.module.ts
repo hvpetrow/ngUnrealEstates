@@ -14,7 +14,8 @@ import { CommentsService } from '../shared/services/comments.service';
 import { A11yModule } from '@angular/cdk/a11y';
 import { MatIconModule } from '@angular/material/icon';
 import { ContactModalComponent } from './details/contact-modal/contact-modal.component';
-import { CatalogForSellComponent } from './catalog-for-sell/catalog-for-sell.component'
+import { CatalogForSellComponent } from './catalog-for-sell/catalog-for-sell.component';
+import { FavoritesComponent } from './favorites/favorites.component'
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { CatalogForSellComponent } from './catalog-for-sell/catalog-for-sell.com
     CommentsComponent,
     ContactModalComponent,
     CatalogForSellComponent,
+    FavoritesComponent,
 
   ],
   imports: [

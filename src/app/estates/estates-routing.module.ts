@@ -5,6 +5,7 @@ import { CreateEstateComponent } from "./create-estate/create-estate.component";
 import { CatalogForSellComponent } from "./catalog-for-sell/catalog-for-sell.component";
 import { AuthenticationGuard } from "../core/guards/authentication.guard";
 import { OwnerGuard } from "../core/guards/owner.guard";
+import { FavoritesComponent } from "./favorites/favorites.component";
 
 const routes: Routes = [
     {
@@ -24,6 +25,10 @@ const routes: Routes = [
     {
         path: 'catalog-for-sell',
         component: CatalogForSellComponent
+    },
+    {
+        path: 'favorites',
+        component: FavoritesComponent
     }
 ];
 
