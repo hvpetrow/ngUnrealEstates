@@ -1,10 +1,10 @@
 <section id="top-houses">
-  <h1>Estates For Sell</h1>
-  <div *ngIf="favorites$ | async as favorites; else loader" class="houses">
+  <h1>Favorites</h1>
+  <div *ngIf="favorites; else loader" class="houses">
     <app-estate-card
-      *ngFor="let estate of favorites"
+      *ngFor="let favorite of favorites"
       class="estate-card"
-      [estate]="estate"
+      [estate]="favorite"
     ></app-estate-card>
 
     <!-- If there are still no offers for housing in the database display: -->

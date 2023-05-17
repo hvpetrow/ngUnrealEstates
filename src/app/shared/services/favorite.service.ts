@@ -2,21 +2,36 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { from } from 'rxjs';
 import { IEstate } from '../estate';
+import { arrayRemove, arrayUnion } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavoriteService {
-  favoritesCollectionRef = this.db.collection('favorites');
+  usersCollectionRef = this.db.collection('users');
 
   constructor(private db: AngularFirestore) { }
 
-  addFavorite(favorite: IEstate) {
-    return from(this.favoritesCollectionRef.add(favorite));
+  initializeUserWithFavorites(userId: string) {
+    return from(this.usersCollectionRef.doc(userId).set({ favorites: [] }));
   }
 
-  deleteFavorite(favoriteId: string) {
-    const docRef = this.db.doc('favorites/' + favoriteId);
-    return from(docRef.delete());
+  addFavorite(userId: string, favoriteId: string) {
+    const userRef = this.db.doc('users/' + userId);
+    return from(userRef.update({
+      favorites: arrayUnion(favoriteId)
+    }));
+  }
+
+  getFavoritesByUserId(userId: string | undefined) {
+    const ref = this.db.doc('users/' + userId);
+    return ref.valueChanges();
+  }
+
+  deleteFavorite(userId: string, favoriteId: string) {
+    const userRef = this.db.doc('users/' + userId);
+    return from(userRef.update({
+      favorites: arrayRemove(favoriteId)
+    }));
   }
 }

@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { HotToastService } from '@ngneat/hot-toast';
-import { Observable, map } from 'rxjs';
-import { CrudService } from 'src/app/shared/crud.service';
-import { IEstate } from 'src/app/shared/estate';
+import { switchMap } from 'rxjs';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+import { FavoriteService } from 'src/app/shared/services/favorite.service';
 
 @Component({
   selector: 'app-favorites',
@@ -11,21 +10,44 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
   styleUrls: ['./favorites.component.css']
 })
 export class FavoritesComponent {
-  favorites$!: Observable<IEstate[]>;
+  currentUserData!: any;
+  favorites: any;
+  user$ = this.authService.currentUser$;
+  userId!: string | undefined;
 
-  constructor(public authService: AuthenticationService, private estateService: CrudService, public toast: HotToastService) { }
+  constructor(private authService: AuthenticationService, private favoriteService: FavoriteService, public toast: HotToastService) { }
 
   ngOnInit(): void {
-    this.getEstates();
+    this.user$.subscribe((user) => {
+      this.userId = user?.uid;
+    });
+
+    this.getFavorites();
   }
 
-  getEstates(): void {
-    this.favorites$ = this.estateService.getEstateList().pipe(
-      map(changes =>
-        changes.map(c => {
-          const fields: any = c.payload.doc.data();
-          // return Object.assign({ id: c.payload.doc.id }, c.payload.doc.data());
-          return ({ ...fields, id: c.payload.doc.id })
-        })));
+  getFavorites(): void {
+    this.favoriteService.getFavoritesByUserId(this.userId).subscribe({
+      next: (res) => {
+        this.currentUserData = res;
+        console.log(this.currentUserData);
+      },
+      error: (err) => {
+        console.error(err.message);
+      }
+    });
+    //   this.user$.pipe(
+    //     switchMap((user) => {
+    //       this.userId = user?.uid;
+    //       return this.favoriteService.getFavoritesByUserId(this.userId);
+    //     })
+    //   ).subscribe({
+    //     next: (res) => {
+    //       this.currentUserData = res;
+    //       console.log(this.currentUserData);
+    //     },
+    //     error: (err) => {
+    //       console.error(err.message);
+    //     }
+    //   });
   }
 }
