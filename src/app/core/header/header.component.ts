@@ -1,7 +1,8 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { fromEvent, throttleTime, map, pairwise, distinctUntilChanged, share, filter } from 'rxjs';
+import { fromEvent, throttleTime, map, pairwise, distinctUntilChanged, share, filter, switchMap } from 'rxjs';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+import { FavoriteService } from 'src/app/shared/services/favorite.service';
 
 enum Direction {
   Up = 'Up',
@@ -18,12 +19,25 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   headerBgn: boolean = false;
   showHeader: boolean = false;
   lastScrollTop: number = 0;
+  favoritesCount!: any;
+  userId!: string | undefined;
 
-  constructor(private authService: AuthenticationService, private router: Router) { }
+  constructor(private authService: AuthenticationService, private favoriteService: FavoriteService, private router: Router) { }
 
   ngOnInit(): void {
-    this.user$.subscribe((user) => {
-      console.log(user);
+    this.user$.pipe(
+      switchMap((user) => {
+        this.userId = user?.uid;
+        return this.favoriteService.getFavoritesByUserId(this.userId);
+      })
+    ).subscribe({
+      next: (res: any) => {
+        this.favoritesCount = res.favorites.length;
+        console.log(this.favoritesCount);
+      },
+      error: (err) => {
+        console.error(err.message);
+      }
     });
 
     this.isLoggedIn$.subscribe((userIsLogged) => {

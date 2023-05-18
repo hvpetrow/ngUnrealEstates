@@ -15,11 +15,38 @@ nav {
   z-index: 1000;
   transition: all 0.5s ease-in;
 }
+
+nav ul {
+  display: flex;
+  align-items: center;
+}
 .header-active {
   top: 0;
 }
 .header-inactive {
   top: -5rem;
+}
+
+.favorites {
+  display: flex;
+  align-items: center;
+}
+
+.features {
+  color: #fff;
+  fill: #fff;
+  border-radius: 1rem;
+  padding: 0 0.125rem 0.05rem;
+  display: flex;
+  align-items: center;
+  height: 2.25rem;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.count {
+  margin-left: 0.125rem;
+  padding: 0 0.25rem 0 0;
 }
 
 a {

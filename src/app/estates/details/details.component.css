@@ -208,6 +208,22 @@ span {
   transition: all 0.5s ease-in-out;
 }
 
+.favorite-btn {
+  display: flex;
+  align-items: center;
+  background-color: rgba(86, 124, 194, 0.911);
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 15px;
+  position: absolute;
+  top: 0;
+  right: 3rem;
+  border: 10px solid white;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
 .remove {
   background-color: rgb(199, 136, 109);
   cursor: pointer;

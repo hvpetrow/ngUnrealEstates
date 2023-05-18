@@ -1,15 +1,17 @@
 <section id="top-houses">
   <h1>Favorites</h1>
   <div *ngIf="favorites; else loader" class="houses">
-    <app-estate-card
-      *ngFor="let favorite of favorites"
-      class="estate-card"
-      [estate]="favorite"
-    ></app-estate-card>
+    <div *ngIf="favorites.length > 0">
+      <app-estate-card
+        *ngFor="let favorite of favorites"
+        class="estate-card"
+        [estate]="favorite"
+      ></app-estate-card>
+    </div>
 
     <!-- If there are still no offers for housing in the database display: -->
     <div *ngIf="favorites.length === 0" class="no-data-container">
-      <p class="no-data">There are no offers found...</p>
+      <p class="no-data">There are no favorites offers found...</p>
     </div>
   </div>
 </section>

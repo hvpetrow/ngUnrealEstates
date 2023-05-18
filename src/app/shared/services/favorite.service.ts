@@ -16,7 +16,7 @@ export class FavoriteService {
     return from(this.usersCollectionRef.doc(userId).set({ favorites: [] }));
   }
 
-  addFavorite(userId: string, favoriteId: string) {
+  addFavorite(userId: string | undefined, favoriteId: string) {
     const userRef = this.db.doc('users/' + userId);
     return from(userRef.update({
       favorites: arrayUnion(favoriteId)
@@ -24,11 +24,13 @@ export class FavoriteService {
   }
 
   getFavoritesByUserId(userId: string | undefined) {
+    console.log(userId);
+
     const ref = this.db.doc('users/' + userId);
     return ref.valueChanges();
   }
 
-  deleteFavorite(userId: string, favoriteId: string) {
+  removeFavorite(userId: string | undefined, favoriteId: string) {
     const userRef = this.db.doc('users/' + userId);
     return from(userRef.update({
       favorites: arrayRemove(favoriteId)

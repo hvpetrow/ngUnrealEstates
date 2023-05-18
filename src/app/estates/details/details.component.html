@@ -6,6 +6,20 @@
         <!-- <img src="{{ estate.imgUrl }}" /> -->
       </div>
       <div class="product-control">
+        <button
+          *ngIf="!isFavorite"
+          (click)="addFavorite()"
+          class="favorite-btn"
+        >
+          <mat-icon>star_border</mat-icon>
+        </button>
+        <button
+          class="favorite-btn"
+          *ngIf="isFavorite"
+          (click)="removeFavorite()"
+        >
+          <mat-icon>star</mat-icon>
+        </button>
         <button class="close-btn" (click)="navigateBack()">
           <mat-icon>close</mat-icon>
         </button>
