@@ -23,6 +23,10 @@ export class CrudService {
     return this.estateRef.valueChanges();
   }
 
+  getEstatesByUserId(userId: string | undefined) {
+    return this.db.collection('users', ref => ref.where('favorites', '==', userId).orderBy('createdAt')).snapshotChanges();
+  }
+
   // Fetch estates List
   getEstateList() {
     return this.estatesCollectionRef.snapshotChanges();
