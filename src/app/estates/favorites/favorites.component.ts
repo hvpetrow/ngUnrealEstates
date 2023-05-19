@@ -26,33 +26,67 @@ export class FavoritesComponent {
     //   })
     // ).subscribe({
     //   next: (res: any) => {
-    //     this.favorites = res.favorites;
-    //     console.log(this.favorites.length);
+    //     this.favoritesId = res.favorites;
+    //     console.log(this.favoritesId);
     //   },
     //   error: (err) => {
     //     console.error(err.message);
     //   }
     // });
+
     this.user$.pipe(
       switchMap((user) => {
         this.userId = user?.uid;
-        return this.estateService.getEstatesByUserId(this.userId).pipe(
+        return this.favoriteService.getFavoritesByUserId(this.userId);
+      }),
+      switchMap((res: any) => {
+        this.favoritesId = res.favorites;
+        console.log(this.favoritesId);
+        return this.estateService.getEstatesByFavoritesId(this.favoritesId).pipe(
           map(changes =>
             changes.map(c => {
               const fields: any = c.payload.doc.data();
               return ({ ...fields, id: c.payload.doc.id })
-            })))
+            }))
+        )
       })
     ).subscribe({
       next: (res) => {
         console.log(res);
-
         this.favorites = res;
       },
       error: (err) => {
         console.error(err);
       }
     });
+
+
+
+
+
+    // this.user$.pipe(
+    //   switchMap((user) => {
+    //     this.userId = user?.uid;
+    //     return this.estateService.getEstatesByUserId(this.userId).pipe(
+    //       map(changes =>
+    //         changes.map(c => {
+    //           const fields: any = c.payload.doc.data();
+    //           return ({ ...fields, id: c.payload.doc.id })
+    //         })))
+    //   })
+    // ).subscribe({
+    //   next: (res) => {
+    //     console.log(res);
+
+    //     this.favorites = res;
+    //   },
+    //   error: (err) => {
+    //     console.error(err);
+    //   }
+    // });
+
+
+
 
     // this.getFavoriteEstates();
 
@@ -68,23 +102,23 @@ export class FavoritesComponent {
 
   }
 
-  getFavoriteEstates() {
-    console.log(this.userId);
+  // getFavoriteEstates() {
+  //   console.log(this.userId);
 
-    this.estateService.getEstatesByUserId(this.userId).pipe(
-      map(changes =>
-        changes.map(c => {
-          const fields: any = c.payload.doc.data();
-          return ({ ...fields, id: c.payload.doc.id })
-        }))).subscribe({
-          next: (res) => {
-            this.favorites = res;
-          },
-          error: (err) => {
-            console.error(err);
-          }
-        });
-  }
+  //   this.estateService.getEstatesByUserId(this.userId).pipe(
+  //     map(changes =>
+  //       changes.map(c => {
+  //         const fields: any = c.payload.doc.data();
+  //         return ({ ...fields, id: c.payload.doc.id })
+  //       }))).subscribe({
+  //         next: (res) => {
+  //           this.favorites = res;
+  //         },
+  //         error: (err) => {
+  //           console.error(err);
+  //         }
+  //       });
+  // }
 
   // getFavorites(): void {
   //   this.favoriteService.getFavoritesByUserId(this.userId).subscribe({

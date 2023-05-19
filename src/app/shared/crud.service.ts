@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { IEstate } from './estate';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Observable, from } from 'rxjs';
+import { documentId } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +24,10 @@ export class CrudService {
     return this.estateRef.valueChanges();
   }
 
-  getEstatesByUserId(userId: string | undefined) {
-    return this.db.collection('users', ref => ref.where('favorites', '==', userId).orderBy('createdAt')).snapshotChanges();
+  getEstatesByFavoritesId(userFavoritesId: string[] | undefined) {
+    console.log(userFavoritesId);
+
+    return this.db.collection('estates', ref => ref.where(documentId(), 'in', userFavoritesId)).snapshotChanges();
   }
 
   // Fetch estates List

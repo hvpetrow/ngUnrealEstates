@@ -208,6 +208,10 @@ span {
   transition: all 0.5s ease-in-out;
 }
 
+.close-btn:hover {
+  background-color: rgba(65, 92, 143, 0.911);
+}
+
 .favorite-btn {
   display: flex;
   align-items: center;
@@ -222,6 +226,10 @@ span {
   border: 10px solid white;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
+}
+
+.favorite-btn:hover {
+  background-color: rgba(65, 92, 143, 0.911);
 }
 
 .remove {
