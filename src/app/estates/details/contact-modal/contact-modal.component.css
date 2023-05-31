@@ -20,9 +20,9 @@
 }
 
 .modal-content {
-  background-color: grey;
+  background-color: #fff;
   padding: 2rem;
-  border: 1px solid grey;
+  border: 1px solid #fff;
   border-radius: 0.6rem;
   width: 37.5rem;
   scale: 0;
@@ -45,10 +45,71 @@
   margin-bottom: 1.5rem;
 }
 
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.agent-name {
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.75;
+}
+
+.address {
+  display: flex;
+  justify-content: center;
+}
+
+.address,
+.agent,
+.address-data {
+  font-weight: 300;
+  line-height: 1.75;
+  font-size: 1rem;
+  color: #626366;
+}
+
+.address-data {
+  margin: 0px;
+}
+
+.mobile {
+  color: #1a3668;
+}
+
+#location {
+  color: #b22b2e;
+}
+
+.close-btn {
+  display: flex;
+  align-items: center;
+  background-color: rgba(86, 124, 194, 0.911);
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 15px;
+  position: absolute;
+  top: 0;
+  right: 0.6rem;
+  border: 10px solid white;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.close-btn:hover {
+  background-color: rgba(65, 92, 143, 0.911);
+}
+
 .close {
   font-size: 2rem;
   font-weight: bold;
-  color: lightgrey;
+  color: rgba(86, 124, 194, 0.911);
   border-radius: 10px;
   position: absolute;
   top: 0;
@@ -58,8 +119,7 @@
 
 .close:hover,
 .close:focus {
-  scale: 1.2;
-  color: red;
+  color: rgba(65, 92, 143, 0.911);
   text-decoration: none;
   cursor: pointer;
 }
@@ -68,11 +128,20 @@
   display: flex;
   gap: 1rem;
   justify-content: center;
+  transition: all 0.5s ease-in-out;
 }
 
 .action-btns button:nth-child(1) {
-  background-color: lightgray;
-  border-color: lightgray;
+  background-color: rgba(86, 124, 194, 0.911);
+  border-color: rgba(86, 124, 194, 0.911);
+  cursor: pointer;
+}
+
+.action-btns button:nth-child(1):hover {
+  background-color: rgba(65, 92, 143, 0.911);
+  border-color: rgba(65, 92, 143, 0.911);
+  scale: 1;
+
   cursor: pointer;
 }
 

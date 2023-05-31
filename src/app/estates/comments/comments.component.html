@@ -3,10 +3,63 @@
   [commentId]="comment.id"
 ></app-delete-modal>
 <li class="comment-wrapper">
-  <div class="owner-info">
-    <span class="owner">{{ comment.ownerEmail }}</span>
+  <div class="header">
+    <div class="owner-info">
+      <span class="owner">{{ comment.ownerEmail }}</span>
+    </div>
+    <div className="comment-likes">
+      <span>Likes: {{ comment.likes?.length || 0 }} </span>
+      <span>Dislikes: {{ comment.dislikes?.length || 0 }}</span>
+    </div>
   </div>
   <div class="comment">
+    <div class="comment-btns">
+      <ng-container *ngIf="currentUserId && !isOwner">
+        <ng-container *ngIf="!hasLiked && !hasDisliked">
+          <button (click)="sendReaction('like')" class="like-btn reaction-btn">
+            <mat-icon>thumb_up</mat-icon>
+          </button>
+          <button
+            (click)="sendReaction('dislike')"
+            class="dislike-btn reaction-btn"
+          >
+            <mat-icon>thumb_down</mat-icon>
+          </button>
+        </ng-container>
+        <ng-container *ngIf="hasLiked">
+          <button
+            (click)="removeReaction('like')"
+            class="like-active reaction-btn"
+          >
+            <mat-icon>thumb_up</mat-icon>
+          </button>
+        </ng-container>
+        <ng-container *ngIf="hasDisliked">
+          <button
+            (click)="removeReaction('dislike')"
+            class="dislike-active reaction-btn"
+          >
+            <mat-icon>thumb_down</mat-icon>
+          </button>
+        </ng-container>
+      </ng-container>
+      <ng-container *ngIf="currentUserId && isOwner && !isEdited">
+        <button (click)="setEditingMode()" class="reaction-btn edit-btn">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button (click)="openDeleteModal()" class="reaction-btn delete-btn">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </ng-container>
+      <ng-container *ngIf="currentUserId && isOwner && isEdited">
+        <button (click)="cancelEditingMode()" class="reaction-btn delete-btn">
+          Cancel
+        </button>
+        <button (click)="editHandler()" class="reaction-btn edit-btn">
+          Post
+        </button>
+      </ng-container>
+    </div>
     <div class="comment-content">
       <p *ngIf="!isEdited">
         {{ comment.content }}
@@ -26,44 +79,7 @@
         </form>
       </ng-container>
     </div>
-    <div className="comment-likes">
-      <span>Likes: {{ comment.likes?.length || 0 }} </span>
-      <span>Dislikes: {{ comment.dislikes?.length || 0 }}</span>
-    </div>
-    <div class="comment-btns">
-      <ng-container *ngIf="currentUserId && !isOwner">
-        <ng-container *ngIf="!hasLiked && !hasDisliked">
-          <button (click)="sendReaction('like')" class="delete-btn">
-            <mat-icon>thumb_up</mat-icon>
-          </button>
-          <button (click)="sendReaction('dislike')" class="edit-btn">
-            <mat-icon>thumb_down</mat-icon>
-          </button>
-        </ng-container>
-        <ng-container *ngIf="hasLiked">
-          <button (click)="removeReaction('like')" class="delete-btn">
-            <mat-icon>thumb_up</mat-icon>
-          </button>
-        </ng-container>
-        <ng-container *ngIf="hasDisliked">
-          <button (click)="removeReaction('dislike')" class="edit-btn">
-            <mat-icon>thumb_down</mat-icon>
-          </button>
-        </ng-container>
-      </ng-container>
-      <ng-container *ngIf="currentUserId && isOwner && !isEdited">
-        <button (click)="openDeleteModal()" class="delete-btn">
-          <mat-icon>delete</mat-icon>
-        </button>
-        <button (click)="setEditingMode()" class="edit-btn">
-          <mat-icon>edit</mat-icon>
-        </button>
-      </ng-container>
-      <ng-container *ngIf="currentUserId && isOwner && isEdited">
-        <button (click)="cancelEditingMode()" class="delete-btn">Cancel</button>
-        <button (click)="editHandler()" class="edit-btn">Post</button>
-      </ng-container>
-    </div>
+
     <span class="timestamp">{{ timeAgo }}</span>
   </div>
 </li>

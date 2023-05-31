@@ -32,22 +32,22 @@
 }
 
 .comments-info {
+  padding-top: 1.5rem;
   color: #fff;
-  height: 200px auto;
   margin: 50px auto;
   display: flex;
-  max-width: 950px;
+  width: 80%;
   background: -webkit-linear-gradient(to right, #383838, #c33030);
   background: -webkit-gradient(
     linear,
     left top,
     right top,
-    from(#222121),
-    to(rgb(#383838))
+    from(#ffffff),
+    to(rgb(#acacac))
   );
   background: -webkit-linear-gradient(left, #222121, #383838);
   background: -o-linear-gradient(left, #222121, #383838);
-  background: linear-gradient(to right, #222121, #383838);
+  background: linear-gradient(to right, #acacac, #ffffff);
   -webkit-box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
   margin-bottom: 8em;
   /* border: 3px solid #ef816c; */
@@ -59,26 +59,22 @@
 .noBullet {
   list-style-type: none;
   padding: 0;
-  width: 950px;
+  margin: 0 auto;
   text-align: center;
 }
 
 .inputFields {
-  margin: 18px 0;
-  padding: 10px;
-  width: 270px;
-  border: 1px solid #e66045;
   background: rgba(20, 20, 20, 0.342);
-  color: white;
+  color: #000;
   border-radius: 10px;
   outline: none;
+  width: 100%;
 }
 
 textarea {
   margin-top: 40px;
   resize: none;
   height: 70px;
-  width: 450px !important;
   font-size: 16px;
 }
 

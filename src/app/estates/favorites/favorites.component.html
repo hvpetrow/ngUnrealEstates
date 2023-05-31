@@ -1,7 +1,7 @@
 <section id="top-houses">
   <h1>Favorites</h1>
-  <div *ngIf="favorites; else loader" class="houses">
-    <div *ngIf="favorites.length > 0">
+  <div *ngIf="favorites; else loader">
+    <div *ngIf="favorites.length > 0" class="houses">
       <app-estate-card
         *ngFor="let favorite of favorites"
         class="estate-card"

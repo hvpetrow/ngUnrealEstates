@@ -71,7 +71,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     this.authService.logout().subscribe(() => {
       this.router.navigate(['/user/login']);
     });
-    console.log(this.showHeader);
 
   }
 }
