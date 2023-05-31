@@ -144,7 +144,7 @@
           Location must be at least 2 characters long!
         </p>
       </ng-container>
-      <div formArrayName="imgUrls" style="margin-top: 0.5rem">
+      <div formArrayName="imgUrls" style="margin-top: 1rem">
         <label for="imgUrl" class="homeImage">Image Urls:</label>
 
         <div
@@ -162,6 +162,7 @@
                 'input-error':
                   getImgUrlsControl(i).invalid && getImgUrlsControl(i).touched
               }"
+              style="margin-top: 1.5rem"
               formControlName="imgUrl"
             />
             <span class="main-img-span" *ngIf="i === 0">(Main Img)</span>

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { fromEvent, throttleTime, map, pairwise, distinctUntilChanged, share, filter, switchMap } from 'rxjs';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { FavoriteService } from 'src/app/shared/services/favorite.service';
@@ -21,10 +21,22 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   lastScrollTop: number = 0;
   favoritesCount!: any;
   userId!: string | undefined;
+  page!: string;
 
   constructor(private authService: AuthenticationService, private favoriteService: FavoriteService, private router: Router) { }
 
   ngOnInit(): void {
+    this.router.events
+      .subscribe((event) => {
+        if (event instanceof NavigationStart) {
+          // Could add more chars url:path?=;other possible
+          const urlDelimitators = new RegExp(/[?//,;&:#$+=]/);
+          let urlPath = event.url.slice(1).split(urlDelimitators);
+          let currentUrlPath = urlPath[urlPath.length - 1];
+          console.log('URL_PATH: ', currentUrlPath);
+        }
+      });
+
     this.user$.pipe(
       switchMap((user) => {
         this.userId = user?.uid;
