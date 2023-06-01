@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { IEstate } from './estate';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Observable, from } from 'rxjs';
-import { documentId } from '@angular/fire/firestore';
+import { arrayRemove, arrayUnion, documentId } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -45,5 +45,20 @@ export class CrudService {
   deleteEstate(estateId: string) {
     const docRef = this.db.doc('estates/' + estateId);
     return from(docRef.delete());
+  }
+
+
+  addMyOffer(userId: string | undefined, myOfferId: string) {
+    const userRef = this.db.doc('users/' + userId);
+    return from(userRef.update({
+      myOffers: arrayUnion(myOfferId)
+    }));
+  }
+
+  removeMyOffer(userId: string | undefined, myOfferId: string) {
+    const userRef = this.db.doc('users/' + userId);
+    return from(userRef.update({
+      myOffers: arrayRemove(myOfferId)
+    }));
   }
 }

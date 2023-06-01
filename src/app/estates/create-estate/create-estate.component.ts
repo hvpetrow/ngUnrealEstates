@@ -2,6 +2,7 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, Form, FormArray } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap } from 'rxjs';
 import { CrudService } from 'src/app/shared/crud.service';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { UtilsService } from 'src/app/shared/services/utils.service';
@@ -19,6 +20,8 @@ export class CreateEstateComponent {
   isLoading: boolean = false;
   createEstateGroup!: FormGroup;
   formattedAmount!: any;
+  estateId!: string;
+
   constructor(private currencyPipe: CurrencyPipe, private formBuilder: FormBuilder, private authService: AuthenticationService, private estateService: CrudService, private activatedRoute: ActivatedRoute, private router: Router, private utils: UtilsService) { }
   ngOnInit(): void {
     this.user$.subscribe((user) => {
@@ -94,17 +97,50 @@ export class CreateEstateComponent {
 
       console.log(estate);
 
-      this.estateService.addEstate(estate).subscribe({
+      this.estateService.addEstate(estate).pipe(
+        switchMap((res) => {
+          this.estateId = res.id;
+          return this.estateService.addMyOffer(this.userId, this.estateId);
+        })
+      ).subscribe({
         next: (res) => {
           this.router.navigate(['/home']);
           this.isLoading = false;
-
         },
         error: (err) => {
           console.error(err);
           this.isLoading = false;
         }
       });
+
+
+
+      // .subscribe({
+      //   next: (res) => {
+      //     this.estateId = res.id;
+
+      //     this.router.navigate(['/home']);
+      //     this.isLoading = false;
+
+      //   },
+      //   error: (err) => {
+      //     console.error(err);
+      //     this.isLoading = false;
+      //   }
+      // });
+
+
+      // this.estateService.addMyOffer(this.userId, this.estateId).subscribe({
+      //   next: (res) => {
+      //     this.router.navigate(['/home']);
+      //     this.isLoading = false;
+
+      //   },
+      //   error: (err) => {
+      //     console.error(err);
+      //     this.isLoading = false;
+      //   }
+      // });
     }
   }
 

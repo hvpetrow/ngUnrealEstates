@@ -3,6 +3,7 @@ import { CommentsService } from '../../services/comments.service';
 import { HotToastService } from '@ngneat/hot-toast';
 import { CrudService } from '../../crud.service';
 import { Router } from '@angular/router';
+import { FavoriteService } from '../../services/favorite.service';
 
 @Component({
   selector: 'app-delete-modal',
@@ -13,6 +14,7 @@ export class DeleteModalComponent {
   @Input() commentId!: string;
   @Input() estateId!: string;
   @Input() estateComments!: any;
+  @Input() userId!: string | undefined;
 
   @Input() deleteModal!: boolean;
   @Output() deleteModalChange = new EventEmitter<boolean>();
@@ -21,7 +23,7 @@ export class DeleteModalComponent {
 
   isLoading: boolean = false;
 
-  constructor(private commentService: CommentsService, private estateService: CrudService, private router: Router, public toaster: HotToastService) { }
+  constructor(private favoriteService: FavoriteService, private commentService: CommentsService, private estateService: CrudService, private router: Router, public toaster: HotToastService) { }
 
   outsideClickHandler(e: Event) {
     if ((e.target as HTMLTextAreaElement).tagName === 'SECTION') {
@@ -41,6 +43,24 @@ export class DeleteModalComponent {
         complete: () => {
           this.router.navigate(['/home']);
           this.toaster.success('Successfully deleted estate!');
+        }
+      });
+
+      this.favoriteService.removeFavorite(this.userId, this.estateId).subscribe({ //delete from favorites
+        next: (res) => {
+          console.log(res);
+        },
+        error: (err) => {
+          console.error(err);
+        }
+      });
+
+      this.estateService.removeMyOffer(this.userId, this.estateId).subscribe({ //delete from my offers
+        next: (res) => {
+          console.log(res);
+        },
+        error: (err) => {
+          console.error(err);
         }
       });
 
