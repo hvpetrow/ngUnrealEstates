@@ -12,7 +12,7 @@ import { FavoriteService } from 'src/app/shared/services/favorite.service';
 })
 export class MyOffersComponent {
   favorites!: any;
-  favoritesId!: any;
+  myOffersId!: any;
   user$ = this.authService.currentUser$;
   userId!: string | undefined;
 
@@ -22,12 +22,12 @@ export class MyOffersComponent {
     this.user$.pipe(
       switchMap((user) => {
         this.userId = user?.uid;
-        return this.favoriteService.getFavoritesByUserId(this.userId);
+        return this.estateService.getMyOffersByUserId(this.userId);
       }),
       switchMap((res: any) => {
-        this.favoritesId = res.favorites;
-        console.log(this.favoritesId);
-        return this.estateService.getEstatesByFavoritesId(this.favoritesId).pipe(
+        this.myOffersId = res.myOffers;
+        console.log(this.myOffersId);
+        return this.estateService.getEstatesByMyOffersId(this.myOffersId).pipe(
           map(changes =>
             changes.map(c => {
               const fields: any = c.payload.doc.data();

@@ -61,4 +61,18 @@ export class CrudService {
       myOffers: arrayRemove(myOfferId)
     }));
   }
+
+  getMyOffersByUserId(userId: string | undefined) {
+    console.log(userId);
+
+    const ref = this.db.doc('users/' + userId);
+    return ref.valueChanges();
+  }
+
+  getEstatesByMyOffersId(userMyOffersId: string[] | undefined) {
+    console.log(userMyOffersId);
+
+    return this.db.collection('estates', ref => ref.where(documentId(), 'in', userMyOffersId)).snapshotChanges();
+  }
+
 }
