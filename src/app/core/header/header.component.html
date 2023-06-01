@@ -3,23 +3,39 @@
   <app-search> </app-search>
   <ul>
     <!-- Guest users and Logged users -->
-    <li><a routerLink="/estates/catalog-for-sell">For sell</a></li>
+    <li [ngClass]="{ 'link-active': currentUrlPath === 'for-sell' }">
+      <a routerLink="/estates/catalog-for-sell">For sell</a>
+    </li>
     <!-- <li><a routerLink="/about-us">About us</a></li> -->
     <!-- Guest users -->
     <ng-container *ngIf="!(isLoggedIn$ | async)">
-      <li><a routerLink="user/login">Login</a></li>
-      <li><a routerLink="user/register">Register</a></li>
+      <li [ngClass]="{ 'link-active': currentUrlPath === 'for-sell' }">
+        <a routerLink="user/login">Login</a>
+      </li>
+      <li [ngClass]="{ 'link-active': currentUrlPath === 'for-sell' }">
+        <a routerLink="user/register">Register</a>
+      </li>
     </ng-container>
     <!-- Logged users -->
     <ng-container *ngIf="isLoggedIn$ | async">
-      <li><a routerLink="estates/create">Create offer</a></li>
+      <li [ngClass]="{ 'link-active': currentUrlPath === 'create' }">
+        <a routerLink="estates/create">Create offer</a>
+      </li>
       <li>
         <a class="favorites" routerLink="estates/favorites">
           <span class="features">
             <mat-icon>star_half</mat-icon>
-            <span class="count">{{ favoritesCount }}</span>
+            <span class="count">({{ favoritesCount }})</span>
           </span>
           Favorites</a
+        >
+      </li>
+      <li>
+        <a class="favorites" routerLink="estates/my-offers">
+          <span class="features">
+            <span class="count">({{ favoritesCount }})</span>
+          </span>
+          My Offers</a
         >
       </li>
       <li><a (click)="onLogout()" href="javascript:void(0)">Logout</a></li>

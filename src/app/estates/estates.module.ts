@@ -15,7 +15,8 @@ import { A11yModule } from '@angular/cdk/a11y';
 import { MatIconModule } from '@angular/material/icon';
 import { ContactModalComponent } from './details/contact-modal/contact-modal.component';
 import { CatalogForSellComponent } from './catalog-for-sell/catalog-for-sell.component';
-import { FavoritesComponent } from './favorites/favorites.component'
+import { FavoritesComponent } from './favorites/favorites.component';
+import { MyOffersComponent } from './my-offers/my-offers.component'
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { FavoritesComponent } from './favorites/favorites.component'
     ContactModalComponent,
     CatalogForSellComponent,
     FavoritesComponent,
+    MyOffersComponent,
 
   ],
   imports: [

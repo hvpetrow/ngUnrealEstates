@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   lastScrollTop: number = 0;
   favoritesCount!: any;
   userId!: string | undefined;
-  page!: string;
+  currentUrlPath!: string;
 
   constructor(private authService: AuthenticationService, private favoriteService: FavoriteService, private router: Router) { }
 
@@ -32,8 +32,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
           // Could add more chars url:path?=;other possible
           const urlDelimitators = new RegExp(/[?//,;&:#$+=]/);
           let urlPath = event.url.slice(1).split(urlDelimitators);
-          let currentUrlPath = urlPath[urlPath.length - 1];
-          console.log('URL_PATH: ', currentUrlPath);
+          this.currentUrlPath = urlPath[urlPath.length - 1].trim();
+          console.log('URL_PATH:', this.currentUrlPath.trim());
         }
       });
 

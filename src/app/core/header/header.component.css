@@ -15,6 +15,9 @@ nav {
   z-index: 1000;
   transition: all 0.5s ease-in;
 }
+.link-active {
+  background-color: red;
+}
 
 nav ul {
   display: flex;
