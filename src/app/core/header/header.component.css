@@ -89,6 +89,30 @@ nav a:hover {
   background-color: rgba(129, 115, 115, 0.466);
 }
 
+@media screen and (max-width: 1680px) {
+  nav {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 1420px) {
+  nav {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  nav {
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  nav {
+    font-size: 1rem;
+  }
+}
+
 /* nav a:hover {
   font-weight: normal;
   background-color: rgba(129, 115, 115, 0.466);
