@@ -63,8 +63,6 @@ export class CrudService {
   }
 
   getMyOffersByUserId(userId: string | undefined) {
-    console.log(userId);
-
     const ref = this.db.doc('users/' + userId);
     return ref.valueChanges();
   }

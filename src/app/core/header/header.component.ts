@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { fromEvent, throttleTime, map, pairwise, distinctUntilChanged, share, filter, switchMap } from 'rxjs';
+import { CrudService } from 'src/app/shared/crud.service';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { FavoriteService } from 'src/app/shared/services/favorite.service';
 
@@ -20,10 +21,11 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   showHeader: boolean = false;
   lastScrollTop: number = 0;
   favoritesCount!: any;
+  myOffersCount!: any;
   userId!: string | undefined;
   currentUrlPath!: string;
 
-  constructor(private authService: AuthenticationService, private favoriteService: FavoriteService, private router: Router) { }
+  constructor(private authService: AuthenticationService, private estateService: CrudService, private favoriteService: FavoriteService, private router: Router) { }
 
   ngOnInit(): void {
     this.router.events
@@ -55,6 +57,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     this.isLoggedIn$.subscribe((userIsLogged) => {
       console.log(userIsLogged);
     });
+
+    this.takeMyOffersCount();
   }
 
   ngAfterViewInit(): void {
@@ -77,6 +81,22 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
     goingUp$.subscribe(() => (this.showHeader = true));
     goingDown$.subscribe(() => (this.showHeader = false));
+  }
+
+  takeMyOffersCount() {
+    this.user$.pipe(
+      switchMap((user) => {
+        this.userId = user?.uid;
+        return this.estateService.getMyOffersByUserId(this.userId);
+      })
+    ).subscribe({
+      next: (res: any) => {
+        this.myOffersCount = res.myOffers.length;
+      },
+      error: (err) => {
+        console.error(err.message);
+      }
+    });
   }
 
   onLogout(): void {
