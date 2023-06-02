@@ -36,15 +36,16 @@ nav ul {
 }
 
 .features {
-  color: #fff;
   fill: #fff;
-  border-radius: 1rem;
+  border-radius: 2rem;
   padding: 0 0.125rem 0.05rem;
   display: flex;
   align-items: center;
-  height: 2.25rem;
+  height: 1.8rem;
   font-size: 15px;
   font-weight: 500;
+  background-color: #fff;
+  color: rgba(0, 17, 54, 0.85);
 }
 
 .count {
