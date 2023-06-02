@@ -93,11 +93,21 @@ nav a:hover {
   nav {
     font-size: 1.3rem;
   }
+
+  .features {
+    height: 1.7rem;
+    font-size: 14px;
+  }
 }
 
 @media screen and (max-width: 1420px) {
   nav {
     font-size: 1.2rem;
+  }
+
+  .features {
+    height: 1.6rem;
+    font-size: 13px;
   }
 }
 
@@ -110,6 +120,11 @@ nav a:hover {
 @media screen and (max-width: 1150px) {
   nav {
     font-size: 1rem;
+  }
+
+  .features {
+    height: 1.6rem;
+    font-size: 12px;
   }
 }
 
