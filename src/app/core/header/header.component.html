@@ -3,16 +3,16 @@
   <app-search> </app-search>
   <ul>
     <!-- Guest users and Logged users -->
-    <li [ngClass]="{ 'link-active': currentUrlPath === 'for-sell' }">
+    <li [ngClass]="{ 'link-active': currentUrlPath === 'catalog-for-sell' }">
       <a routerLink="/estates/catalog-for-sell">For sell</a>
     </li>
     <!-- <li><a routerLink="/about-us">About us</a></li> -->
     <!-- Guest users -->
     <ng-container *ngIf="!(isLoggedIn$ | async)">
-      <li [ngClass]="{ 'link-active': currentUrlPath === 'for-sell' }">
+      <li [ngClass]="{ 'link-active': currentUrlPath === 'login' }">
         <a routerLink="user/login">Login</a>
       </li>
-      <li [ngClass]="{ 'link-active': currentUrlPath === 'for-sell' }">
+      <li [ngClass]="{ 'link-active': currentUrlPath === 'register' }">
         <a routerLink="user/register">Register</a>
       </li>
     </ng-container>
@@ -21,7 +21,7 @@
       <li [ngClass]="{ 'link-active': currentUrlPath === 'create' }">
         <a routerLink="estates/create">Create offer</a>
       </li>
-      <li>
+      <li [ngClass]="{ 'link-active': currentUrlPath === 'favorites' }">
         <a class="favorites" routerLink="estates/favorites">
           <span
             class="features"
@@ -33,7 +33,7 @@
           Favorites</a
         >
       </li>
-      <li>
+      <li [ngClass]="{ 'link-active': currentUrlPath === 'my-offers' }">
         <a class="favorites" routerLink="estates/my-offers">
           <span class="features">
             <span class="count">({{ myOffersCount }})</span>
